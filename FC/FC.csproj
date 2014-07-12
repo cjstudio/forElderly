@@ -55,14 +55,23 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="TEST\fuck.aspx" />
+    <Content Include="TEST\JqueryAjaxLoad.aspx" />
+    <Content Include="TEST\OldAjax.aspx" />
+    <Content Include="TEST\TestAjax.aspx" />
+    <Content Include="TEST\TestAjax2.aspx" />
+    <Content Include="TEST\TestForm.aspx" />
     <Content Include="TEST\Test_db.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -124,6 +133,48 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="TEST\fuck.aspx.cs">
+      <DependentUpon>fuck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\fuck.aspx.designer.cs">
+      <DependentUpon>fuck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TEST\JqueryAjaxLoad.aspx.cs">
+      <DependentUpon>JqueryAjaxLoad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\JqueryAjaxLoad.aspx.designer.cs">
+      <DependentUpon>JqueryAjaxLoad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TEST\OldAjax.aspx.cs">
+      <DependentUpon>OldAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\OldAjax.aspx.designer.cs">
+      <DependentUpon>OldAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TEST\TestAjax.aspx.cs">
+      <DependentUpon>TestAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\TestAjax.aspx.designer.cs">
+      <DependentUpon>TestAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TEST\TestAjax2.aspx.cs">
+      <DependentUpon>TestAjax2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\TestAjax2.aspx.designer.cs">
+      <DependentUpon>TestAjax2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TEST\TestForm.aspx.cs">
+      <DependentUpon>TestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\TestForm.aspx.designer.cs">
+      <DependentUpon>TestForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TEST\Test_db.aspx.cs">
       <DependentUpon>Test_db.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -138,6 +189,9 @@
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\WebSite.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
