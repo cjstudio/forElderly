@@ -5,7 +5,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>jQuery UI Bootstrap</title>
+  <title><%=this.getValue("MainTitle")%></title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A preview of the jQuery UI Bootstrap theme">
   <meta name="author" content="Addy Osmani">
@@ -14,30 +15,95 @@
   <link href="./JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet">
   <link type="text/css" href="./JqueryUi/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
   <link type="text/css" href="./JqueryUi/assets/css/font-awesome.min.css" rel="stylesheet" />
-  <!--[if IE 7]>
-  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
-  <![endif]-->
-  <!--[if lt IE 9]>
-  <link rel="stylesheet" type="text/css" href="css/custom-theme/jquery.ui.1.10.0.ie.css"/>
-  <![endif]-->
+
   <link href="./JqueryUi/assets/css/docs.css" rel="stylesheet">
   <link href="./JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-
-  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
+    
   <!-- Le fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./JqueryUi/assets/ico/apple-touch-icon-144-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./JqueryUi/assets/ico/apple-touch-icon-114-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./JqueryUi/assets/ico/apple-touch-icon-72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="./JqueryUi/assets/ico/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="./JqueryUi/assets/ico/favicon.png">
+  <link rel="shortcut icon" href="./img/logo (5).png">
+    
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+                    <!-- 登陆框 Start -->
+                    <script type="text/javascript">
+//                        $(function () {
+//                            $("#commit_login").bind("click", LoadPost);
+//                            alert("hey you boy");
+//                        });
 
+                        function LoadPost(event) {
+                            var username = document.getElementById("username").value.toString();
+                            var password = document.getElementById("password").value.toString();
+                            var member = document.getElementById("member").checked.toString();
+                            $("#login_commit_result").load("Account/Login.aspx", { "param": "LoadPost", "username": username, "password": password, "member": member });
+                        }
+                    </script>
+                    <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" align="center">
+	                    <div class="modal-header">
+			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		                    <h3 id="myModalLabel">
+			                    用户登陆
+		                    </h3>
+	                    </div>
+	                    <div class="modal-body right" >
+                                <div id="login_commit_result"></div>
+		                        <form id="form_login" runat="server" align="center">
+                                    <table >
+                                        <tr>
+                                            <td style="width:auto">
+                                                <p>用户名</p>
+                                            </td>
+                                            <td>
+                                                <input id="username" type="text" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:auto">
+                                                <p>密码</p>
+                                            </td>
+                                            <td>
+                                                <input id="password" type="password" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:auto">
+                                            </td>
+                                            <td>
+                                                <input id="member" type="checkbox" > 记住密码</input>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+	                    </div>
+	                    <div class="modal-footer">
+			                <input id="commit_login" class="btn " type="button" onclick="LoadPost();" value="登陆"/> 
+	                    </div>
+                    </div>
+                    <!-- 登陆框 Over -->
+                    <!-- 注册框 Start -->
+                    <div id="wd_signUp" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                    <div class="modal-header">
+			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		                    <h3 id="H1">
+			                    标题栏
+		                    </h3>
+	                    </div>
+	                    <div class="modal-body">
+		                    <p>
+			                    显示信息
+		                    </p>
+	                    </div>
+	                    <div class="modal-footer">
+			                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button> 
+                            <button class="btn btn-primary">保存设置</button>
+	                    </div>
+                    </div>
+                    <!-- 注册框 Over -->
 <!-- Navbar
 ================================================== -->
   <div class="navbar navbar-inverse navbar-fixed-top">
@@ -45,7 +111,7 @@
       <div class="container">
         
         <a class="brand" href="#"><%=this.getValue("MainTitle")%></a>
-        <div class="nav-collapse collapse">
+        <!--<div class="nav-collapse collapse">-->
           <ul class="nav">
             <li class="active">
                 <a href="#">首页</a>
@@ -65,17 +131,17 @@
           </ul>
           <div id="twitter-share" class="pull-right">
             <div>
-            <table >
-              <td>
-                <button>登陆</button>
-              </td>
-              <td>
-                <a src="./test1.html">TEST</a>
-                <button>注册</button>
-              </td>
-           </table>
-         </div>
-         		<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+                <table >
+                  <td>
+                    <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">登陆</a>
+                    
+                  </td>
+                  <td>
+                    <a id="bt_signUp" href="#wd_signUp" role="button" class="btn" data-toggle="modal">注册</a>
+                  </td>
+               </table>
+            </div>
+         	<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
           </div>
         </div>
       </div>
@@ -87,9 +153,9 @@
   <header class="jumbotron subhead" id="overview">
     <div class="container">
         <div class="span2">
-            <img src="./img/test1.jpg">
+            <img src="./img/logo (1).png">
         </div >
-        <div class="span9">
+        <div class="span8">
             <h1><%=this.getValue("MainTitle")%></h1>
             <p class="lead"><%=this.getValue("MainSlogan")%></p>
         </div>
@@ -210,7 +276,9 @@
         <div class="container">
           <div class="span3" align="center">
       	    <div class=" pull-right">
-        	    <button class=".btn-large brand ui-button btn btn-primary ui-widget ui-state-default ui-corner-all  ui-button-text-only" align="center" role="button" aria-disabled="false"><span class="ui-button-text">支持我们</span></button>
+        	    <a type="button" class=".btn-large brand ui-button btn btn-primary ui-widget ui-state-default ui-corner-all  ui-button-text-only" align="center" role="button" aria-disabled="false">
+                    支持我们
+                </a>
       	    </div>
 	        </div>
           <div class="span9">
@@ -220,13 +288,14 @@
       	    <div align="left" style="padding-left:30px">
         	    <p><strong>联系我们:</strong>Hero</p>
         	    <p><strong>联系我们:</strong>Hero</p>
-              <p><strong>联系我们:</strong>Hero</p>
+                <p><strong>联系我们:</strong>Hero</p>
             </div>
 	        </div>
         </div>
       </footer>
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="./JqueryUi/assets/js/jquery-1.9.0.min.js" type="text/javascript"></script>
+  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
   <script src="./JqueryUi/assets/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="./JqueryUi/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
   <script src="./JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
