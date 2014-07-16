@@ -50,10 +50,10 @@
                                 LoginSuccess(oDiv, dataRes);
                             } else if (dataRes.status == "Error") {
                                 oDiv.innerHTML =
-                                    '<div class="alert alert-danger" role="alert">用户名或密码错误</div>';
+                                    '<div class="alert alert-danger" role="alert">'+dataRes.msg+'</div>';
                             } else {
                                 oDiv.innerHTML =
-                                    '<div class="alert alert-warning" role="alert">登陆异常</div>';
+                                    '<div class="alert alert-warning" role="alert">' + dataRes.msg + '</div>';
                             }
                         }
 
@@ -63,14 +63,22 @@
                             var oDivloginSignup = document.getElementById("login_signup_div");
                             var oBtn = $("#commit_login_div");
                             oBtn.html('<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>');
-                            oDivloginSignup.innerHTML='<div class="btn-group">' +
-				                    '<button class="btn">Action</button> <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>'+
-				                        '<ul class="dropdown-menu"><li><a href="#">操作</a></li>'+
+                            oDivloginSignup.innerHTML = '<div class="btn-group">' +
+				                    '<button class="btn">' + dataRes.username +
+                                    '</button> <button data-toggle="dropdown" class="btn dropdown-toggle">' +
+                                    '<span class="caret"></span></button>'+
+				                        '<ul class="dropdown-menu">' +
+                                        '<li><a href="#">个人信息</a></li>'+
 					                    '<li><a href="#">设置栏目</a></li>'+
 					                    '<li><a href="#">更多设置</a></li>'+
 					                    '<li class="divider"></li>'+
 					                    '<li><a href="#">安全退出</a></li>' +
 					                    '</ul></div>';
+//                            alert(dataRes.username);
+//                            alert(dataRes.userid);
+//                            alert(dataRes.usertype);
+//                            alert(dataRes.picpath);
+//                            alert(dataRes.usersex);
                         }
                     </script>
                     <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" 
