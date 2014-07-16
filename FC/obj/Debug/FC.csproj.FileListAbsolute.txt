@@ -2,3 +2,4 @@ G:\code\ASP.Net\FC\FC\bin\FC.dll
 G:\code\ASP.Net\FC\FC\bin\FC.pdb
 G:\code\ASP.Net\FC\FC\obj\Debug\FC.dll
 G:\code\ASP.Net\FC\FC\obj\Debug\FC.pdb
+G:\code\ASP.Net\FC\FC\obj\Debug\FC.csprojResolveAssemblyReference.cache

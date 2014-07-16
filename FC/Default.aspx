@@ -31,17 +31,17 @@
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
                     <!-- 登陆框 Start -->
                     <script type="text/javascript">
-//                        $(function () {
-//                            $("#commit_login").bind("click", LoadPost);
-//                            alert("hey you boy");
-//                        });
-
                         function LoadPost(event) {
                             var username = document.getElementById("username").value.toString();
                             var password = document.getElementById("password").value.toString();
                             var member = document.getElementById("member").checked.toString();
-                            $("#login_commit_result").load("Account/Login.aspx", { "param": "LoadPost", "username": username, "password": password, "member": member });
-                        }
+                            htmlobj = $.ajax({ url: "Account/Login.aspx",
+                                async: false,
+                                data: { "username": username, "password": password, "member": member }
+                            });
+                            var dataRes = $.parseJSON(htmlobj.responseText);
+                            alert(dataRes.status);
+                        };
                     </script>
                     <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" align="center">
 	                    <div class="modal-header">

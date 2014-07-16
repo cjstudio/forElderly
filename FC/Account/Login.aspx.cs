@@ -29,15 +29,15 @@ namespace FC.Account
             //将字符串写入响应输出流
             if (passwd == "fuck")
             {
-                Response.Write("<div class=\"alert alert-warning\" role=\"alert\">登陆失败</div>");
+                Response.Write("{\"status\":\"Error\"}");
             }
             else if (passwd == "hello")
             {
-                Response.Write("<div class=\"alert alert-success\" role=\"alert\">登陆成功</div>");
+                Response.Write("{\"status\":\"Success\"}");
             }
             else
             {
-                Response.Write("<div class=\"alert alert-info\" role=\"alert\">登陆成功</div>");
+                Response.Write("{\"status\":\"Other\"}");
             }
             //将当前所有缓冲的输出发送的客户端，并停止该页执行
             Response.End();
