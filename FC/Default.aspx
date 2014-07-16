@@ -13,17 +13,22 @@
 
   <!-- Le styles -->
   <link href="./JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet">
-  <link type="text/css" href="./JqueryUi/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+  <link type="text/css" href="./JqueryUi/css/custom-theme/jquery-ui-1.10.0.custom.css" 
+        rel="stylesheet" />
   <link type="text/css" href="./JqueryUi/assets/css/font-awesome.min.css" rel="stylesheet" />
 
   <link href="./JqueryUi/assets/css/docs.css" rel="stylesheet">
   <link href="./JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
     
   <!-- Le fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./JqueryUi/assets/ico/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./JqueryUi/assets/ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./JqueryUi/assets/ico/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="./JqueryUi/assets/ico/apple-touch-icon-57-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" 
+        href="./JqueryUi/assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" 
+        href="./JqueryUi/assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" 
+        href="./JqueryUi/assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" 
+        href="./JqueryUi/assets/ico/apple-touch-icon-57-precomposed.png">
   <link rel="shortcut icon" href="./img/logo (5).png">
     
 </head>
@@ -35,17 +40,45 @@
                             var username = document.getElementById("username").value.toString();
                             var password = document.getElementById("password").value.toString();
                             var member = document.getElementById("member").checked.toString();
+                            var oDiv = document.getElementById("login_commit_result");
                             htmlobj = $.ajax({ url: "Account/Login.aspx",
                                 async: false,
                                 data: { "username": username, "password": password, "member": member }
                             });
                             var dataRes = $.parseJSON(htmlobj.responseText);
-                            alert(dataRes.status);
-                        };
+                            if (dataRes.status == "Success") {
+                                LoginSuccess(oDiv, dataRes);
+                            } else if (dataRes.status == "Error") {
+                                oDiv.innerHTML =
+                                    '<div class="alert alert-danger" role="alert">用户名或密码错误</div>';
+                            } else {
+                                oDiv.innerHTML =
+                                    '<div class="alert alert-warning" role="alert">登陆异常</div>';
+                            }
+                        }
+
+                        function LoginSuccess(oDiv, dataRes) {
+                            oDiv.innerHTML =
+                                    '<div class="alert alert-success" role="alert">登陆成功</div>';
+                            var oDivloginSignup = document.getElementById("login_signup_div");
+                            var oBtn = $("#commit_login_div");
+                            oBtn.html('<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>');
+                            oDivloginSignup.innerHTML='<div class="btn-group">' +
+				                    '<button class="btn">Action</button> <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>'+
+				                        '<ul class="dropdown-menu"><li><a href="#">操作</a></li>'+
+					                    '<li><a href="#">设置栏目</a></li>'+
+					                    '<li><a href="#">更多设置</a></li>'+
+					                    '<li class="divider"></li>'+
+					                    '<li><a href="#">安全退出</a></li>' +
+					                    '</ul></div>';
+                        }
                     </script>
-                    <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" align="center">
+                    <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" 
+                        aria-hidden="true" align="center">
 	                    <div class="modal-header">
-			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    ×
+                                </button>
 		                    <h3 id="myModalLabel">
 			                    用户登陆
 		                    </h3>
@@ -80,15 +113,18 @@
                                     </table>
                                 </form>
 	                    </div>
-	                    <div class="modal-footer">
-			                <input id="commit_login" class="btn " type="button" onclick="LoadPost();" value="登陆"/> 
+	                    <div id="commit_login_div" class="modal-footer">
+			                <input id="commit_login" class="btn " type="button" onclick="LoadPost();" 
+                                value="登陆"/> 
 	                    </div>
                     </div>
                     <!-- 登陆框 Over -->
                     <!-- 注册框 Start -->
                     <div id="wd_signUp" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	                    <div class="modal-header">
-			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    ×
+                                </button>
 		                    <h3 id="H1">
 			                    标题栏
 		                    </h3>
@@ -129,19 +165,31 @@
                 <a href="#">关于我们</a>
             </li>
           </ul>
-          <div id="twitter-share" class="pull-right">
+          <div  class="pull-right">
             <div>
-                <table >
+                <table id="login_signup_div">
                   <td>
-                    <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">登陆</a>
+                    <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">
+                    登陆</a>
                     
                   </td>
                   <td>
-                    <a id="bt_signUp" href="#wd_signUp" role="button" class="btn" data-toggle="modal">注册</a>
+                    <a id="bt_signUp" href="#wd_signUp" role="button" class="btn" data-toggle="modal">
+                    注册</a>
                   </td>
                </table>
             </div>
-         	<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+         	<%--<script>
+         	    !function (d, s, id) {
+         	        var js, fjs = d.getElementsByTagName(s)[0];
+         	        if (!d.getElementById(id)) {
+         	            js = d.createElement(s);
+         	            js.id = id; js.src = "//platform.twitter.com/widgets.js";
+         	            fjs.parentNode.insertBefore(js, fjs);
+         	        }
+         	    } (document, "script", "twitter-wjs");
+            </script>--%>
+
           </div>
         </div>
       </div>
@@ -168,7 +216,8 @@
     <div class="row">
       <div class="span9 bs-docs-sidebar pull-left" >
       	<div style="border:1px solid #999;padding:3px;">
-        	<div class="navbar-static-top" style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
+        	<div class="navbar-static-top" 
+                style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
           	    <strong>&nbsp;&nbsp;爸妈频道</strong>
                 <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
@@ -187,7 +236,8 @@
 
        <div class="span3 pull-right" >
         <div  style="border:1px solid #999;padding:3px;">
-        	<div class="navbar-static-top" style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
+        	<div class="navbar-static-top" 
+                style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
           	    <strong>&nbsp;&nbsp;站内公告</strong>
                 <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
@@ -205,7 +255,8 @@
       </div>
       <div class="span6 pull-right" >
         <div  style="border:1px solid #999;padding:3px;">
-        	<div class="navbar-static-top" style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
+        	<div class="navbar-static-top" 
+                style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
           	    <strong>&nbsp;&nbsp;志愿者脚步</strong>
                 <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
@@ -223,7 +274,8 @@
       </div>
       <div class="span6 pull-right" >
         <div  style="border:1px solid #999;padding:3px;">
-        	<div class="navbar-static-top" style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
+        	<div class="navbar-static-top" 
+                style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
           	    <strong>&nbsp;&nbsp;社区管理</strong>
                 <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
@@ -276,7 +328,9 @@
         <div class="container">
           <div class="span3" align="center">
       	    <div class=" pull-right">
-        	    <a type="button" class=".btn-large brand ui-button btn btn-primary ui-widget ui-state-default ui-corner-all  ui-button-text-only" align="center" role="button" aria-disabled="false">
+        	    <a type="button" 
+                    class=".btn-large brand ui-button btn btn-primary ui-widget ui-state-default ui-corner-all  ui-button-text-only" 
+                    align="center" role="button" aria-disabled="false">
                     支持我们
                 </a>
       	    </div>
