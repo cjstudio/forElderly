@@ -4,12 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"/>
   <title><%=this.getValue("MainTitle")%></title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A preview of the jQuery UI Bootstrap theme">
-  <meta name="author" content="Addy Osmani">
+  <meta name="author" content="CJ_Studio"/>
 
   <!-- Le styles -->
   <link href="./JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +38,7 @@
                             var password = document.getElementById("password").value.toString();
                             var member = document.getElementById("member").checked.toString();
                             var oDiv = document.getElementById("login_commit_result");
-                            htmlobj = $.ajax({ url: "Account/Login.aspx",
+                            htmlobj = $.ajax({ url: "./Account/Login.aspx",
                                 async: false,
                                 data: { "username": username, "password": password, "member": member }
                             });
@@ -74,12 +71,8 @@
 					                    '<li class="divider"></li>'+
 					                    '<li><a href="#">安全退出</a></li>' +
 					                    '</ul></div>';
-//                            alert(dataRes.username);
-//                            alert(dataRes.userid);
-//                            alert(dataRes.usertype);
-//                            alert(dataRes.picpath);
-//                            alert(dataRes.usersex);
                         }
+
                     </script>
                     <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" 
                         aria-hidden="true" align="center">
@@ -101,6 +94,9 @@
                                             </td>
                                             <td>
                                                 <input id="username" type="text" />
+                                            </td>
+                                            <td>
+                                                <label>用户账号、姓名或注册邮箱</label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -127,82 +123,43 @@
 	                    </div>
                     </div>
                     <!-- 登陆框 Over -->
-                    <!-- 注册框 Start -->
-                    <div id="wd_signUp" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	                    <div class="modal-header">
-			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    ×
-                                </button>
-		                    <h3 id="H1">
-			                    标题栏
-		                    </h3>
-	                    </div>
-	                    <div class="modal-body">
-		                    <p>
-			                    显示信息
-		                    </p>
-	                    </div>
-	                    <div class="modal-footer">
-			                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button> 
-                            <button class="btn btn-primary">保存设置</button>
-	                    </div>
-                    </div>
-                    <!-- 注册框 Over -->
 <!-- Navbar
 ================================================== -->
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner" style="background-image:linear-gradient(to bottom, #111111, #D66123 ">
       <div class="container">
         
-        <a class="brand" href="#"><%=this.getValue("MainTitle")%></a>
-        <!--<div class="nav-collapse collapse">-->
+        <a class="brand" href="./Default.aspx"><%=this.getValue("MainTitle")%></a>
           <ul class="nav">
             <li class="active">
-                <a href="#">首页</a>
+                <a href="./Default.aspx">首页</a>
             </li>
             <li>
-                <a href="#">爸妈频道</a>
+                <a href="./Elderly/Elderly.aspx">爸妈频道</a>
             </li>
             <li>
-                <a href="#">志愿者脚步</a>
+                <a href="./Journal/Journal.aspx">志愿者脚步</a>
             </li>
             <li>
-                <a href="#">社区管理</a>
+                <a href="./Community/Community.aspx">社区管理</a>
             </li>
             <li>
-                <a href="#">关于我们</a>
+                <a href="./About/About.aspx">关于我们</a>
             </li>
           </ul>
           <div  class="pull-right">
             <div>
                 <table id="login_signup_div">
-                  <td>
                     <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">
                     登陆</a>
-                    
-                  </td>
-                  <td>
-                    <a id="bt_signUp" href="#wd_signUp" role="button" class="btn" data-toggle="modal">
+                    <a class="btn"  href="./Account/SignUp.aspx">
                     注册</a>
-                  </td>
                </table>
             </div>
-         	<%--<script>
-         	    !function (d, s, id) {
-         	        var js, fjs = d.getElementsByTagName(s)[0];
-         	        if (!d.getElementById(id)) {
-         	            js = d.createElement(s);
-         	            js.id = id; js.src = "//platform.twitter.com/widgets.js";
-         	            fjs.parentNode.insertBefore(js, fjs);
-         	        }
-         	    } (document, "script", "twitter-wjs");
-            </script>--%>
-
           </div>
         </div>
       </div>
     </div>
-  </div>
   
   <!-- Subhead
   ================================================== -->
@@ -227,7 +184,7 @@
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
           	    <strong>&nbsp;&nbsp;爸妈频道</strong>
-                <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
+                <a  class="pull-right" href="./Elderly/Elderly.aspx">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
         	<div><!-- 栏目内容 -->
                 <div align="center" >
@@ -266,7 +223,7 @@
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
           	    <strong>&nbsp;&nbsp;志愿者脚步</strong>
-                <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
+                <a  class="pull-right" href="./Journal/Journal.aspx">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
         	<div><!-- 栏目内容 -->
                 <div align="center" >
@@ -285,7 +242,7 @@
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
           	    <strong>&nbsp;&nbsp;社区管理</strong>
-                <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
+                <a  class="pull-right" href="./Community/Community.aspx">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
         	<div><!-- 栏目内容 -->
                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -299,13 +256,13 @@
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                      <img src="./img/test1.jpg" alt="321">
+                      <img src="./img/test1.jpg" alt="321"/>
                       <div class="carousel-caption">
                         
                       </div>
                     </div>
                     <div class="item">
-                      <img src="./img/test2.jpg" alt="123">
+                      <img src="./img/test2.jpg" alt="123"/>
                       <div class="carousel-caption">
                       </div>
                     </div>
@@ -355,6 +312,7 @@
 	        </div>
         </div>
       </footer>
+      </div>
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 
