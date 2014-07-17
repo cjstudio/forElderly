@@ -35,7 +35,11 @@
                     <script type="text/javascript">
                         function LoadPost(event) {
                             var username = document.getElementById("username").value.toString();
-                            var password = document.getElementById("password").value.toString();
+                            var passwordold = document.getElementById("password").value.toString();
+                            var password = passwordold;
+                            if (password.length != 32) {
+                                password = hex_md5(passwordold).toLocaleLowerCase();
+                            }
                             var member = document.getElementById("member").checked.toString();
                             var oDiv = document.getElementById("login_commit_result");
                             htmlobj = $.ajax({ url: "./Account/Login.aspx",
@@ -111,7 +115,7 @@
                                             <td style="width:auto">
                                             </td>
                                             <td>
-                                                <input id="member" type="checkbox" > 记住密码</input>
+                                                <input id="member" type="checkbox" >近30天内自动登陆</input>
                                             </td>
                                         </tr>
                                     </table>
@@ -148,13 +152,34 @@
             </li>
           </ul>
           <div  class="pull-right">
-            <div>
-                <table id="login_signup_div">
+            <div id="login_signup_div">
+            <%if (!isIdenUser)
+              {
+                  this.Response.Write(uname);
+                  %>
+                <table>
                     <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">
                     登陆</a>
                     <a class="btn"  href="./Account/SignUp.aspx">
                     注册</a>
                </table>
+               <%
+              }
+              else { 
+                  %>
+                        <div class="btn-group">
+				        <button class="btn"><%=uname %>
+                        </button> <button data-toggle="dropdown" class="btn dropdown-toggle">
+                        <span class="caret"></span></button>
+				            <ul class="dropdown-menu">
+                            <li><a href="#">个人信息</a></li>
+					        <li><a href="#">设置栏目</a></li>
+					        <li><a href="#">更多设置</a></li>
+					        <li class="divider"></li>
+					        <li><a href="#">安全退出</a></li>
+					        </ul></div>
+                  <%
+              } %>
             </div>
           </div>
         </div>
@@ -315,7 +340,8 @@
       </div>
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-
+  
+  <script src="./Scripts/md5.js" type="text/javascript"></script>
   <script src="./JqueryUi/assets/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="./JqueryUi/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
   <script src="./JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>

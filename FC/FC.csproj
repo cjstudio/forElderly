@@ -62,6 +62,7 @@
     <Content Include="Elderly\Elderly.aspx" />
     <Content Include="Journal\Journal.aspx" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\md5.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />

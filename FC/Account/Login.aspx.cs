@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace FC.Account
 {
@@ -75,16 +77,17 @@ namespace FC.Account
                 rs = dataset.Tables[0];
                 if (rs.Rows.Count != 1)
                 {
-                    //Response.Write("{ \"status\" : \"Error\" \"msg\" : \"用户名或密码有误\"}");
-                    Response.Write("{ \"status\" : \"Error\", \"msg\" : \"用户名有误"+passwd+sql+"\"}");
+                    Response.Write("{ \"status\" : \"Error\" \"msg\" : \"用户名或密码有误\"}");
+                    //Response.Write("{ \"status\" : \"Error\", \"msg\" : \"用户名有误"+passwd+sql+"\"}");
                     return false;
                 }
                 else
                 {
-                    if (passwd != rs.Rows[0]["passwd_c"].ToString().Trim())
+                    if ((passwd.Length == 32 ? EncryptSHA256(passwd).ToLower() : EncryptSHA256(EncryptMd5(passwd).ToLower()).ToLower()) 
+                        != rs.Rows[0]["passwd_c"].ToString().Trim())
                     {
-                        //Response.Write("{ \"status\" : \"Error\" \"msg\" : \"用户名或密码有误\"}");
-                        Response.Write("{ \"status\" : \"Error\", \"msg\" : \"密码有误#" + rs.Rows[0]["passwd_c"].ToString()+"##"+passwd + "#\"}");
+                        Response.Write("{ \"status\" : \"Error\" \"msg\" : \"用户名或密码有误\"}");
+                        //Response.Write("{ \"status\" : \"Error\", \"msg\" : \"密码有误#" + rs.Rows[0]["passwd_c"].ToString()+"##"+passwd + "#\"}");
                         return false;
                     }
                     else 
@@ -95,6 +98,25 @@ namespace FC.Account
                             " \"usertype\" : \"" + rs.Rows[0]["type_i"] + " \", " +
                             " \"picpath\" : \"" + rs.Rows[0]["picPath_c"] + " \", " +
                             " \"usersex\" : \"" + rs.Rows[0]["sex_c"] + " \" }");
+                        if (member == "true")
+                        {
+                            HttpCookie cookie = Request.Cookies["fc_user"];
+                            if (cookie != null)
+                            {
+                                cookie.Values.Remove("id");
+                                cookie.Values.Remove("name");
+                                cookie.Values.Remove("password");
+                                cookie.Values.Remove("type");
+                            }else{
+                                cookie = new HttpCookie("fc_user");
+                            }
+                            cookie.Values.Add("id", rs.Rows[0]["id_i"].ToString());
+                            cookie.Values.Add("name", rs.Rows[0]["name_c"].ToString());
+                            cookie.Values.Add("password", passwd);
+                            cookie.Values.Add("type",rs.Rows[0]["type_i"].ToString());
+                            cookie.Expires = DateTime.Now.AddDays(30);
+                            Response.AppendCookie(cookie);
+                        }
                     }
                 }
             }
@@ -125,6 +147,21 @@ namespace FC.Account
             }
             return str;
         }
-        
+        public string EncryptSHA256(string strPwd)
+        {
+            byte[] result = Encoding.Default.GetBytes(strPwd);
+            SHA256 sha256 = new SHA256CryptoServiceProvider();
+            byte[] output = sha256.ComputeHash(result);
+            string str = BitConverter.ToString(output).Replace("-", "");
+            return str.ToUpper();
+        }
+        public string EncryptMd5(string strPwd)
+        {
+            byte[] result = Encoding.Default.GetBytes(strPwd);
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] output = md5.ComputeHash(result);
+            string str = BitConverter.ToString(output).Replace("-", "");
+            return str.ToUpper();
+        }
     }
 }
