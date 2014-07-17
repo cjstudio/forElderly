@@ -97,26 +97,27 @@ namespace FC.Account
                             " \"userid\" : \"" + rs.Rows[0]["id_i"] + " \" , " +
                             " \"usertype\" : \"" + rs.Rows[0]["type_i"] + " \", " +
                             " \"picpath\" : \"" + rs.Rows[0]["picPath_c"] + " \", " +
+                            " \"member\" : \"" + member + " \", " +
                             " \"usersex\" : \"" + rs.Rows[0]["sex_c"] + " \" }");
+                        Session["uname"] = rs.Rows[0]["name_c"];
+                        Session["utype"] = rs.Rows[0]["type_i"];
+                        Session["uid"] = rs.Rows[0]["id_i"];
+                        Session["upasswd"] = rs.Rows[0]["passwd_c"];
+                        Session["member"] = member;
+
+                        HttpCookie cookie = new HttpCookie("fc_user");
+                        cookie.Values.Add("id", rs.Rows[0]["id_i"].ToString());
+                        cookie.Values.Add("name", rs.Rows[0]["name_c"].ToString());
+                        cookie.Values.Add("password", passwd);
+                        cookie.Values.Add("type", rs.Rows[0]["type_i"].ToString());
+                        cookie.Values.Add("member", "true");
                         if (member == "true")
                         {
-                            HttpCookie cookie = Request.Cookies["fc_user"];
-                            if (cookie != null)
-                            {
-                                cookie.Values.Remove("id");
-                                cookie.Values.Remove("name");
-                                cookie.Values.Remove("password");
-                                cookie.Values.Remove("type");
-                            }else{
-                                cookie = new HttpCookie("fc_user");
-                            }
-                            cookie.Values.Add("id", rs.Rows[0]["id_i"].ToString());
-                            cookie.Values.Add("name", rs.Rows[0]["name_c"].ToString());
-                            cookie.Values.Add("password", passwd);
-                            cookie.Values.Add("type",rs.Rows[0]["type_i"].ToString());
                             cookie.Expires = DateTime.Now.AddDays(30);
-                            Response.AppendCookie(cookie);
                         }
+                        else {
+                        }
+                        Response.AppendCookie(cookie);
                     }
                 }
             }

@@ -69,14 +69,24 @@
                                     '</button> <button data-toggle="dropdown" class="btn dropdown-toggle">' +
                                     '<span class="caret"></span></button>'+
 				                        '<ul class="dropdown-menu">' +
-                                        '<li><a href="#">个人信息</a></li>'+
+                                        '<li><a href="<%=getTypePath()%>">个人信息</a></li>' +
 					                    '<li><a href="#">设置栏目</a></li>'+
 					                    '<li><a href="#">更多设置</a></li>'+
 					                    '<li class="divider"></li>'+
 					                    '<li><a href="#">安全退出</a></li>' +
 					                    '</ul></div>';
                         }
-
+                        function exitLogin() {
+                            clearCookie();
+                            location.replace(location.href);
+                        }
+                        function clearCookie() {
+                            var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+                            if (keys) {
+                                for (var i = keys.length; i--; )
+                                    document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+                            }
+                        } 
                     </script>
                     <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" 
                         aria-hidden="true" align="center">
@@ -172,11 +182,11 @@
                         </button> <button data-toggle="dropdown" class="btn dropdown-toggle">
                         <span class="caret"></span></button>
 				            <ul class="dropdown-menu">
-                            <li><a href="#">个人信息</a></li>
+                            <li><a href="<%=getTypePath()%>">个人信息</a></li>
 					        <li><a href="#">设置栏目</a></li>
 					        <li><a href="#">更多设置</a></li>
 					        <li class="divider"></li>
-					        <li><a href="#">安全退出</a></li>
+					        <li><a onclick ="exitLogin();">安全退出</a></li>
 					        </ul></div>
                   <%
               } %>
@@ -216,6 +226,10 @@
                   <p>Test Main</p>
                   <p>Test Main</p>
                   <p>Test Main</p>
+                  <p><%=uname %></p>
+                  <p><%=
+                         Session["uname"] == "" ? "Error" : Session["uname"] 
+                          %></p>
                   <p>Test Main</p>
                   <p>Test Main</p>
                   <p>Test Main</p>

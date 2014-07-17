@@ -14,25 +14,18 @@ namespace FC
 {
     public partial class Default : System.Web.UI.Page
     {
-        public string uid, uname, utype, upasswd;
+        public string uid, uname, utype, upasswd,member;
         public bool isIdenUser = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (getCookie())
             {
                 isIdenUser = true;
             }
-        }
-        public string getValue(string key)
-        {
-            try
+            else
             {
-                Configuration config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-                return config.AppSettings.Settings[key].Value;
-            }
-            catch (Exception)
-            {
-                return "";
+                Session.Clear();
             }
         }
         public bool getCookie()
@@ -42,12 +35,20 @@ namespace FC
             {
                 uid = cookie.Values["id"];
                 upasswd = cookie.Values["password"];
+                member = cookie.Values["member"];
                 if (isLoginSuccess(uid, upasswd))
                 {
                     return true;
                 }
             }
             return false;
+        }
+        public void setSession()
+        {
+            Session["uname"] = uname;
+            Session["utype"] = utype;
+            Session["uid"] = uid;
+            Session["upasswd"] = upasswd;
         }
         public bool isLoginSuccess(string uid, string passwd)
         {
@@ -75,6 +76,7 @@ namespace FC
                     utype = rs.Rows[0]["type_i"].ToString();
                     return true;
                 }
+                setSession();
             }
             catch(Exception)
             {
@@ -118,6 +120,43 @@ namespace FC
             byte[] output = md5.ComputeHash(result);
             string str = BitConverter.ToString(output).Replace("-", "");
             return str.ToUpper();
+        }
+        public string getTypePath()
+        {
+            if (utype != null || getCookie())
+            {
+                if ((int.Parse(utype) & 1) != 0)
+                {
+                    return "/Journal/Journal.aspx";
+                }
+                else if ((int.Parse(utype) & 2) != 0)
+                {
+                    return "/Community/Community.aspx";
+                }
+                else if ((int.Parse(utype) & 4) != 0)
+                {
+                    return "/Elderly/Elderly.aspx";
+                }
+                else if ((int.Parse(utype) & 8) != 0)
+                {
+                    return "/Admin/Default.aspx";
+                }
+                else
+                    return "#" + utype;
+            }
+            return "###";
+        }
+        public string getValue(string key)
+        {
+            try
+            {
+                Configuration config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                return config.AppSettings.Settings[key].Value;
+            }
+            catch (Exception)
+            {
+                return "";
+            }
         }
     }
 }
