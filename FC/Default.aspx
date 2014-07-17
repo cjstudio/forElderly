@@ -17,16 +17,6 @@
   <link href="./JqueryUi/assets/css/docs.css" rel="stylesheet">
   <link href="./JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
     
-  <!-- Le fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" 
-        href="./JqueryUi/assets/ico/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" 
-        href="./JqueryUi/assets/ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" 
-        href="./JqueryUi/assets/ico/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" 
-        href="./JqueryUi/assets/ico/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="./img/logo (5).png">
     
 </head>
 
@@ -107,10 +97,10 @@
                                                 <p>用户名</p>
                                             </td>
                                             <td>
-                                                <input id="username" type="text" />
+                                                <input id="username" type="text" placeholder="用户账号、姓名或注册邮箱"/>
                                             </td>
                                             <td>
-                                                <label>用户账号、姓名或注册邮箱</label>
+                                                <label></label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -125,7 +115,9 @@
                                             <td style="width:auto">
                                             </td>
                                             <td>
-                                                <input id="member" type="checkbox" >近30天内自动登陆</input>
+                                                <label class="checkbox" contenteditable="true"> 
+                                                <input id="member" type="checkbox" />近30天内自动登陆 </label>
+                                                <%--<input id="member" type="checkbox" >近30天内自动登陆</input>--%>
                                             </td>
                                         </tr>
                                     </table>

@@ -56,11 +56,13 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\SignUp.aspx" />
+    <Content Include="Account\SignUpScript.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Community\Community.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Elderly\Elderly.aspx" />
     <Content Include="Journal\Journal.aspx" />
+    <Content Include="Others\provision.html" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\md5.js" />
     <Content Include="Styles\Site.css" />
@@ -127,6 +129,13 @@
     </Compile>
     <Compile Include="Account\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SignUpScript.aspx.cs">
+      <DependentUpon>SignUpScript.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SignUpScript.aspx.designer.cs">
+      <DependentUpon>SignUpScript.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
