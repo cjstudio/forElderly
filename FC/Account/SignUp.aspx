@@ -47,7 +47,7 @@
 								    <div class="span12">
 									    <form>
                                             <fieldset>
-                                                <legend>新用户注册</legend> 
+                                                <legend id="signUp_success" >新用户注册</legend> 
                                                     <div id="signUp_status"></div>
                                                     <p>
                                                         <label>选择注册用户类型</label>
@@ -104,7 +104,7 @@
             var passwd2 = document.getElementById("upasswd2").value.toString();
             var agree = document.getElementById("agree_provision").checked.toString();
             var oDiv = document.getElementById("signUp_status");
-
+            if (is_commit == true) {return;}
             if (uname == '') {
                 doErrorNotice(oDiv, '错误', '用户名不能为空');
                 is_lawful = false;
@@ -167,7 +167,26 @@
             }
         }
         function SignUpSuccess(oDiv, dataRes) {
-            alert("注册成功"+dataRes.id+dataRes.name+dataRes.email);
+            alert("注册成功" + dataRes.id + dataRes.name + dataRes.email);
+            var div2 = document.getElementById("signUp_success");
+            div2.innerHTML = '<div align="center" >'+
+                '<br><br><font size="+4" color="#00CC00">注册成功</font><br><br><br>'+
+                '<font size="+4" color="#0000CC" face="Times New Roman, Times, serif">' + dataRes.name + ',' +
+                '</font><font size="+1">您的账号为：</font><font size="+4" color="#FF0000">' + dataRes.id + '</font><br><br><br>' +
+                '<font size="+1">您的登陆邮箱为：</font><font size="+2" color="#0000CC">' + dataRes.email + '</font><br><br>' +
+                '<font size="+1">点击<a href="'+getPathByType(dataRes.type)+'">此处</a>完善个人资料</font></div>';
+        }
+        function getPathByType(type) {
+            if (type == '4') {
+                return '../Elderly/Elderly.aspx';
+            }
+            else if (type == '2') {
+                return '../Community/Community.aspx';
+            }
+            else {
+                return '../Journal/Journal.aspx';
+            }
+
         }
         function isLawfulInput(str) {
             var bases = new Array();

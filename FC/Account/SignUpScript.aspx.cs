@@ -57,6 +57,7 @@ namespace FC.Account
             u_input.id = insert_status.ToString();
             Response.Write("{ \"status\" : \"Success\", \"id\" : \"" + insert_status
                 + "\", \"email\" : \"" + u_input.email
+                + "\", \"type\" : \"" + u_input.type.ToString()
                 + "\", \"name\" : \"" + u_input.name + "\"}");
             Session["uname"] = u_input.name;
             Session["utype"] = u_input.type.ToString();
@@ -147,13 +148,13 @@ namespace FC.Account
                     {
                         sql = "insert into tb_elderly(id_i) values(" + user.id + ")";
                     }
-                    else if (user.type == 2)
+                    else if (user.type == 1)
                     {
-                        sql = "insert into tb_community(adminId_i) values(" + user.id + ")";
+                        sql = "insert into tb_journal(id_i) values(" + user.id + ")";
                     }
                     else
                     {
-                        sql = "insert into tb_journal(id_i) values(" + user.id + ")";
+                        return 0;
                     }
                     cmd.CommandText = sql;
                     isok = cmd.ExecuteNonQuery();
