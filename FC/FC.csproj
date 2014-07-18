@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About\About.aspx" />
+    <Content Include="Account\AboutErrorCode.txt" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />

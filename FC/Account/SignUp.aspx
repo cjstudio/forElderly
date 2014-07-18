@@ -76,9 +76,10 @@
                                                    
                                                     <iframe src="../Others/provision.html" scrolling="yes" width="600px" title="用户条款">
                                                     </iframe>
-                                                        <label class="checkbox" >
-                                                        <input type="checkbox" id="agree_provision" /> 勾选同意以上条款</label>
-                                                <button type="submit" class="btn" onclick="doCommit();">提交</button>
+                                                    <label class="checkbox" >
+                                                    <input type="checkbox" id="agree_provision" /> 勾选同意以上条款</label>
+                                                    <input  class="btn " type="button" onclick="doCommit();"  value="提交"/> 
+                                                    
 										    </fieldset>
 									    </form>
 								    </div>
@@ -94,30 +95,7 @@
     <script type="text/javascript">
         var is_lawful = false;
         var is_commit = false;
-        function LoadPost(event) {
-            var username = document.getElementById("username").value.toString();
-            var passwordold = document.getElementById("password").value.toString();
-            var password = passwordold;
-            if (password.length != 32) {
-                password = hex_md5(passwordold).toLocaleLowerCase();
-            }
-            var member = document.getElementById("member").checked.toString();
-            var oDiv = document.getElementById("login_commit_result");
-            htmlobj = $.ajax({ url: "./Account/Login.aspx",
-                async: false,
-                data: { "username": username, "password": password, "member": member }
-            });
-            var dataRes = $.parseJSON(htmlobj.responseText);
-            if (dataRes.status == "Success") {
-                LoginSuccess(oDiv, dataRes);
-            } else if (dataRes.status == "Error") {
-                oDiv.innerHTML =
-                                    '<div class="alert alert-danger" role="alert">' + dataRes.msg + '</div>';
-            } else {
-                oDiv.innerHTML =
-                                    '<div class="alert alert-warning" role="alert">' + dataRes.msg + '</div>';
-            }
-        }
+        var is_signup_success = false;
         function doCommit() {
             var utype = document.getElementById("utype").value.toString();
             var uname = document.getElementById("uname").value.toString();
@@ -179,14 +157,17 @@
             });
             var dataRes = $.parseJSON(htmlobj.responseText);
             if (dataRes.status == "Success") {
-                LoginSuccess(oDiv, dataRes);
+                SignUpSuccess(oDiv, dataRes);
             } else if (dataRes.status == "Error") {
                 oDiv.innerHTML =
-                                    '<div class="alert alert-danger" role="alert">' + dataRes.msg + '</div>';
+                '<div class="alert alert-danger" role="alert">' + dataRes.msg + '</div>';
             } else {
                 oDiv.innerHTML =
-                                    '<div class="alert alert-warning" role="alert">' + dataRes.msg + '</div>';
+                 '<div class="alert alert-warning" role="alert">' + dataRes.msg + '</div>';
             }
+        }
+        function SignUpSuccess(oDiv, dataRes) {
+            alert("注册成功"+dataRes.id+dataRes.name+dataRes.email);
         }
         function isLawfulInput(str) {
             var bases = new Array();

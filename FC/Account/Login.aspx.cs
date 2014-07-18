@@ -49,7 +49,7 @@ namespace FC.Account
 
         public bool isLawfulInput(string str)
        {
-           string[] unlawfulChars = { "\'", "\"", "<", ">", "-", " " };
+           string[] unlawfulChars = { "'", "\"", "<", ">", "-", " " };
            foreach (string s in unlawfulChars )
            {
                if (str.IndexOf(s)>=0)
@@ -123,7 +123,8 @@ namespace FC.Account
             }
             catch (Exception ex)
             {
-                Response.Write("{ \"status\" : \"Other\", \"msg\" : \"系统连接数据库失败\"}"); 
+                Response.Write("{ \"status\" : \"Other\", \"msg\" : \"系统连接数据库失败\"}");
+                return false;
             }
             return true;
         }
