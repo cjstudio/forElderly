@@ -20,7 +20,7 @@
     
 </head>
 
-<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" style="padding-top:0px;">
                     <!-- 登陆框 Start -->
                     <script type="text/javascript">
                         function LoadPost(event) {
@@ -76,7 +76,9 @@
                                 for (var i = keys.length; i--; )
                                     document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
                             }
-                        } 
+                        }
+
+
                     </script>
                     <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" 
                         aria-hidden="true" align="center">
@@ -129,9 +131,35 @@
 	                    </div>
                     </div>
                     <!-- 登陆框 Over -->
-<!-- Navbar
+
+  
+  <!-- Subhead
+  ================================================== -->
+  <header class="subhead" id="overview"  style="background-image:linear-gradient(to bottom,#D66123, Orange ">
+    <div class="container">
+        <div class="span2">
+            <img src="./img/logo (1).png">
+        </div >
+        <div class="span8">
+            <br>
+            <h1><%=this.getValue("MainTitle")%></h1>
+            <p class="lead"><%=this.getValue("MainSlogan")%></p>
+        </div>
+    </div>
+  </header>
+
+  
+  
+
+  <div class="container"  id="top_div">
+            
+ </div>
+
+
+  <div class="container">
+  <!-- Navbar
 ================================================== -->
-  <div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar navbar-inverse" style="margin-bottom:0px;">
     <div class="navbar-inner" style="background-image:linear-gradient(to bottom, #111111, #D66123 ">
       <div class="container">
         
@@ -187,27 +215,43 @@
         </div>
       </div>
     </div>
-  
-  <!-- Subhead
-  ================================================== -->
-  <header class="jumbotron subhead" id="overview">
-    <div class="container">
-        <div class="span2">
-            <img src="./img/logo (1).png">
-        </div >
-        <div class="span8">
-            <h1><%=this.getValue("MainTitle")%></h1>
-            <p class="lead"><%=this.getValue("MainSlogan")%></p>
-        </div>
-    </div>
-  </header>
-
-
-  <div class="container">
+ <!-- ================================================== -->
   <!-- Docs nav ================================================== -->
     <div class="row">
-      <div class="span9 bs-docs-sidebar pull-left" >
-      	<div style="border:1px solid #999;padding:3px;">
+	    <div class="span1">
+        </div>
+	    <div class="span10" style=" height:300px;">
+                <div class="carousel slide" id="carousel-861163">
+                  <div class="carousel-inner" >
+                    <div class="item  active"> 
+                        <img alt="" src="./img/test1.jpg" style=" height:300px; margin-right: auto; margin-left: auto;  ">
+                      <div class="carousel-caption" contenteditable="true">
+                        <h4>棒球</h4>
+                        <p>棒球运动是一种以棒打球为主要特点，集体性、对抗性很强的球类运动项目，在美国、日本尤为盛行。</p>
+                      </div>
+                    </div>
+                    <div class="item" > 
+                    <img alt="" src="./img/test2.jpg" style=" height:300px; margin-right: auto; margin-left: auto;">
+                      <div class="carousel-caption" contenteditable="true">
+                        <h4>冲浪</h4>
+                        <p>冲浪是以海浪为动力，利用自身的高超技巧和平衡能力，搏击海浪的一项运动。运动员站立在冲浪板上，或利用腹板、跪板、充气的橡皮垫、划艇、皮艇等驾驭海浪的一项水上运动。</p>
+                      </div>
+                    </div>
+                    <div class="item "> 
+                    <img alt="" src="./img/test1.jpg" style=" height:300px; margin-right: auto; margin-left: auto;">
+                      <div class="carousel-caption" contenteditable="true">
+                        <h4>自行车</h4>
+                        <p>以自行车为工具比赛骑行速度的体育运动。1896年第一届奥林匹克运动会上被列为正式比赛项目。环法赛为最著名的世界自行车锦标赛。</p>
+                      </div>
+                    </div>
+                  </div>
+                  <a data-slide="prev" href="#carousel-861163" class="left carousel-control">‹</a> 
+                  <a data-slide="next" href="#carousel-861163" class="right carousel-control">›</a> 
+                </div>
+              
+        </div>
+        <div class="span9 bs-docs-sidebar pull-left" >
+      	    <div style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
           	    <strong>&nbsp;&nbsp;爸妈频道</strong>
@@ -249,7 +293,9 @@
             </div>
         </div>
       </div>
-      <div class="span6 pull-right" >
+
+
+      <div class="span9 pull-left" >
         <div  style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
@@ -268,7 +314,9 @@
             </div>
         </div>
       </div>
-      <div class="span6 pull-right" >
+
+
+      <div class="span9 pull-left" >
         <div  style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
@@ -320,7 +368,7 @@
 ================================================== -->
   <div class="navbar navbar-inverse navbar-fixed-botton">
   
-      <footer class="footer" style="background-image:linear-gradient(to bottom, #D66123 , #111111)">
+      <footer class="footer"  style="background-image:linear-gradient(to bottom, Orange,#D66123 ">
         <div class="container">
           <div class="span3" align="center">
       	    <div class=" pull-right">
