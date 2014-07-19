@@ -66,6 +66,7 @@
     <Content Include="Others\GiveAdvice.aspx" />
     <Content Include="Others\provision.html" />
     <Content Include="Others\SupportUs.aspx" />
+    <Content Include="Scripts\ajaxupload.js" />
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\Login.js" />
@@ -75,6 +76,8 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="TEST\AjaxUploadClient.aspx" />
+    <Content Include="TEST\AjaxUploadServer.aspx" />
     <Content Include="TEST\fuck.aspx" />
     <Content Include="TEST\JqueryAjaxLoad.aspx" />
     <Content Include="TEST\OldAjax.aspx" />
@@ -188,6 +191,20 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TEST\AjaxUploadClient.aspx.cs">
+      <DependentUpon>AjaxUploadClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\AjaxUploadClient.aspx.designer.cs">
+      <DependentUpon>AjaxUploadClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TEST\AjaxUploadServer.aspx.cs">
+      <DependentUpon>AjaxUploadServer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\AjaxUploadServer.aspx.designer.cs">
+      <DependentUpon>AjaxUploadServer.aspx</DependentUpon>
     </Compile>
     <Compile Include="TEST\fuck.aspx.cs">
       <DependentUpon>fuck.aspx</DependentUpon>

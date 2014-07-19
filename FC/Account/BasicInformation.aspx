@@ -41,14 +41,15 @@
 					<div class="row-fluid">
                         <form id="form1" runat="server" enctype="multipart/form-data">
                             <asp:Button ID="Button1" class="btn" runat="server" Text="保存" OnClick="Button1_Click" />
+                            <asp:Label ID="Label1" runat="server" Text="" Style="color: Red"></asp:Label>
 						    <div align="left" style="padding-left:30px;font-color:red;" >
-                                <asp:Label ID="Label1" runat="server" Text="" Style="color: Red"></asp:Label>
 			                    <img alt="280x280" src="userPic/Default.jpg" class="img-rounded" />
                                 <input type="file" name="file" />
-                                <p ><label>姓名：</label><asp:TextBox runat="server" ID="username" type="text" value="Hero"/></p>
-                                <p ><label>联系地址</label><input type="text" value="Hero"/></p>
-                                <p ><label>联系地址</label><input type="text" value="Hero"/></p>
-                                <p ><label>联系地址</label><input type="text" value="Hero"/></p>
+                                <p ><label>姓名：</label><asp:TextBox ID="username" type="text" value="Hero" runat="server"/></p>
+                                <p ><label>姓名：</label><asp:TextBox ID="TextBox1" type="text" value="Hero" runat="server"/></p>
+                                <p ><label>姓名：</label><asp:TextBox ID="TextBox2" type="text" value="Hero" runat="server"/></p>
+                                <p ><label>姓名：</label><asp:TextBox ID="TextBox3" type="text" value="Hero" runat="server"/></p>
+                                <p ><label>姓名：</label><asp:TextBox ID="TextBox4" type="text" value="Hero" runat="server"/></p>
                             </div>
                         </form>
 
