@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title><%=this.getValue("MainTitle")%></title>
+  <title><%=FC.cjstudio.getValue("MainTitle")%></title>
   <meta name="author" content="CJ_Studio"/>
 
   <!-- Le styles -->
@@ -22,7 +22,6 @@
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" style="padding-top:0px;">
                     <!-- 登陆框 Start -->
-                    
                     <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" 
                         aria-hidden="true" align="center">
 	                    <div class="modal-header">
@@ -85,15 +84,13 @@
         </div >
         <div class="span8">
             <br>
-            <h1><%=this.getValue("MainTitle")%></h1>
-            <p class="lead"><%=this.getValue("MainSlogan")%></p>
+            <h1><%=FC.cjstudio.getValue("MainTitle")%></h1>
+            <p class="lead"><%=FC.cjstudio.getValue("MainSlogan")%></p>
         </div>
     </div>
   </header>
 
   
-  
-
   <div class="container"  id="top_div">
             
  </div>
@@ -127,13 +124,14 @@
           <div  class="pull-right">
             <div id="login_signup_div">
             <%if (!isIdenUser)
-              {
-                  this.Response.Write(uname);
+              { 
                   %>
                 <table>
+                    
                     <td>
                     <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">
-                    登陆</a></td><td>
+                    登陆</a></td>
+                    <td>
                     <a class="btn"  href="./Account/SignUp.aspx">
                     注册</a></td>
                </table>
@@ -156,14 +154,14 @@
 					        <li class="divider"></li>
 					        <li><a onclick="exitLogin();">安全退出</a></li>
 					        </ul></div>	
-                  <%
-              } %>
+                  <% } %>
             </div>
           </div>
         </div>
       </div>
     </div>
  <!-- ================================================== -->
+
   <!-- Docs nav ================================================== -->
     <div class="row">
 	    <div class="span1">
@@ -322,7 +320,7 @@
       	    <div class=" pull-right" style="margin-top:8px;">
         	    <a type="button" 
                     class=".btn-large brand ui-button btn btn-primary ui-widget ui-state-default ui-corner-all  ui-button-text-only" 
-                    align="center" role="button" aria-disabled="false">
+                    align="center" role="button" aria-disabled="false" href="../Others/SupportUs.aspx">
                     支持我们
                 </a>
       	    </div>

@@ -44,13 +44,6 @@ namespace FC
             }
             return false;
         }
-        public void setSession()
-        {
-            Session["uname"] = uname;
-            Session["utype"] = utype;
-            Session["uid"] = uid;
-            Session["upasswd"] = upasswd;
-        }
         public bool isLoginSuccess(string uid, string passwd)
         {
             string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
@@ -74,10 +67,15 @@ namespace FC
                     ==rs.Rows[0]["passwd_c"].ToString().Trim())
                 {
                     uname= rs.Rows[0]["name_c"].ToString();
-                    utype = rs.Rows[0]["type_i"].ToString();
+                    utype = rs.Rows[0]["type_i"].ToString(); 
+                    
+                    Session["uname"] = rs.Rows[0]["name_c"];
+                    Session["utype"] = rs.Rows[0]["type_i"];
+                    Session["uid"] = rs.Rows[0]["id_i"];
+                    Session["upasswd"] = rs.Rows[0]["passwd_c"];
+                    Session["member"] = member;
                     return true;
                 }
-                setSession();
             }
             catch(Exception)
             {

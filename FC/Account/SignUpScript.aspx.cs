@@ -12,15 +12,12 @@ using System.Configuration;
 
 namespace FC.Account
 {
-        public struct User {
-            public string id,name,password32,email;
-            public int type;
-        }
+        
     public partial class SignUpScript : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            User u_input = new User();
+            FC.cjstudio.User u_input = new FC.cjstudio.User();
             try
             {
                 u_input.name  = HttpContext.Current.Request["username"].ToString();
@@ -72,7 +69,7 @@ namespace FC.Account
             Response.AppendCookie(cookie);
             Response.End();
         }
-        public bool checkInsert(User user)
+        public bool checkInsert(FC.cjstudio.User user)
         {
             string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
             SqlConnection conn = new SqlConnection();
@@ -105,7 +102,7 @@ namespace FC.Account
             }
             return false ;
         }
-        public int insertDB(User user)
+        public int insertDB(FC.cjstudio.User user)
         {
             if (checkInsert(user))
             {

@@ -19,6 +19,11 @@ namespace FC.Account
         {
             try
             {
+                if (HttpContext.Current.Request["code"].ToString() == "exit")
+                {
+                    Session.Clear();
+                    return;
+                }
                 username = HttpContext.Current.Request["username"].ToString();
                 passwd = HttpContext.Current.Request["password"];
                 member = HttpContext.Current.Request["member"];
@@ -118,6 +123,7 @@ namespace FC.Account
                         else {
                         }
                         Response.AppendCookie(cookie);
+                        return true;
                     }
                 }
             }
@@ -126,7 +132,6 @@ namespace FC.Account
                 Response.Write("{ \"status\" : \"Other\", \"msg\" : \"系统连接数据库失败\"}");
                 return false;
             }
-            return true;
         }
         public string getUsernameSql()
         {
