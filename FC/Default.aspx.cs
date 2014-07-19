@@ -36,6 +36,7 @@ namespace FC
                 uid = cookie.Values["id"];
                 upasswd = cookie.Values["password"];
                 member = cookie.Values["member"];
+                uname = cookie.Values["name"];
                 if (isLoginSuccess(uid, upasswd))
                 {
                     return true;
@@ -123,28 +124,39 @@ namespace FC
         }
         public string getTypePath()
         {
-            if (utype != null || getCookie())
+            if (utype == "")
             {
+                getCookie();
+            }
+            if (utype == null)
+            {
+                try
+                {
+                    utype = Session["utype"].ToString();
+                }
+                catch (Exception)
+                {
+                    return "./";
+                }
+            }
                 if ((int.Parse(utype) & 1) != 0)
                 {
-                    return "/Journal/Journal.aspx";
+                    return "Journal/Journal.aspx";
                 }
                 else if ((int.Parse(utype) & 2) != 0)
                 {
-                    return "/Community/Community.aspx";
+                    return "Community/Community.aspx";
                 }
                 else if ((int.Parse(utype) & 4) != 0)
                 {
-                    return "/Elderly/Elderly.aspx";
+                    return "Elderly/Elderly.aspx";
                 }
                 else if ((int.Parse(utype) & 8) != 0)
                 {
-                    return "/Admin/Default.aspx";
+                    return "Admin/Default.aspx";
                 }
                 else
                     return "#" + utype;
-            }
-            return "###";
         }
         public string getValue(string key)
         {

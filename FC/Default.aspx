@@ -22,64 +22,7 @@
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" style="padding-top:0px;">
                     <!-- 登陆框 Start -->
-                    <script type="text/javascript">
-                        function LoadPost(event) {
-                            var username = document.getElementById("username").value.toString();
-                            var passwordold = document.getElementById("password").value.toString();
-                            var password = passwordold;
-                            if (password.length != 32) {
-                                password = hex_md5(passwordold).toLocaleLowerCase();
-                            }
-                            var member = document.getElementById("member").checked.toString();
-                            var oDiv = document.getElementById("login_commit_result");
-                            htmlobj = $.ajax({ url: "./Account/Login.aspx",
-                                async: false,
-                                data: { "username": username, "password": password, "member": member }
-                            });
-                            var dataRes = $.parseJSON(htmlobj.responseText);
-                            if (dataRes.status == "Success") {
-                                LoginSuccess(oDiv, dataRes);
-                            } else if (dataRes.status == "Error") {
-                                oDiv.innerHTML =
-                                    '<div class="alert alert-danger" role="alert">'+dataRes.msg+'</div>';
-                            } else {
-                                oDiv.innerHTML =
-                                    '<div class="alert alert-warning" role="alert">' + dataRes.msg + '</div>';
-                            }
-                        }
-
-                        function LoginSuccess(oDiv, dataRes) {
-                            oDiv.innerHTML =
-                                    '<div class="alert alert-success" role="alert">登陆成功</div>';
-                            var oDivloginSignup = document.getElementById("login_signup_div");
-                            var oBtn = $("#commit_login_div");
-                            oBtn.html('<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>');
-                            oDivloginSignup.innerHTML = '<div class="btn-group">' +
-				                    '<button class="btn">' + dataRes.username +
-                                    '</button> <button data-toggle="dropdown" class="btn dropdown-toggle">' +
-                                    '<span class="caret"></span></button>'+
-				                        '<ul class="dropdown-menu">' +
-                                        '<li><a href="<%=getTypePath()%>">个人信息</a></li>' +
-					                    '<li><a href="#">设置栏目</a></li>'+
-					                    '<li><a href="#">更多设置</a></li>'+
-					                    '<li class="divider"></li>'+
-					                    '<li><a href="#">安全退出</a></li>' +
-					                    '</ul></div>';
-                        }
-                        function exitLogin() {
-                            clearCookie();
-                            location.replace(location.href);
-                        }
-                        function clearCookie() {
-                            var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
-                            if (keys) {
-                                for (var i = keys.length; i--; )
-                                    document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
-                            }
-                        }
-
-
-                    </script>
+                    
                     <div id="wd_loginIn" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" 
                         aria-hidden="true" align="center">
 	                    <div class="modal-header">
@@ -188,26 +131,31 @@
                   this.Response.Write(uname);
                   %>
                 <table>
+                    <td>
                     <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">
-                    登陆</a>
+                    登陆</a></td><td>
                     <a class="btn"  href="./Account/SignUp.aspx">
-                    注册</a>
+                    注册</a></td>
                </table>
                <%
               }
               else { 
                   %>
                         <div class="btn-group">
-				        <button class="btn"><%=uname %>
-                        </button> <button data-toggle="dropdown" class="btn dropdown-toggle">
-                        <span class="caret"></span></button>
+				        <button class="btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+                        <span class="ui-button-text">
+                        <%=uname %>
+                        </span></button> 
+                        <button data-toggle="dropdown" class="btn dropdown-toggle ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+                        <span class="ui-button-text">
+                        <span class="caret"></span></span></button>
 				            <ul class="dropdown-menu">
                             <li><a href="<%=getTypePath()%>">个人信息</a></li>
 					        <li><a href="#">设置栏目</a></li>
 					        <li><a href="#">更多设置</a></li>
 					        <li class="divider"></li>
-					        <li><a onclick ="exitLogin();">安全退出</a></li>
-					        </ul></div>
+					        <li><a onclick="exitLogin();">安全退出</a></li>
+					        </ul></div>	
                   <%
               } %>
             </div>
@@ -371,7 +319,7 @@
       <footer class="footer"  style="background-image:linear-gradient(to bottom, Orange,#D66123 ">
         <div class="container">
           <div class="span3" align="center">
-      	    <div class=" pull-right">
+      	    <div class=" pull-right" style="margin-top:8px;">
         	    <a type="button" 
                     class=".btn-large brand ui-button btn btn-primary ui-widget ui-state-default ui-corner-all  ui-button-text-only" 
                     align="center" role="button" aria-disabled="false">
@@ -381,21 +329,24 @@
 	        </div>
           <div class="span9">
       	    <div class="pull-left ui-corner-top">
-      		    <img src="./JqueryUi/img/line1.gif" height="20" width="5"/>
+      		    <img src="../JqueryUi/img/line1.gif" height="20" width="5"/>
             </div>
-      	    <div align="left" style="padding-left:30px">
-        	    <p><strong>联系我们:</strong>Hero</p>
-        	    <p><strong>联系我们:</strong>Hero</p>
-                <p><strong>联系我们:</strong>Hero</p>
+      	    <div align="left" style="padding-left:30px;font-color:red;">
+                <p contenteditable="true">联系电话:<strong> <%=FC.cjstudio.getValue("ContactNumber")%></strong></p>
+                <p contenteditable="true">联系邮箱:<strong> <%=FC.cjstudio.getValue("ContactEmail")%></strong></p>
+                <p contenteditable="true">联系地址:<strong> <%=FC.cjstudio.getValue("ContactAddress")%></strong></p>
+                <a href="./Others/GiveAdvice.aspx">点击此处</a>给我们提出您的建议或意见
             </div>
 	        </div>
         </div>
       </footer>
       </div>
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+  <!-- Placed at the end of the document so the pages load faster
+  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+  <script src="Scripts/jquery-1.11.1.min.js" type="text/javascript"></script>
   
   <script src="./Scripts/md5.js" type="text/javascript"></script>
+  <script src="./Scripts/Home.js" type = "text/javascript"></script>
   <script src="./JqueryUi/assets/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="./JqueryUi/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
   <script src="./JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>

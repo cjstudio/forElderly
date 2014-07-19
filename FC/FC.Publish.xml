@@ -1,34 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
-  <publishProfile publishUrl="E:\fc\web" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="bin/FC.dll" publishTime="07/17/2014 01:51:30" />
+  <publishProfile publishUrl="E:\fc\web" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/FC.dll" publishTime="07/18/2014 21:23:29" />
     <file relUrl="TEST/OldAjax.aspx" publishTime="07/10/2014 10:22:01" />
-    <file relUrl="Account/SignUp.aspx" publishTime="07/17/2014 01:37:30" />
-    <file relUrl="bin/FC.pdb" publishTime="07/17/2014 01:51:30" />
+    <file relUrl="Account/SignUp.aspx" publishTime="07/18/2014 16:07:52" />
+    <file relUrl="bin/FC.pdb" publishTime="07/18/2014 21:23:29" />
     <file relUrl="Global.asax" publishTime="07/09/2014 19:42:13" />
     <file relUrl="Site.Master" publishTime="07/09/2014 19:42:13" />
     <file relUrl="Styles/Site.css" publishTime="07/09/2014 19:42:13" />
+    <file relUrl="Scripts/md5.js" publishTime="10/03/2007 14:21:27" />
+    <file relUrl="Account/AboutErrorCode.txt" publishTime="07/18/2014 14:45:28" />
     <file relUrl="Scripts/jquery-1.4.1.js" publishTime="07/09/2014 19:42:13" />
     <file relUrl="Account/ChangePassword.aspx" publishTime="07/09/2014 19:42:13" />
     <file relUrl="TEST/JqueryAjaxLoad.aspx" publishTime="07/09/2014 23:47:22" />
     <file relUrl="TEST/fuck.aspx" publishTime="07/10/2014 15:53:14" />
+    <file relUrl="Account/SignUpScript.aspx" publishTime="07/17/2014 23:33:43" />
     <file relUrl="TEST/Test_db.aspx" publishTime="07/09/2014 21:02:08" />
     <file relUrl="TEST/TestForm.aspx" publishTime="07/10/2014 10:39:22" />
     <file relUrl="TEST/TestAjax.aspx" publishTime="07/10/2014 11:30:32" />
     <file relUrl="Account/Register.aspx" publishTime="07/09/2014 19:42:13" />
-    <file relUrl="Scripts/jquery-1.11.1.min.js" publishTime="07/10/2014 09:34:57" />
     <file relUrl="Account/Login.aspx" publishTime="07/15/2014 16:27:50" />
     <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="07/09/2014 19:42:13" />
-    <file relUrl="Default.aspx" publishTime="07/17/2014 01:52:53" />
+    <file relUrl="Default.aspx" publishTime="07/18/2014 19:35:37" />
     <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="07/09/2014 19:42:13" />
     <file relUrl="Journal/Journal.aspx" publishTime="07/17/2014 01:05:10" />
     <file relUrl="Community/Community.aspx" publishTime="07/17/2014 01:04:36" />
+    <file relUrl="Others/provision.html" publishTime="07/17/2014 21:53:03" />
     <file relUrl="TEST/TestAjax2.aspx" publishTime="07/15/2014 15:39:13" />
     <file relUrl="Config/WebSite.config" publishTime="07/11/2014 09:41:30" />
     <file relUrl="Admin/Default.aspx" publishTime="07/17/2014 01:06:53" />
     <file relUrl="Web.config" publishTime="07/17/2014 08:43:50" />
     <file relUrl="About/About.aspx" publishTime="07/17/2014 01:01:28" />
     <file relUrl="Elderly/Elderly.aspx" publishTime="07/17/2014 01:06:08" />
+    <file relUrl="Scripts/jquery-1.11.1.min.js" publishTime="07/10/2014 09:34:57" />
     <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="07/09/2014 19:42:13" />
   </publishProfile>
 </publishData>
