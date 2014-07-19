@@ -17,18 +17,18 @@ namespace FC.Admin
         }
         public void initPage()
         {
-                    try
-                    {
-                        user.id = Session["uid"].ToString();
-                        user.password32 = Session["upasswd"].ToString();
-                        user.name = Session["uname"].ToString();
-                        user.type = int.Parse(Session["utype"].ToString());
-                        isIdenUser = true;
-                    }
-                    catch (Exception)
-                    {
-                        isIdenUser = false;
-                    }
+            try
+            {
+                user.id = Session["uid"].ToString();
+                user.password32 = Session["upasswd"].ToString();
+                user.name = Session["uname"].ToString();
+                user.type = int.Parse(Session["utype"].ToString());
+                isIdenUser = true;
+            }
+            catch (Exception)
+            {
+                isIdenUser = false;
+            }
                 
         }
     }

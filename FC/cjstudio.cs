@@ -16,8 +16,9 @@ namespace FC
     {
         public struct User
         {
-            public string id, name, password32, email;
-            public int type;
+            public string id, name, password32, email,idCard,sex,birthday,qq,homeAddress,livingAddress;
+            public string description, picPath, politicalStatus, homeAddressId, livingAddressId,phone;
+            public int type,auth,score;
         }
         public static string getValue(string key)
         {

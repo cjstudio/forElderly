@@ -56,6 +56,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\SignUp.aspx" />
     <Content Include="Account\SignUpScript.aspx" />
+    <Content Include="Account\userPic\Default.jpg" />
     <Content Include="Admin\AdminMain.js" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Community\Community.aspx" />
