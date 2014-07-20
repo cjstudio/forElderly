@@ -13,7 +13,7 @@
 <div class="container">
 	<td><input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input"></td>	
     <button class="button" id="buttonUpload" onclick="return ajaxFileUpload();">Upload</button> 
-
+    <div id="loading"></div>
 </div>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="ajaxfileupload.js"></script>
@@ -29,17 +29,7 @@
 		.ajaxComplete(function () {
 		    $(this).hide(); 
 		});
-
-        /*
-        prepareing ajax file upload
-        url: the url of script file handling the uploaded files
-        fileElementId: the file type of input element id and it will be the index of  $_FILES Array()
-        dataType: it support json, xml
-        secureuri:use secure protocolG:\code\ASP.Net\FC\FC\TEST\AjaxUploadServer.aspx.cs
-        success: call back function when the ajax complete
-        error: callback function when the ajax failed
-			
-        */
+        
         $.ajaxFileUpload
 		(
 			{
@@ -47,6 +37,7 @@
 			    secureuri: false,
 			    fileElementId: 'fileToUpload',
 			    dataType: 'json',
+                data:{"code":"fuuuuuck"},
 			    success: function (data, status) {
 			        if (typeof (data.error) != 'undefined') {
 			            if (data.error != '') {

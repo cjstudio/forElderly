@@ -12,15 +12,17 @@ namespace FC.TEST
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write(HttpContext.Current.Request["test"]);
             if (Request.Files.Count >0)
             {
+                Request.Files[0].SaveAs("G:\\code\\ASP.Net\\FC\\FC\\TEST\\img\\tttest.jpg");
+                string s = (HttpContext.Current.Request["code"]);
+                Response.Write("{error :\"\", msg:\"Hero\",}");
                 
-                Response.Write("{\"filetype\":\"" + Request.Files[0].ContentType + "\"}");
+                Response.End();
             }
             else
             {
-                Response.Write("{\"filetype\":\"Error\"}");
+                Response.Write("{\"error\":\"=========\", \"filetype\":\"Error\"}");
             } 
         }
 
