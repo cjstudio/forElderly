@@ -64,9 +64,11 @@
     <Content Include="Elderly\Elderly.aspx" />
     <Content Include="Journal\Journal.aspx" />
     <Content Include="Others\GiveAdvice.aspx" />
+    <Content Include="Others\HomeContent.aspx" />
     <Content Include="Others\provision.html" />
     <Content Include="Others\SupportUs.aspx" />
     <Content Include="Scripts\ajaxupload.js" />
+    <Content Include="Scripts\cjstudio.js" />
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\Login.js" />
@@ -176,6 +178,13 @@
     </Compile>
     <Compile Include="Others\GiveAdvice.aspx.designer.cs">
       <DependentUpon>GiveAdvice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Others\HomeContent.aspx.cs">
+      <DependentUpon>HomeContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Others\HomeContent.aspx.designer.cs">
+      <DependentUpon>HomeContent.aspx</DependentUpon>
     </Compile>
     <Compile Include="Others\SupportUs.aspx.cs">
       <DependentUpon>SupportUs.aspx</DependentUpon>

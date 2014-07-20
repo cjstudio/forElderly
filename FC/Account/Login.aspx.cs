@@ -14,7 +14,7 @@ namespace FC.Account
 {
     public partial class Login : System.Web.UI.Page
     {
-        string username = "", passwd = "", member = "";
+        string username = "", passwd = "", member = "false";
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -37,7 +37,7 @@ namespace FC.Account
                     Response.Write("{ \"status\" : \"Error\", \"msg\" : \"用户名或密码不能为空\"}");
                     Response.End();
                 }
-                Response.Clear();
+                Response.Clear(); 
             }
             catch (Exception)
             {
@@ -107,7 +107,7 @@ namespace FC.Account
                         Session["uname"] = rs.Rows[0]["name_c"];
                         Session["utype"] = rs.Rows[0]["type_i"];
                         Session["uid"] = rs.Rows[0]["id_i"];
-                        Session["upasswd"] = rs.Rows[0]["passwd_c"];
+                        Session["upasswd"] = passwd;
                         Session["member"] = member;
 
                         HttpCookie cookie = new HttpCookie("fc_user");
@@ -115,7 +115,7 @@ namespace FC.Account
                         cookie.Values.Add("name", rs.Rows[0]["name_c"].ToString());
                         cookie.Values.Add("password", passwd);
                         cookie.Values.Add("type", rs.Rows[0]["type_i"].ToString());
-                        cookie.Values.Add("member", "true");
+                        cookie.Values.Add("member", member );
                         if (member == "true")
                         {
                             cookie.Expires = DateTime.Now.AddDays(30);

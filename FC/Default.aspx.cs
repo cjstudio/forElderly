@@ -25,7 +25,21 @@ namespace FC
             }
             else
             {
-                Session.Clear();
+                try
+                {
+                    uid = Session["uid"].ToString();
+                    uname = Session["uname"].ToString();
+                    utype = Session["utype"].ToString();
+                    upasswd = Session["upasswd"].ToString();
+                    if (FC.cjstudio.isLoginSuccess(uid, upasswd))
+                    {
+                        isIdenUser = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    Session.Clear();
+                }
             }
         }
         public bool getCookie()
@@ -33,13 +47,20 @@ namespace FC
             HttpCookie cookie = Request.Cookies["fc_user"];
             if (cookie != null)
             {
-                uid = cookie.Values["id"];
-                upasswd = cookie.Values["password"];
                 member = cookie.Values["member"];
-                uname = cookie.Values["name"];
-                if (isLoginSuccess(uid, upasswd))
+                if (member == "true")
                 {
-                    return true;
+                    uid = cookie.Values["id"];
+                    upasswd = cookie.Values["password"];
+                    member = cookie.Values["member"];
+                    uname = cookie.Values["name"];
+                    if (isLoginSuccess(uid, upasswd))
+                    {
+                        return true;
+                    }
+                }
+                else { 
+
                 }
             }
             return false;

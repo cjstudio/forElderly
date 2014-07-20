@@ -10,7 +10,7 @@ function LoadPost(event) {
     var oDiv = document.getElementById("login_commit_result");
     htmlobj = $.ajax({ url: "./Account/Login.aspx",
         async: false,
-        data: { "username": username, "password": password, "member": member }
+        data: { "code":"login","username": username, "password": password, "member": member }
     });
     var dataRes = $.parseJSON(htmlobj.responseText);
     if (dataRes.status == "Success") {
@@ -19,6 +19,7 @@ function LoadPost(event) {
         oDiv.innerHTML =
                                     '<div class="alert alert-danger" role="alert">' + dataRes.msg + '</div>';
     } else {
+    alert(dataRes.msg);
         oDiv.innerHTML =
                                     '<div class="alert alert-warning" role="alert">' + dataRes.msg + '</div>';
     }
