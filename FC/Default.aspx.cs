@@ -93,7 +93,7 @@ namespace FC
                     Session["uname"] = rs.Rows[0]["name_c"];
                     Session["utype"] = rs.Rows[0]["type_i"];
                     Session["uid"] = rs.Rows[0]["id_i"];
-                    Session["upasswd"] = rs.Rows[0]["passwd_c"];
+                    Session["upasswd"] = passwd;
                     Session["member"] = member;
                     return true;
                 }

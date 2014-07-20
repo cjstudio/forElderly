@@ -52,6 +52,7 @@
   <ItemGroup>
     <Content Include="About\About.aspx" />
     <Content Include="Account\AboutErrorCode.txt" />
+    <Content Include="Account\AjaxServer.aspx" />
     <Content Include="Account\BasicInformation.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\SignUp.aspx" />
@@ -104,6 +105,13 @@
     </Compile>
     <Compile Include="About\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\AjaxServer.aspx.cs">
+      <DependentUpon>AjaxServer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AjaxServer.aspx.designer.cs">
+      <DependentUpon>AjaxServer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\BasicInformation.aspx.cs">
       <DependentUpon>BasicInformation.aspx</DependentUpon>

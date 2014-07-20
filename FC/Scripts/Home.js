@@ -36,18 +36,21 @@ function LoginSuccess(oDiv, dataRes) {
                                 '</span></button> <button data-toggle="dropdown" class="btn dropdown-toggle ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">' +
                                 '<span class="caret"></span></span></button>' +
 				                '<ul class="dropdown-menu">' +
-                                '<li><a href="<%=getTypePath()%>">个人信息</a></li>' +
+                                '<li><a href="" id="btn121" onclick="chageContentPage(121);return false;">个人信息</a></li>' +
 					            '<li><a href="#">设置栏目</a></li>' +
 					            '<li><a href="#">更多设置</a></li>' +
 					            '<li class="divider"></li>' +
 					            '<li><a onclick="exitLogin();">安全退出</a></li>' +
 					            '</ul></div>';
     location.replace(location.href);
-
 }
 
 function exitLogin() {
-    clearCookie();
+    clearCookie(); 
+    htmlobj = $.ajax({ url: "./Account/Login.aspx",
+        async: false,
+        data: { "code": "exit" }
+    });
     location.replace(location.href);
 }
 
@@ -59,3 +62,70 @@ function clearCookie() {
     }
 }
 
+var activeId = 101;
+function chageContentPage(idNum) {
+    switch (idNum) {
+        case 100:
+            document.getElementById('li_btn' + activeId).className = '';
+            document.getElementById('li_btn101').className = "active";
+            activeId = 101;
+            chageDivIframe('main_content_div', './Others/HomeContent.aspx');
+            break;
+        case 101:
+            document.getElementById('li_btn' + activeId).className='';
+            document.getElementById('li_btn' + idNum).className = "active";
+            activeId = idNum;
+            chageDivIframe('main_content_div', './Others/HomeContent.aspx');
+            break;
+        case 102:
+            document.getElementById('li_btn' + activeId).className = '';
+            document.getElementById('li_btn' + idNum).className = "active";
+            activeId = idNum;
+            break;
+        case 103:
+            document.getElementById('li_btn' + activeId).className = '';
+            document.getElementById('li_btn' + idNum).className = "active";
+            activeId = idNum;
+            break;
+        case 104:
+            document.getElementById('li_btn' + activeId).className = '';
+            document.getElementById('li_btn' + idNum).className = "active";
+            activeId = idNum;
+            break;
+        case 105:
+            document.getElementById('li_btn' + activeId).className = '';
+            document.getElementById('li_btn' + idNum).className = "active";
+            activeId = idNum;
+            break;
+        case 111:
+            document.getElementById('li_btn' + activeId).className = '';
+            chageDivIframe('main_content_div','./Account/SignUp.aspx');
+            break;
+        case 121:
+            document.getElementById('li_btn' + activeId).className = '';
+            ;
+            chageDivIframe('main_content_div', getUserHomePagePath());
+            break;
+        default:
+            document.getElementById('li_btn' + activeId).className = '';
+            alert("Default");
+            break;
+    }
+}
+
+function chageDivIframe(divId,iframePath) { 
+var oDiv = document.getElementById(divId);
+oDiv.innerHTML='<iframe src="'+iframePath+'" scrolling="no" frameborder="0" height="100%" id="home_content_iframe" width="100%" onload="autoIframeSize(\'home_content_iframe\');"></iframe>';
+}
+
+function getUserHomePagePath() {
+    clearCookie();
+    htmlobj = $.ajax({ url: "./Account/AjaxServer.aspx",
+        async: false,
+        data: { "code": "user_home_page_path" }
+    });
+    var dataRes = $.parseJSON(htmlobj.responseText);
+    if (dataRes.status == "success") {
+        return dataRes.msg;
+    }
+}

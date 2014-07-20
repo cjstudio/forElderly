@@ -7,9 +7,9 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace FC.Admin {
+namespace FC.Account {
     
     
-    public partial class Default {
+    public partial class AjaxServer {
     }
 }
