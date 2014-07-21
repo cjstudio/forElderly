@@ -1,4 +1,5 @@
-﻿
+﻿var LoadingHtmlPath = 'Others/Loading.html';
+
 function LoadPost(event) {
     var username = document.getElementById("username").value.toString();
     var passwordold = document.getElementById("password").value.toString();
@@ -74,28 +75,32 @@ function chageContentPage(idNum) {
         case 101:
             document.getElementById('li_btn' + activeId).className='';
             document.getElementById('li_btn' + idNum).className = "active";
-            activeId = idNum;
+            activeId = idNum; 
             chageDivIframe('main_content_div', './Others/HomeContent.aspx');
             break;
         case 102:
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
+            chageDivIframe('main_content_div', LoadingHtmlPath);
             break;
         case 103:
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
+            chageDivIframe('main_content_div', LoadingHtmlPath);
             break;
         case 104:
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
+            chageDivIframe('main_content_div', LoadingHtmlPath);
             break;
         case 105:
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
+            chageDivIframe('main_content_div', LoadingHtmlPath);
             break;
         case 111:
             document.getElementById('li_btn' + activeId).className = '';

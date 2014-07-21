@@ -1,4 +1,5 @@
-﻿
+﻿var LoadingHtmlPath = 'Others/Loading.html';
+
 function LoadPost(event) {
     var username = document.getElementById("username").value.toString();
     var passwordold = document.getElementById("password").value.toString();
@@ -47,7 +48,7 @@ function LoginSuccess(oDiv, dataRes) {
 
 function exitLogin() {
     clearCookie(); 
-    htmlobj = $.ajax({ url: "./Account/Login.aspx",
+    htmlobj = $.ajax({ url: "Account/Login.aspx",
         async: false,
         data: { "code": "exit" }
     });
@@ -74,28 +75,32 @@ function chageContentPage(idNum) {
         case 101:
             document.getElementById('li_btn' + activeId).className='';
             document.getElementById('li_btn' + idNum).className = "active";
-            activeId = idNum;
+            activeId = idNum; 
             chageDivIframe('main_content_div', './Others/HomeContent.aspx');
             break;
         case 102:
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
+            chageDivIframe('main_content_div', LoadingHtmlPath);
             break;
         case 103:
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
+            chageDivIframe('main_content_div', LoadingHtmlPath);
             break;
         case 104:
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
+            chageDivIframe('main_content_div', LoadingHtmlPath);
             break;
         case 105:
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
+            chageDivIframe('main_content_div', LoadingHtmlPath);
             break;
         case 111:
             document.getElementById('li_btn' + activeId).className = '';
@@ -120,7 +125,7 @@ oDiv.innerHTML='<iframe src="'+iframePath+'" scrolling="no" frameborder="0" heig
 
 function getUserHomePagePath() {
     clearCookie();
-    htmlobj = $.ajax({ url: "./Account/AjaxServer.aspx",
+    htmlobj = $.ajax({ url: "Account/AjaxServer.aspx",
         async: false,
         data: { "code": "user_home_page_path" }
     });
