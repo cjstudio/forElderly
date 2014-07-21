@@ -30,10 +30,47 @@ namespace FC.Account
                 case "get_user_pic_src":
                     getUserPicSrc();
                     break;
+                case "just_user_information":
+                    updateUserInformation();
+                    break;
                 default:
                     checkError("没有处理相关数据的方法");
                     break;
             }
+        }
+        public void updateUserInformation()
+        {
+            try 
+	        {
+                user.name = cjstudio.checkUserInput(HttpContext.Current.Request["name"].ToString()) ?
+                    HttpContext.Current.Request["name"].ToString() : user.name;
+
+                user.sex = HttpContext.Current.Request["sex"].ToString();
+                int year = int.Parse(HttpContext.Current.Request["year"].ToString());
+                int month = int.Parse(HttpContext.Current.Request["month"].ToString());
+                int day = int.Parse(HttpContext.Current.Request["day"].ToString());
+
+                user.phone = cjstudio.checkUserInput(HttpContext.Current.Request["phone"].ToString()) ?
+                    HttpContext.Current.Request["phone"].ToString() : user.phone;
+                user.homeAddress = cjstudio.checkUserInput(HttpContext.Current.Request["homeaddress"].ToString()) ?
+                    HttpContext.Current.Request["homeaddress"].ToString() : user.homeAddress;
+                user.livingAddress = cjstudio.checkUserInput(HttpContext.Current.Request["livingaddress"].ToString()) ?
+                    HttpContext.Current.Request["livingaddress"].ToString() : user.livingAddress;
+                DateTime tmpdt = new DateTime(year, month, day);
+                user.birDT = tmpdt;
+                user.birthday = year + "-" + month + "-" + day;
+                if (cjstudio.updateUserInformation(user))
+                {
+                    returnValue("用户信息修改成功");
+                }
+                else {
+                    checkError("向数据库提交时出现异常");
+                }
+	        }
+	        catch (Exception)
+            {
+                //checkError("提交数据有误");
+	        }
         }
         public void getUserPicSrc()
         {

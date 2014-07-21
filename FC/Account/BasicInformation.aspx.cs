@@ -23,6 +23,16 @@ namespace FC.Account
                 getDataFromDB();
             }
         }
+        public void checkBirthday()
+        {
+            if (user.birthday.Length > 5)
+            {
+                user.birDT = DateTime.Parse(user.birthday);
+            }
+            else {
+                user.birDT = DateTime.Now;
+            }
+        }
         public void checkPicSrc()
         {
             string picPath = Server.MapPath("~/Account/userPic/");
@@ -86,6 +96,7 @@ namespace FC.Account
                     user.homeAddressId = rs.Rows[0]["homeAddress_i"].ToString();
                     user.phone = rs.Rows[0]["phone_c"].ToString();
                     checkPicSrc();
+                    checkBirthday();
                     isDataOver = true;
                 }
             }

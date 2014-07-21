@@ -19,6 +19,17 @@ namespace FC
             public string id, name, password32, email,idCard,sex,birthday,qq,homeAddress,livingAddress;
             public string description, picPath, politicalStatus, homeAddressId, livingAddressId,phone;
             public int type,auth,score;
+            public DateTime birDT;
+        }
+        public static bool checkUserInput(string str)
+        {
+            string[] unlawfulChars = { "'", "\"", "<", ">", "-", " " };
+            foreach (string s in unlawfulChars)
+            {
+                if (str.IndexOf(s) >= 0)
+                    return false;
+            }
+            return true;
         }
         public static string getValue(string key)
         {
@@ -162,6 +173,35 @@ namespace FC
                 String sql = "update tb_user set picPath_c = '"+uid+picType+"' where id_i = "+uid;
                 cmd = new SqlCommand(sql, conn);
                 int status =cmd.ExecuteNonQuery();
+                if (status == 1)
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return false;
+        }
+        public static bool updateUserInformation(User user)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = "update tb_user set name_c = '"+user.name+""+
+                    "',phone_c = '"+user.phone +
+                    "',birthday_d='"+ user.birthday +
+                    "',sex_c='"+user.sex+
+                    "',homeAddress_c='"+user.homeAddress+
+                    "',livingPlace_c='" + user.livingAddress +
+                    "' where id_i = " + user.id;
+                cmd = new SqlCommand(sql, conn);
+                int status = cmd.ExecuteNonQuery();
                 if (status == 1)
                 {
                     return true;
