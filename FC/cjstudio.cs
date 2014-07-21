@@ -48,7 +48,7 @@ namespace FC
             string str = BitConverter.ToString(output).Replace("-", "");
             return str.ToUpper();
         }
-        public static  bool isLoginSuccess(string uid, string passwd)
+        public static bool isLoginSuccess(string uid, string passwd)
         {
             string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
             SqlConnection conn = new SqlConnection();
@@ -79,7 +79,7 @@ namespace FC
             }
             return false;
         }
-        public static  string getUsernameSql(string namestr)
+        public static string getUsernameSql(string namestr)
         {
             string str = "";
             try
@@ -100,7 +100,7 @@ namespace FC
             }
             return str;
         }
-        public static  string getTypePath(string type)
+        public static string getTypePath(string type)
         {
             try
             {
@@ -149,6 +149,29 @@ namespace FC
             }
             else
                 return "#" + type;
+        }
+        public static bool updateUserPicPath(string uid, string picType)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = "update tb_user set picPath_c = '"+uid+picType+"' where id_i = "+uid;
+                cmd = new SqlCommand(sql, conn);
+                int status =cmd.ExecuteNonQuery();
+                if (status == 1)
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return false;
         }
     }
 }

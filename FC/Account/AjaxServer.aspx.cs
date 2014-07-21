@@ -63,7 +63,13 @@ namespace FC.Account
             {
                 string picType=Path.GetExtension(Request.Files[0].FileName);
                 Request.Files[0].SaveAs(picPath + user.id + picType);
-                Response.Write("{\"error\" :\"\", msg:\"Ok " + Request.Files[0].ContentType + "\"}"); ;
+                if (FC.cjstudio.updateUserPicPath(user.id, picType))
+                {
+                    Response.Write("{\"error\" :\"\", msg:\"用户头像修改成功\"}");
+                }
+                else {
+                    Response.Write("{\"error\" :\"error\", msg:\"向数据库提交过程中出现异常\"}");
+                }
             }
             else
             {
