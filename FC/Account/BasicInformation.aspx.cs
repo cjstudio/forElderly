@@ -65,24 +65,6 @@ namespace FC.Account
             }
             return 0;
         }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Request.Files["file"].ContentLength > 0)
-                {
-                    Label1.Text = Request.Form["username"];
-                    string filetail = Path.GetFileName(Request.Files["file"].FileName).Split('.')[1]; 
-                    Request.Files["file"].SaveAs(Server.MapPath("~/Account/userPic/") + user.id + "."+filetail);
-                    Label1.Text += "上传成功！";
-                }
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
-        }
 
         public void initPage()
         {

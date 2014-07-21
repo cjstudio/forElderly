@@ -47,7 +47,7 @@ function LoginSuccess(oDiv, dataRes) {
 
 function exitLogin() {
     clearCookie(); 
-    htmlobj = $.ajax({ url: "./Account/Login.aspx",
+    htmlobj = $.ajax({ url: "Account/Login.aspx",
         async: false,
         data: { "code": "exit" }
     });
@@ -120,7 +120,7 @@ oDiv.innerHTML='<iframe src="'+iframePath+'" scrolling="no" frameborder="0" heig
 
 function getUserHomePagePath() {
     clearCookie();
-    htmlobj = $.ajax({ url: "./Account/AjaxServer.aspx",
+    htmlobj = $.ajax({ url: "Account/AjaxServer.aspx",
         async: false,
         data: { "code": "user_home_page_path" }
     });

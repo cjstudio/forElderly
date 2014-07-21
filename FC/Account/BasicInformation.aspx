@@ -39,17 +39,22 @@
                     <%if (isIdenUser && isDataOver)
                       { %>
 					<div class="row-fluid">
-                        <form id="form1" runat="server" enctype="multipart/form-data">
-                            <asp:Button ID="Button1" class="btn" runat="server" Text="保存" OnClick="Button1_Click" />
-                            <asp:Label ID="Label1" runat="server" Text="" Style="color: Red"></asp:Label>
+                            <button class="btn"  OnClick="commit_save();return false;">保存</button>
+                            
+                            <form enctype="multipart/form-data">
+                            <div class="span12" id="commit_status" >
+		                        <img id="loading" src="../JqueryUi/img/loading2.gif" style="display:none;"/>
+						    </div>
+
 						    <div align="left" style="padding-left:30px;font-color:red;" >
 			                    <img alt="280x280" src="userPic/Default.jpg" class="img-rounded" />
-                                <input type="file" name="file" />
-                                <p ><label>姓名：</label><asp:TextBox ID="username" type="text" value="Hero" runat="server"/></p>
-                                <p ><label>姓名：</label><asp:TextBox ID="TextBox1" type="text" value="Hero" runat="server"/></p>
-                                <p ><label>姓名：</label><asp:TextBox ID="TextBox2" type="text" value="Hero" runat="server"/></p>
-                                <p ><label>姓名：</label><asp:TextBox ID="TextBox3" type="text" value="Hero" runat="server"/></p>
-                                <p ><label>姓名：</label><asp:TextBox ID="TextBox4" type="text" value="Hero" runat="server"/></p>
+                                <input type="file" class="btn" name="fileToUpload" id="fileToUpload"/>
+                                <a class="btn"  OnClick="commit_upload();return false;">上传</a>
+                                <p ><label>姓名：</label><input type="text" ID="username" type="text" value="Hero"/></p>
+                                <p ><label>姓名：</label><input type="text"  ID="TextBox1" type="text" value="Hero" /></p>
+                                <p ><label>姓名：</label><input type="text" ID="TextBox2" type="text" value="Hero" /></p>
+                                <p ><label>姓名：</label><input type="text"  ID="TextBox3" type="text" value="Hero" /></p>
+                                <p ><label>姓名：</label><input type="text"  ID="TextBox4" type="text" value="Hero"/></p>
                             </div>
                         </form>
 
@@ -63,13 +68,92 @@
 
 
 
-  <script src="../Scripts/jquery-1.11.1.min.js" type="text/javascript"></script>  
-  <script src="../Scripts/md5.js" type="text/javascript"></script>  
-  <script src="../Scripts/Login.js" type = "text/javascript"></script>
-  <script src="../JqueryUi/assets/js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="../JqueryUi/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
-  <script src="../JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
-  <script src="../JqueryUi/assets/js/docs.js" type="text/javascript"></script>
-  <script src="../JqueryUi/assets/js/demo.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-1.11.1.min.js" type="text/javascript"></script>  
+    <script src="../Scripts/md5.js" type="text/javascript"></script>  
+    <script src="../Scripts/Login.js" type = "text/javascript"></script>
+    <script src="../Scripts/ajaxfileupload.js" type = "text/javascript"></script>
+    <script src="../JqueryUi/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../JqueryUi/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+    <script src="../JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
+    <script src="../JqueryUi/assets/js/docs.js" type="text/javascript"></script>
+    <script src="../JqueryUi/assets/js/demo.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+
+function commit_upload() {
+    if (document.getElementById("fileToUpload").value == "") {
+        document.getElementById("commit_status").innerHTML = '<div class="alert alert-error">' +
+								 '<button type="button" class="close" data-dismiss="alert">×</button>' +
+								 '<h4>' +
+								 '提示!' +
+								 '</h4> <strong>警告!</strong> 清先选择上传文件.' +
+								 '</div>';
+    }
+    else if (!checkUploderFileType(document.getElementById("fileToUpload").value)) {
+        document.getElementById("commit_status").innerHTML = '<div class="alert alert-error">' +
+								 '<button type="button" class="close" data-dismiss="alert">×</button>' +
+								 '<h4>' +
+								 '提示!' +
+								 '</h4> <strong>警告!</strong> 选择上传的文件类型不安全.' +
+								 '</div>';
+    }
+    else {
+        document.getElementById("commit_status").innerHTML = '<img id="loading" src="../JqueryUi/img/loading2.gif" style="display:none;width:100px;"/>';
+        
+        ajaxFileUpload();
+    }
+}
+function checkUploderFileType(fileName) {
+    var fileType = /\.[^\.]+/.exec(fileName);
+    var allowType = new Array();
+    allowType[0] = '.jpg';
+    allowType[1] = '.gif';
+    allowType[2] = '.png';
+    allowType[3] = '.bmp';
+    allowType[4] = '.ico';
+    for (var i = 0; i < allowType.length; i++) {
+        if (fileType == allowType[i]) return true;
+    }
+    return false;
+}
+function commit_save() {
+    alert("");
+}
+function ajaxFileUpload() {
+    var oodiv = document.getElementById("fileToUpload");
+    //alert(oodiv.value);
+    //starting setting some animation when the ajax starts and completes
+    $("#loading")
+.ajaxStart(function () {
+    $(this).show();
+})
+.ajaxComplete(function () {
+    $(this).hide();
+});
+$.ajaxFileUpload
+(
+	{
+	    url: "../Account/AjaxServer.aspx",
+	    secureuri: false,
+	    fileElementId: 'fileToUpload',
+	    dataType: 'json',
+	    data: { code: "just_user_pic" },
+	    success: function (data, status) {
+	        if (typeof (data.error) != 'undefined') {
+	            if (data.error != '') {
+	                alert(data.error);
+	            } else {
+	                alert(data.msg);
+	            }
+	        }
+	    },
+	    error: function (data, status, e) {
+	        alert(e);
+	    }
+	}
+)
+    return false;
+}  
+    </script>
 </body>
 </html>

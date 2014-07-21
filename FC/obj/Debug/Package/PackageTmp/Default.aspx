@@ -7,17 +7,13 @@
   <meta charset="utf-8"/>
   <title><%=FC.cjstudio.getValue("MainTitle")%></title>
   <meta name="author" content="CJ_Studio"/>
-
   <!-- Le styles -->
   <link href="./JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet"/>
   <link type="text/css" href="./JqueryUi/css/custom-theme/jquery-ui-1.10.0.custom.css" 
         rel="stylesheet" />
   <link type="text/css" href="./JqueryUi/assets/css/font-awesome.min.css" rel="stylesheet" />
-
   <link href="./JqueryUi/assets/css/docs.css" rel="stylesheet"/>
-  <link href="./JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>
-    
-    
+  <link href="./JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>    
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" style="padding-top:0px;">
@@ -98,23 +94,23 @@
       <div class="navbar navbar-inverse" style="margin-bottom:0px;">
         <div class="navbar-inner" style="background-image:linear-gradient(to bottom, #111111, #D66123 ">
           <div class="container">
-        
-            <a class="brand" href="./Default.aspx"><%=this.getValue("MainTitle")%></a>
+
+            <a class="brand" href="" id="btn100" onclick="chageContentPage(100);return false;"><%=this.getValue("MainTitle")%></a>
               <ul class="nav">
-                <li class="active">
-                    <a href="./Default.aspx">首页</a>
+                <li class="active" id="li_btn101">
+                    <a href="" id="btn101" onclick="chageContentPage(101);return false;" >首页</a>
                 </li>
-                <li>
-                    <a href="./Elderly/Elderly.aspx">爸妈频道</a>
+                <li id="li_btn102">
+                    <a href="" id="btn102" onclick="chageContentPage(102);return false;">爸妈频道</a>
                 </li>
-                <li>
-                    <a href="./Journal/Journal.aspx">志愿者脚步</a>
+                <li id="li_btn103">
+                    <a href="" id="btn103" onclick="chageContentPage(103);return false;">志愿者脚步</a>
                 </li>
-                <li>
-                    <a href="./Community/Community.aspx">社区管理</a>
+                <li id="li_btn104">
+                    <a href="" id="btn104" onclick="chageContentPage(104);return false;">社区管理</a>
                 </li>
-                <li>
-                    <a href="./About/About.aspx">关于我们</a>
+                <li id="li_btn105">
+                    <a href="" id="btn105" onclick="chageContentPage(105);return false;">关于我们</a>
                 </li>
               </ul>
               <div  class="pull-right">
@@ -128,7 +124,7 @@
                         <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">
                         登陆</a></td>
                         <td>
-                        <a class="btn"  href="./Account/SignUp.aspx">
+                        <a class="btn"  href="" id="btn111" onclick="chageContentPage(111);return false;">
                         注册</a></td>
                    </table>
                    <%
@@ -144,7 +140,9 @@
                             <span class="ui-button-text">
                             <span class="caret"></span></span></button>
 				                <ul class="dropdown-menu">
-                                <li><a href="<%=getTypePath()%>">个人信息</a></li>
+                                <li  id="li_btn121">
+                                <a href="" id="btn121" onclick="chageContentPage(121);return false;" >
+                                    个人信息</a></li>
 					            <li><a href="#">设置栏目</a></li>
 					            <li><a href="#">更多设置</a></li>
 					            <li class="divider"></li>
@@ -159,7 +157,7 @@
  <!-- ================================================== -->
 
   <!-- Docs nav ================================================== -->
-    <div class="row" style="width:970px;margin-left:0px;">
+    <div id="main_content_div" class="row" style="width:970px;margin-left:0px;min-height:600px;">
 	    
   <!--########### Main Content Start ================================================== -->
 <!--########### Main Content Start ================================================== -->
