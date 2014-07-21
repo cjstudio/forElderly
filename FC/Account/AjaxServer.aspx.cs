@@ -27,10 +27,62 @@ namespace FC.Account
                 case "just_user_pic":
                     uploaderPic();
                     break;
+                case "get_user_pic_src":
+                    getUserPicSrc();
+                    break;
                 default:
                     checkError("没有处理相关数据的方法");
                     break;
             }
+        }
+        public void getUserPicSrc()
+        {
+            string picPath = Server.MapPath("~/Account/userPic/");
+            string picName = FC.cjstudio.getUserPicPath(user.id);
+            if (picName.Length <5)
+            {
+                Response.Write("{\"error\" :\"\", msg:\"Default.jpg\"}");
+            }
+            else if (File.Exists(picPath + picName))
+            {
+                Response.Write("{\"error\" :\"\", msg:\"" + picName + "\"}");
+            }
+            else
+            {
+                Response.Write("{\"error\" :\"\", msg:\"Default.jpg\"}");
+            }
+            Response.End();
+        }
+        public void uploaderPic()
+        {
+            string picPath = Server.MapPath("~/Account/userPic/");
+            if (Request.Files.Count == 1)
+            {
+                string picType=Path.GetExtension(Request.Files[0].FileName);
+                Request.Files[0].SaveAs(picPath + user.id + picType);
+                if (FC.cjstudio.updateUserPicPath(user.id, picType))
+                {
+                    Response.Write("{\"error\" :\"\", msg:\"" + user.id + picType + "\"}");
+                }
+                else {
+                    Response.Write("{\"error\" :\"error\", msg:\"向数据库提交过程中出现异常\"}");
+                }
+            }
+            else
+            {
+                Response.Write("{\"error\":\"=========\", \"filetype\":\"Error\"}");
+            }
+            Response.End();
+        }
+        public void checkError(string msg)
+        {
+            Response.Write("{\"status\":\"error\",\"msg\":\""+msg+"\"}");
+            Response.End();
+        }
+        public void returnValue(string value)
+        {
+            Response.Write("{\"status\":\"success\",\"msg\":\"" + value + "\"}");
+            Response.End();
         }
         public void initPage()
         {
@@ -56,37 +108,5 @@ namespace FC.Account
                 code = "";
             }
         }
-        public void uploaderPic()
-        {
-            string picPath = Server.MapPath("~/Account/userPic/");
-            if (Request.Files.Count == 1)
-            {
-                string picType=Path.GetExtension(Request.Files[0].FileName);
-                Request.Files[0].SaveAs(picPath + user.id + picType);
-                if (FC.cjstudio.updateUserPicPath(user.id, picType))
-                {
-                    Response.Write("{\"error\" :\"\", msg:\"用户头像修改成功\"}");
-                }
-                else {
-                    Response.Write("{\"error\" :\"error\", msg:\"向数据库提交过程中出现异常\"}");
-                }
-            }
-            else
-            {
-                Response.Write("{\"error\":\"=========\", \"filetype\":\"Error\"}");
-            }
-            Response.End();
-        }
-        public void checkError(string msg)
-        {
-            Response.Write("{\"status\":\"error\",\"msg\":\""+msg+"\"}");
-            Response.End();
-        }
-        public void returnValue(string value)
-        {
-            Response.Write("{\"status\":\"success\",\"msg\":\"" + value + "\"}");
-            Response.End();
-        }
-
     }
 }

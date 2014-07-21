@@ -80,7 +80,9 @@
 
                         
 				        <div class="span8">
-                            <div  id="main_content"></div>
+                            <div  id="main_content">
+                             '<iframe src="../Account/BasicInformation.aspx"  scrolling="no" frameborder="0" height="100%" id="content_iframe" width="100%" onload="IFrameReSize('content_iframe');IFrameReSizeWidth('content_iframe');"></iframe>
+                            </div>
                         </div>
 		        </div>
 	        </div>

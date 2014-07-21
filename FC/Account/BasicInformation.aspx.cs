@@ -23,6 +23,36 @@ namespace FC.Account
                 getDataFromDB();
             }
         }
+        public void checkPicSrc()
+        {
+            string picPath = Server.MapPath("~/Account/userPic/");
+            if (user.picPath.Length < 5)
+            {
+                user.picPath = "Default.jpg";
+            }
+            else if (File.Exists(picPath + user.picPath))
+            {
+            }
+            else
+            {
+                user.picPath = "Default.jpg";
+            }
+        }
+        public void initPage()
+        {
+            try
+            {
+                user.id = Session["uid"].ToString();
+                user.password32 = Session["upasswd"].ToString();
+                user.name = Session["uname"].ToString();
+                user.type = int.Parse(Session["utype"].ToString());
+                isIdenUser = true;
+            }
+            catch (Exception)
+            {
+                isIdenUser = false;
+            }
+        }
         public int getDataFromDB()
         {
             string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
@@ -35,7 +65,7 @@ namespace FC.Account
             {
                 conn = new SqlConnection(connStr);
                 conn.Open();
-                String sql = "select * from tb_user where id_i = "+user.id;
+                String sql = "select * from tb_user where id_i = " + user.id;
                 cmd = new SqlCommand(sql, conn);
                 adr = new SqlDataAdapter(cmd);
                 adr.Fill(dataset);
@@ -53,9 +83,9 @@ namespace FC.Account
                     user.birthday = rs.Rows[0]["birthday_d"].ToString();
                     user.description = rs.Rows[0]["dercription_c"].ToString();
                     user.homeAddress = rs.Rows[0]["homeAddress_c"].ToString();
-                    user.homeAddressId = rs.Rows[0]["homeAddress_i"].ToString(); 
+                    user.homeAddressId = rs.Rows[0]["homeAddress_i"].ToString();
                     user.phone = rs.Rows[0]["phone_c"].ToString();
-                    
+                    checkPicSrc();
                     isDataOver = true;
                 }
             }
@@ -66,20 +96,5 @@ namespace FC.Account
             return 0;
         }
 
-        public void initPage()
-        {
-            try
-            {
-                user.id = Session["uid"].ToString();
-                user.password32 = Session["upasswd"].ToString();
-                user.name = Session["uname"].ToString();
-                user.type = int.Parse(Session["utype"].ToString());
-                isIdenUser = true;
-            }
-            catch (Exception)
-            {
-                isIdenUser = false;
-            }
-        }
     }
 }

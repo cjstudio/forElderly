@@ -173,5 +173,31 @@ namespace FC
             }
             return false;
         }
+        public static string getUserPicPath(string uid)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = "select picPath_c from tb_user where id_i = " + uid;
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                if (rs.Rows.Count == 1)
+                {
+                    return rs.Rows[0][0].ToString();
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return "";
+        }
     }
 }

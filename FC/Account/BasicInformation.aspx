@@ -47,11 +47,21 @@
 						    </div>
 
 						    <div align="left" style="padding-left:30px;font-color:red;" >
-			                    <img alt="280x280" src="userPic/Default.jpg" class="img-rounded" />
+			                    <img id="user_pic" alt="280x280" width="280" height="280" src="userPic/<%=user.picPath %>" class="img-rounded" />
                                 <input type="file" class="btn" name="fileToUpload" id="fileToUpload"/>
                                 <a class="btn"  OnClick="commit_upload();return false;">上传</a>
-                                <p ><label>姓名：</label><input type="text" ID="username" type="text" value="Hero"/></p>
-                                <p ><label>姓名：</label><input type="text"  ID="TextBox1" type="text" value="Hero" /></p>
+                                <p ><label>用户姓名：</label><input type="text" ID="username" type="text" value="<%=user.name %>"/></p>
+                                <p ><label>性别：</label>
+                                    <select id="user_sex" >
+                                    <%if(user.sex == "女"){ %>
+                                        <option value ="女">女</option>
+                                        <option value ="男">男</option>
+                                    <%}else{ %>
+                                        <option value ="男">男</option>
+                                        <option value ="女">女</option>
+                                    <%} %>
+                                    </select>
+                                </p>
                                 <p ><label>姓名：</label><input type="text" ID="TextBox2" type="text" value="Hero" /></p>
                                 <p ><label>姓名：</label><input type="text"  ID="TextBox3" type="text" value="Hero" /></p>
                                 <p ><label>姓名：</label><input type="text"  ID="TextBox4" type="text" value="Hero"/></p>
@@ -77,8 +87,8 @@
     <script src="../JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
     <script src="../JqueryUi/assets/js/docs.js" type="text/javascript"></script>
     <script src="../JqueryUi/assets/js/demo.js" type="text/javascript"></script>
-    <script type="text/javascript">
 
+    <script type="text/javascript">
 
 function commit_upload() {
     if (document.getElementById("fileToUpload").value == "") {
@@ -143,7 +153,8 @@ $.ajaxFileUpload
 	            if (data.error != '') {
 	                alert(data.error);
 	            } else {
-	                alert(data.msg);
+	                document.getElementById("user_pic").src = 'userPic/'+data.msg;
+	                //location.replace(location.href);
 	            }
 	        }
 	    },
