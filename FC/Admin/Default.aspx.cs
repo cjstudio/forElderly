@@ -28,8 +28,7 @@ namespace FC.Admin
             catch (Exception)
             {
                 isIdenUser = false;
-            }
-                
+            }       
         }
     }
 }

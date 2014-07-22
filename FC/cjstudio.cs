@@ -239,5 +239,29 @@ namespace FC
             }
             return "";
         }
+        public static bool rePassword(string uid,string newpassword)
+        {
+            string password = EncryptSHA256(newpassword).ToLower();
+            string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = "update tb_user set passwd_c = '"+password+"' where id_i = " + uid;
+                cmd = new SqlCommand(sql, conn);
+                int status = cmd.ExecuteNonQuery();
+                if (status == 1)
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return false;
+        }
     }
 }

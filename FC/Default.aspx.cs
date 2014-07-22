@@ -56,6 +56,11 @@ namespace FC
                     uname = cookie.Values["name"];
                     if (isLoginSuccess(uid, upasswd))
                     {
+                        Session["uname"] = uname;
+                        Session["utype"] = utype;
+                        Session["uid"] = uid;
+                        Session["upasswd"] = upasswd;
+                        Session["member"] = member;
                         return true;
                     }
                 }
@@ -90,11 +95,6 @@ namespace FC
                     uname= rs.Rows[0]["name_c"].ToString();
                     utype = rs.Rows[0]["type_i"].ToString(); 
                     
-                    Session["uname"] = rs.Rows[0]["name_c"];
-                    Session["utype"] = rs.Rows[0]["type_i"];
-                    Session["uid"] = rs.Rows[0]["id_i"];
-                    Session["upasswd"] = passwd;
-                    Session["member"] = member;
                     return true;
                 }
             }

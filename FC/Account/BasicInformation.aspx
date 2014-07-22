@@ -176,9 +176,9 @@
                     "livingaddress": livingaddress
                 }
             });
-            alert(htmlobj.responseText);
+            //alert(htmlobj.responseText);
             var dataRes = $.parseJSON(htmlobj.responseText);
-            alert(dataRes.msg);
+            //alert(dataRes.msg);
             oDiv = document.getElementById("commit_status");
             if (dataRes.status == 'success') {
                 oDiv.innerHTML = '<div class="alert alert-success">' +

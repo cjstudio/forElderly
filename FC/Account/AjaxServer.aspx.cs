@@ -33,9 +33,36 @@ namespace FC.Account
                 case "just_user_information":
                     updateUserInformation();
                     break;
+                case "repassword":
+                    repassword();
+                    break;
                 default:
                     checkError("没有处理相关数据的方法");
                     break;
+            }
+        }
+        public void repassword()
+        {
+            try
+            {
+                string oldpassword=HttpContext.Current.Request["oldpassword"].ToString();
+                string newpassword1=HttpContext.Current.Request["newpassword1"].ToString();
+                if (cjstudio.isLoginSuccess(user.id, oldpassword)) {
+                    string passwd = newpassword1.Length == 32 ? newpassword1.ToLower() : cjstudio.EncryptMd5(newpassword1).ToLower();
+                    if (cjstudio.rePassword(user.id, passwd))
+                    {
+                        returnValue("密码修改成功！");
+                        return;
+                    }
+                    else {
+                        checkError("密码重置失败...");
+                        return;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                ;
             }
         }
         public void updateUserInformation()

@@ -50,15 +50,15 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About\About.aspx" />
+    <Content Include="About\About.html" />
     <Content Include="Account\AboutErrorCode.txt" />
     <Content Include="Account\AjaxServer.aspx" />
     <Content Include="Account\BasicInformation.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Repassword.aspx" />
     <Content Include="Account\SignUp.aspx" />
     <Content Include="Account\SignUpScript.aspx" />
     <Content Include="Account\userPic\Default.jpg" />
-    <Content Include="Admin\AdminMain.js" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Community\Community.aspx" />
     <Content Include="Default.aspx" />
@@ -75,8 +75,8 @@
     <Content Include="img\logo %286%29.png" />
     <Content Include="img\test1.jpg" />
     <Content Include="img\test2.jpg" />
-    <Content Include="Journal\AdminMain.js" />
     <Content Include="Journal\Journal.aspx" />
+    <Content Include="Journal\MoreConfig.aspx" />
     <Content Include="Others\GiveAdvice.aspx" />
     <Content Include="Others\HomeContent.aspx" />
     <Content Include="Others\provision.html" />
@@ -114,13 +114,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About\About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About\About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\AjaxServer.aspx.cs">
       <DependentUpon>AjaxServer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,6 +134,13 @@
     </Compile>
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Repassword.aspx.cs">
+      <DependentUpon>Repassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Repassword.aspx.designer.cs">
+      <DependentUpon>Repassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SignUp.aspx.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
@@ -194,6 +194,13 @@
     </Compile>
     <Compile Include="Journal\Journal.aspx.designer.cs">
       <DependentUpon>Journal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Journal\MoreConfig.aspx.cs">
+      <DependentUpon>MoreConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Journal\MoreConfig.aspx.designer.cs">
+      <DependentUpon>MoreConfig.aspx</DependentUpon>
     </Compile>
     <Compile Include="Others\GiveAdvice.aspx.cs">
       <DependentUpon>GiveAdvice.aspx</DependentUpon>

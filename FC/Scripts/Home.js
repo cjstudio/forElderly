@@ -8,6 +8,7 @@ function LoadPost(event) {
         password = hex_md5(passwordold).toLocaleLowerCase();
     }
     var member = document.getElementById("member").checked.toString();
+    ///alert('::'+member);
     var oDiv = document.getElementById("login_commit_result");
     htmlobj = $.ajax({ url: "./Account/Login.aspx",
         async: false,
@@ -17,12 +18,10 @@ function LoadPost(event) {
     if (dataRes.status == "Success") {
         LoginSuccess(oDiv, dataRes);
     } else if (dataRes.status == "Error") {
-        oDiv.innerHTML =
-                                    '<div class="alert alert-danger" role="alert">' + dataRes.msg + '</div>';
+        oDiv.innerHTML ='<div class="alert alert-danger" role="alert">' + dataRes.msg + '</div>';
     } else {
     alert(dataRes.msg);
-        oDiv.innerHTML =
-                                    '<div class="alert alert-warning" role="alert">' + dataRes.msg + '</div>';
+        oDiv.innerHTML ='<div class="alert alert-warning" role="alert">' + dataRes.msg + '</div>';
     }
 }
 
@@ -100,7 +99,7 @@ function chageContentPage(idNum) {
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
-            chageDivIframe('main_content_div', LoadingHtmlPath);
+            chageDivIframe('main_content_div', './About/About.html');
             break;
         case 111:
             document.getElementById('li_btn' + activeId).className = '';

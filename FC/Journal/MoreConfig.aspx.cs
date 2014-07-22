@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace FC.Journal
 {
-    public partial class Journal : System.Web.UI.Page
+    public partial class MoreConfig : System.Web.UI.Page
     {
         public bool isIdenUser = false;
         public FC.cjstudio.User user;

@@ -43,7 +43,7 @@
 									        </div>
 									        <div id="accordion-element-001" class="accordion-body collapse in">
 										        <div class="accordion-inner" onclick=";">
-                                                <a class="accordion-toggle" data-toggle="collapse" id="menu101" onclick="clickChanged('../Account/BasicInformation.aspx');">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/BasicInformation.aspx');">
                                                  &nbsp;&nbsp;基本信息</a>
 										        </div>
                                                 <div class="accordion-inner">
@@ -52,8 +52,8 @@
 											        <a id="A102" ></a>
 										        </div>
                                                 <div class="accordion-inner">
-                                                <a class="accordion-toggle" data-toggle="collapse">
-                                                 &nbsp;&nbsp;账号安全</a>
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;重置密码</a>
 										        </div>
 									        </div>
 								        </div>
@@ -110,7 +110,7 @@
   <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
   <script src="../Scripts/jquery-1.11.1.min.js" type="text/javascript"></script>
   <script src="../Scripts/md5.js" type="text/javascript"></script>
-  <script src="AdminMain.js" type="text/javascript"></script>
+  <script src="../Scripts/cjstudio.js" type="text/javascript"></script>
   <script src="../JqueryUi/assets/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="../JqueryUi/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
   <script src="../JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>

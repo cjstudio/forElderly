@@ -7,9 +7,9 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace FC {
+namespace FC.Account {
     
     
-    public partial class About {
+    public partial class Repassword {
     }
 }

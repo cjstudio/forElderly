@@ -7,10 +7,9 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace FC.Journal
-{
+namespace FC.Journal {
     
     
-    public partial class Journal {
+    public partial class MoreConfig {
     }
 }

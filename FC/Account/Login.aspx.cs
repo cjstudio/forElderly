@@ -83,15 +83,18 @@ namespace FC.Account
                 if (rs.Rows.Count != 1)
                 {
                     Response.Write("{ \"status\" : \"Error\" \"msg\" : \"用户名或密码有误\"}");
+                    Response.End();
                     //Response.Write("{ \"status\" : \"Error\", \"msg\" : \"用户名有误"+passwd+sql+"\"}");
                     return false;
                 }
                 else
                 {
-                    if ((passwd.Length == 32 ? EncryptSHA256(passwd).ToLower() : EncryptSHA256(EncryptMd5(passwd).ToLower()).ToLower()) 
-                        != rs.Rows[0]["passwd_c"].ToString().Trim())
+                    string standpass=rs.Rows[0]["passwd_c"].ToString().ToLower().Trim();
+                    if ((passwd.Length == 32 ? EncryptSHA256(passwd).ToLower() : EncryptSHA256(EncryptMd5(passwd).ToLower()).ToLower())
+                        != standpass)
                     {
                         Response.Write("{ \"status\" : \"Error\" \"msg\" : \"用户名或密码有误\"}");
+                        Response.End();
                         //Response.Write("{ \"status\" : \"Error\", \"msg\" : \"密码有误#" + rs.Rows[0]["passwd_c"].ToString()+"##"+passwd + "#\"}");
                         return false;
                     }

@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace FC.Journal
+namespace FC.Account
 {
-    public partial class Journal : System.Web.UI.Page
+    public partial class Repassword : System.Web.UI.Page
     {
         public bool isIdenUser = false;
         public FC.cjstudio.User user;
