@@ -12,7 +12,7 @@
 工程介绍
 --------
 
-###工程主要目录
+###工程主要目录简介
 > FC
 >
 > > About - (存放“关于我们”栏目的asp.net文件)
@@ -42,6 +42,20 @@
 > > Styles - (存放共用的css文件)
 > >
 > > TEST - (用于开发时，局部功能测试使用)
+
+###工程的主要文件简介
+
+/FC/Default.aspx
+
+		首页文件框架：
+
+/FC/Account/AjaxServer.aspx
+
+		所有网页的ajax的服务端（除登陆功能外）
+
+/Scripts/sql/db_fc.sql
+
+		创建工程数据库的sql脚本文件
 
 
 ##本项目开源，详情请参考[Github项目主页](https://github.com/cjstudio/forElderly).##
