@@ -12,7 +12,12 @@
     
 asdlfk;alsdkn
 <input id='input' type ="text" />
-<button onclick="click123();">Hero</button>
+<%
+    Response.Write(System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("你好")));
+    ;
+    string s = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String("5L2g5aW9"));
+    Response.Write(s); %>
+<button onclick="click123();return false;">Hero</button>
 <input id='output' type ="text" />
     </div>
     </form>
@@ -23,7 +28,7 @@ asdlfk;alsdkn
             alert(s);
             s = encode64((s));
             alert(s);
-            document.getElementById('output').value = (decode64(s));
+            document.getElementById('output').value = ((s));
             alert('Hero');
         }
     </script>

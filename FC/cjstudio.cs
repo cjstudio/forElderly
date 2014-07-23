@@ -21,6 +21,11 @@ namespace FC
             public int type,auth,score;
             public DateTime birDT;
         }
+        public struct Journal
+        {
+            public string id, description, dangyuanPic, politicalStatus,idCarcPic1,idCardPic2;
+            public int auth, score;
+        }
         public static bool checkUserInput(string str)
         {
             string[] unlawfulChars = { "'", "\"", "<", ">", "-", " " };

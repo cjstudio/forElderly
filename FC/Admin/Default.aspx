@@ -64,12 +64,35 @@
                                                  网站管理</a>
 									        </div>
 									        <div id="accordion-element-002" class="accordion-body collapse">
-										        <div class="accordion-inner">
-											        <a class="accordion-toggle" data-toggle="collapse" >
-                                                 &nbsp;&nbsp;网站首页</a>
-                                                    <script type="text/javascript">
-                                                        function test() {alert("fuck");}
-                                                    </script>
+										        
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;首页滚图</a>
+										        </div>
+
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;爸妈频道</a>
+										        </div>
+                                                
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;社区管理</a>
+										        </div>
+                                                
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;志愿者</a>
+										        </div>
+                                                
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;政策新闻</a>
+										        </div>
+                                                
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;站内公告</a>
 										        </div>
 									        </div>
 								        </div>

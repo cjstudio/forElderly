@@ -59,6 +59,7 @@
     <Content Include="Account\SignUp.aspx" />
     <Content Include="Account\SignUpScript.aspx" />
     <Content Include="Account\userPic\Default.jpg" />
+    <Content Include="Admin\ContentConfig.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Community\Community.aspx" />
     <Content Include="Default.aspx" />
@@ -73,6 +74,7 @@
     <Content Include="img\logo %284%29.png" />
     <Content Include="img\logo %285%29.png" />
     <Content Include="img\logo %286%29.png" />
+    <Content Include="img\logo.gif" />
     <Content Include="img\test1.jpg" />
     <Content Include="img\test2.jpg" />
     <Content Include="Journal\Journal.aspx" />
@@ -155,6 +157,13 @@
     </Compile>
     <Compile Include="Account\SignUpScript.aspx.designer.cs">
       <DependentUpon>SignUpScript.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ContentConfig.aspx.cs">
+      <DependentUpon>ContentConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ContentConfig.aspx.designer.cs">
+      <DependentUpon>ContentConfig.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -298,6 +307,7 @@
   <ItemGroup>
     <Folder Include="Account\userImg\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Journal\DangyuanPics\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
