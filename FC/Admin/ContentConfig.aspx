@@ -263,7 +263,6 @@
                 "show_at_home": showAtHome,
                 "content": content
             }
-            
         });
         var dataRes = $.parseJSON(htmlobj.responseText);
         if (dataRes.status == 'success') {

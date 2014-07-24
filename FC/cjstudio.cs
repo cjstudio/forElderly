@@ -34,8 +34,6 @@ namespace FC
         }
         public static bool addArticle(string uid,Article article)
         {
-            Dictionary<int, string> contentType =
-                   new Dictionary<int, string>();
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             try
@@ -45,7 +43,9 @@ namespace FC
                 String sql = "insert into tb_article(title_c,authorId_i,status_i,type_i,contentMd5_c) values('" +
                     article.title+"',"+uid+","+article.status.ToString()+","+article.contentType+",'"+article.contentMd5+
                     "')";
-                cmd = new SqlCommand(sql, conn);
+                cmd = new SqlCommand(sql, conn); 
+                
+                
                 int status = cmd.ExecuteNonQuery();
                 if (status == 1)
                 {
@@ -55,7 +55,7 @@ namespace FC
                         "writetext tb_article.content_t @p '"+article.content+"'";
                     cmd.CommandText = sql;
                     status = cmd.ExecuteNonQuery();
-                    if (status == 1)
+                    if (status == -1)
                     {
                         return true;
                     }

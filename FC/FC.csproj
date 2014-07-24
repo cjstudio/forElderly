@@ -111,6 +111,7 @@
     <Content Include="TEST\OldAjax.aspx" />
     <Content Include="TEST\TestAjax.aspx" />
     <Content Include="TEST\TestAjax2.aspx" />
+    <Content Include="TEST\TestBigJson.aspx" />
     <Content Include="TEST\TestForm.aspx" />
     <Content Include="TEST\Test_db.aspx" />
     <Content Include="Web.config">
@@ -296,6 +297,13 @@
     </Compile>
     <Compile Include="TEST\TestAjax2.aspx.designer.cs">
       <DependentUpon>TestAjax2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TEST\TestBigJson.aspx.cs">
+      <DependentUpon>TestBigJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\TestBigJson.aspx.designer.cs">
+      <DependentUpon>TestBigJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="TEST\TestForm.aspx.cs">
       <DependentUpon>TestForm.aspx</DependentUpon>
