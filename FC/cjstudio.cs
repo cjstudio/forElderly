@@ -14,6 +14,7 @@ namespace FC
 {
     public static  class cjstudio
     {
+        public static string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
         public struct User
         {
             public string id, name, password32, email,idCard,sex,birthday,qq,homeAddress,livingAddress;
@@ -25,6 +26,77 @@ namespace FC
         {
             public string id, description, dangyuanPic, politicalStatus,idCarcPic1,idCardPic2;
             public int auth, score;
+        }
+        public struct Article 
+        {
+            public int status;
+            public string id, authorId, title, contentMd5, content,contentType;
+        }
+        public static bool addArticle(string uid,Article article)
+        {
+            Dictionary<int, string> contentType =
+                   new Dictionary<int, string>();
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = "insert into tb_article(title_c,authorId_i,status_i,type_i,contentMd5_c) values('" +
+                    article.title+"',"+uid+","+article.status.ToString()+","+article.contentType+",'"+article.contentMd5+
+                    "')";
+                cmd = new SqlCommand(sql, conn);
+                int status = cmd.ExecuteNonQuery();
+                if (status == 1)
+                {
+                    sql = "declare @p varbinary(16) ;"+
+                        "select @p=textptr(content_t) from tb_article where contentMd5_c = '"+
+                        article .contentMd5+"' ;"+
+                        "writetext tb_article.content_t @p '"+article.content+"'";
+                    cmd.CommandText = sql;
+                    status = cmd.ExecuteNonQuery();
+                    if (status == 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return false;
+        }
+        public static Dictionary<int, string> getContentType(int parentTypeId)
+        {
+            Dictionary<int, string> contentType = 
+                new Dictionary<int,string>();
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = 
+                    "select id_i,name_c from tb_contentType where parentType_i = " + parentTypeId.ToString();
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                for (int i = 0; i < rs.Rows.Count;i++ ) 
+                {
+                    int typeId = int.Parse(rs.Rows[i]["id_i"].ToString());
+                    string typeName = rs.Rows[i]["name_c"].ToString();
+                    contentType.Add(typeId, typeName);
+                }
+                return contentType;
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return null;
         }
         public static bool checkUserInput(string str)
         {
@@ -66,7 +138,6 @@ namespace FC
         }
         public static bool isLoginSuccess(string uid, string passwd)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             SqlDataAdapter adr = new SqlDataAdapter();
@@ -168,7 +239,6 @@ namespace FC
         }
         public static bool updateUserPicPath(string uid, string picType)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             try
@@ -191,7 +261,6 @@ namespace FC
         }
         public static bool updateUserInformation(User user)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             try
@@ -220,7 +289,6 @@ namespace FC
         }
         public static string getUserPicPath(string uid)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             try
@@ -247,7 +315,6 @@ namespace FC
         public static bool rePassword(string uid,string newpassword)
         {
             string password = EncryptSHA256(newpassword).ToLower();
-            string connStr = ConfigurationManager.ConnectionStrings["fc_db"].ConnectionString;
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             try

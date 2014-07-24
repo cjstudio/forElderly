@@ -186,4 +186,6 @@ function utf8to16(str) {
     return out;
 }
 
-
+function cjstudioTest() {
+    alert("Test OK");
+}

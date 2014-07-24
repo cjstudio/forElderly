@@ -75,6 +75,8 @@
     <Content Include="img\logo %285%29.png" />
     <Content Include="img\logo %286%29.png" />
     <Content Include="img\logo.gif" />
+    <Content Include="img\parallel\edit_icon.png" />
+    <Content Include="img\parallel\tbk.jpg" />
     <Content Include="img\test1.jpg" />
     <Content Include="img\test2.jpg" />
     <Content Include="Journal\Journal.aspx" />
@@ -91,6 +93,12 @@
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\md5.js" />
+    <Content Include="Scripts\parallel\base.js" />
+    <Content Include="Scripts\parallel\core.js" />
+    <Content Include="Scripts\parallel\editor.js" />
+    <Content Include="Scripts\parallel\jquery.js" />
+    <Content Include="Styles\parallel\edit_icons.css" />
+    <Content Include="Styles\parallel\parallel.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />

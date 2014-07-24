@@ -36,10 +36,68 @@ namespace FC.Account
                 case "repassword":
                     repassword();
                     break;
+                case "get_content_type":
+                    getContentType();
+                    break;
+                case "commit_article":
+                    commitArticleByAdmin();
+                    break;
                 default:
                     checkError("没有处理相关数据的方法");
                     break;
             }
+        }
+        public void commitArticleByAdmin()
+        {
+            cjstudio.Article article = new cjstudio.Article();
+            try
+            {
+                article.title =  HttpContext.Current.Request["title"].ToString();
+                article.content =  HttpContext.Current.Request["content"].ToString();
+                article.contentType =  HttpContext.Current.Request["content_type"].ToString();
+                string showAtHome =  HttpContext.Current.Request["show_at_home"].ToString();
+                if (showAtHome == "true")
+                {
+                    article.status = 15;
+                }
+                else
+                {
+                    article.status = 7;
+                }
+                article.contentMd5 = cjstudio.EncryptMd5(article.content);
+                if (cjstudio.addArticle(user.id, article)) 
+                {
+                    returnValue("文章已添加成功");
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        public void getContentType()
+        {
+            try
+            {
+                string superType = HttpContext.Current.Request["super_content_typeId"].ToString();
+                Dictionary<int, string> contentType =
+                    new Dictionary<int, string>();
+                contentType = cjstudio.getContentType(int.Parse(superType));
+                if (contentType != null)
+                {
+                    string value = "";
+                    foreach (KeyValuePair<int, string> pair in contentType)
+                    {
+                        value += "<option value=\"" + pair.Key + "\">" +pair.Value + "</option>";
+                    }
+                    returnValue(Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(value)));
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+
         }
         public void repassword()
         {
