@@ -256,13 +256,11 @@
         var showAtHome = document.getElementById('show_at_home').checked.toString();
 
         htmlobj = $.ajax({ url: "../Account/AjaxServer.aspx",
-            type: "POST",
             async: false,
             data: { "code": "commit_article",
                 "title": article_title,
                 "content_type": article_type,
                 "show_at_home": showAtHome,
-                //"content": '"'+content+'"'
                 "content": content
             }
         });

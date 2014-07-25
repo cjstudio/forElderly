@@ -40,15 +40,28 @@ namespace FC
             {
                 conn = new SqlConnection(connStr);
                 conn.Open();
-                String sql = "insert into tb_article(title_c,authorId_i,status_i,type_i,contentMd5_c) values('" +
-                    article.title+"',"+uid+","+article.status.ToString()+","+article.contentType+",'"+article.contentMd5+
-                    "')";
-                cmd = new SqlCommand(sql, conn); 
-                
-                
-                int status = cmd.ExecuteNonQuery();
+                String sql = "select * from tb_article where contentMd5_c = '" + article.contentMd5 + "'";
+                int status;
+                cmd = new SqlCommand(sql, conn);
+
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                status = rs.Rows.Count;
+                if (status != 0)
+                {
+                    return false;
+                }
+
+                sql = "insert into tb_article(title_c,authorId_i,status_i,type_i,contentMd5_c) values('" +
+                article.title + "'," + uid + "," + article.status.ToString() + "," + article.contentType + ",'" + article.contentMd5 +
+                "')";
+                cmd.CommandText = sql;
+                status = cmd.ExecuteNonQuery();
                 if (status == 1)
                 {
+                    
                     sql = "declare @p varbinary(16) ;"+
                         "select @p=textptr(content_t) from tb_article where contentMd5_c = '"+
                         article .contentMd5+"' ;"+
@@ -57,6 +70,8 @@ namespace FC
                     status = cmd.ExecuteNonQuery();
                     if (status == -1)
                     {
+                        cmd.Dispose();
+                        conn.Close();
                         return true;
                     }
                 }

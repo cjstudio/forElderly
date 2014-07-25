@@ -76,7 +76,7 @@
   <header class="subhead" id="overview"  style="background-image:linear-gradient(to bottom,#D66123, Orange ">
     <div class="container" style="width:970px;">
         <div class="span2">
-            <img src="./img/logo (1).png">
+            <img src="./img/logo.gif">
         </div >
         <div class="span7">
             <br>

@@ -52,10 +52,10 @@ namespace FC.Account
             cjstudio.Article article = new cjstudio.Article();
             try
             {
-                article.title =  HttpContext.Current.Request["title"].ToString();
-                article.content =  HttpContext.Current.Request["content"].ToString();
-                article.contentType =  HttpContext.Current.Request["content_type"].ToString();
-                string showAtHome =  HttpContext.Current.Request["show_at_home"].ToString();
+                article.title = HttpContext.Current.Request["title"].ToString();
+                article.content = HttpContext.Current.Request["content"].ToString();
+                article.contentType = HttpContext.Current.Request["content_type"].ToString();
+                string showAtHome = HttpContext.Current.Request["show_at_home"].ToString();
                 if (showAtHome == "true")
                 {
                     article.status = 15;
@@ -65,14 +65,17 @@ namespace FC.Account
                     article.status = 7;
                 }
                 article.contentMd5 = cjstudio.EncryptMd5(article.content);
-                if (cjstudio.addArticle(user.id, article)) 
+                if (cjstudio.addArticle(user.id, article))
                 {
                     returnValue("文章已添加成功");
+                }
+                else {
+                    checkError("文章已添加失败");
                 }
             }
             catch (Exception)
             {
-
+                ;
             }
         }
         public void getContentType()
@@ -95,9 +98,9 @@ namespace FC.Account
             }
             catch (Exception)
             {
-                
-            }
 
+            }
+            Response.End();
         }
         public void repassword()
         {
@@ -199,12 +202,27 @@ namespace FC.Account
         public void checkError(string msg)
         {
             Response.Write("{\"status\":\"error\",\"msg\":\""+msg+"\"}");
-            Response.End();
+            try
+            {
+                Response.End();
+            }
+            catch (Exception)
+            {
+                Response.Flush();
+                throw;
+            }
         }
         public void returnValue(string value)
         {
-            Response.Write("{\"status\":\"success\",\"msg\":\"" + value + "\"}");
-            Response.End();
+            try
+            {
+                Response.Write("{\"status\":\"success\",\"msg\":\"" + value + "\"}");
+                Response.End();
+            }
+            catch (Exception)
+            {
+                Response.Flush(); ;
+            }
         }
         public void initPage()
         {

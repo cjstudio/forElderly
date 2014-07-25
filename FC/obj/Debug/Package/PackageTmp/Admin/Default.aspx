@@ -21,8 +21,6 @@
 
 <body  style="padding-top:0px;min-height:800px;">
                     
-  <div class="container">
-
         <div class="container-fluid">
             <% if (isIdenUser && (user.type&8)!=0 )
                { %>
@@ -64,12 +62,35 @@
                                                  网站管理</a>
 									        </div>
 									        <div id="accordion-element-002" class="accordion-body collapse">
-										        <div class="accordion-inner">
-											        <a class="accordion-toggle" data-toggle="collapse" >
-                                                 &nbsp;&nbsp;网站首页</a>
-                                                    <script type="text/javascript">
-                                                        function test() {alert("fuck");}
-                                                    </script>
+										        
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Admin/ContentConfig.aspx');">
+                                                 &nbsp;&nbsp;添加文章</a>
+										        </div>
+
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;爸妈频道</a>
+										        </div>
+                                                
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;社区管理</a>
+										        </div>
+                                                
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;志愿者</a>
+										        </div>
+                                                
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;政策新闻</a>
+										        </div>
+                                                
+                                                <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
+                                                 &nbsp;&nbsp;站内公告</a>
 										        </div>
 									        </div>
 								        </div>
@@ -104,8 +125,7 @@
 							</div>
                         <% } %>
 						</div>
-        </div>
-
+        
   <!-- Placed at the end of the document so the pages load faster
   <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
   <script src="../Scripts/jquery-1.11.1.min.js" type="text/javascript"></script>
