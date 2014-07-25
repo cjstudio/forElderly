@@ -16,17 +16,6 @@ namespace FC.TEST
             
         }
 
-        public string getValue(string key)
-        {
-            try
-            {
-                Configuration config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-                return config.AppSettings.Settings[key].Value;
-            }
-            catch (Exception)
-            {
-                return "";
-            }
-        }
+        
     }
 }

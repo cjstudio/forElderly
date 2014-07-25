@@ -15,7 +15,7 @@ namespace FC.TEST
 
         }
 
-        public string getValue(string key)
+        public string getConfigValue(string key)
         {
             try
             {

@@ -88,8 +88,8 @@ namespace FC
                 adr = new SqlDataAdapter(cmd);
                 adr.Fill(dataset);
                 rs = dataset.Tables[0];
-                if (rs.Rows.Count == 1 && 
-                    (passwd.Length == 32 ? EncryptSHA256(passwd).ToLower() : EncryptSHA256(EncryptMd5(passwd).ToLower()).ToLower())
+                if (rs.Rows.Count == 1 &&
+                    (passwd.Length == 32 ? cjstudio.EncryptSHA256(passwd).ToLower() : cjstudio.EncryptSHA256((passwd).ToLower()).ToLower())
                     ==rs.Rows[0]["passwd_c"].ToString().Trim())
                 {
                     uname= rs.Rows[0]["name_c"].ToString();
@@ -124,22 +124,6 @@ namespace FC
                 }
             }
             return str;
-        }
-        public string EncryptSHA256(string strPwd)
-        {
-            byte[] result = Encoding.Default.GetBytes(strPwd);
-            SHA256 sha256 = new SHA256CryptoServiceProvider();
-            byte[] output = sha256.ComputeHash(result);
-            string str = BitConverter.ToString(output).Replace("-", "");
-            return str.ToUpper();
-        }
-        public string EncryptMd5(string strPwd)
-        {
-            byte[] result = Encoding.Default.GetBytes(strPwd);
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] output = md5.ComputeHash(result);
-            string str = BitConverter.ToString(output).Replace("-", "");
-            return str.ToUpper();
         }
         public string getTypePath()
         {
@@ -176,18 +160,6 @@ namespace FC
                 }
                 else
                     return "#" + utype;
-        }
-        public string getValue(string key)
-        {
-            try
-            {
-                Configuration config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-                return config.AppSettings.Settings[key].Value;
-            }
-            catch (Exception)
-            {
-                return "";
-            }
         }
     }
 }

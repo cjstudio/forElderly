@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title><%=FC.cjstudio.getValue("MainTitle")%></title>
+  <title><%=FC.cjstudio.getConfigValue("MainTitle")%></title>
   <meta name="author" content="CJ_Studio"/>
 
   <!-- Le styles -->
@@ -15,8 +15,7 @@
 
   <link href="../JqueryUi/assets/css/docs.css" rel="stylesheet">
   <link href="../JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-    
-    
+
 </head>
 
 <body  style="padding-top:0px;min-height:800px;">

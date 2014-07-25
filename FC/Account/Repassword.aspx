@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8"/>
-      <title><%=FC.cjstudio.getValue("MainTitle")%></title>
+      <title><%=FC.cjstudio.getConfigValue("MainTitle")%></title>
       <meta name="author" content="CJ_Studio"/>
 
       <!-- Le styles -->

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title><%=FC.cjstudio.getValue("MainTitle")%></title>
+  <title><%=FC.cjstudio.getConfigValue("MainTitle")%></title>
   <meta name="author" content="CJ_Studio"/>
 
   <!-- Le styles -->
