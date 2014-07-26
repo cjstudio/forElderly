@@ -20,7 +20,8 @@ namespace FC
             public string id, name, password32, email,idCard,sex,birthday,qq,homeAddress,livingAddress;
             public string description, picPath, politicalStatus, homeAddressId, livingAddressId,phone;
             public int type,auth,score;
-            public DateTime birDT;
+            public DateTime birDT; 
+            public Address fullHomeAddress, fullLivingAddress;
         }
         public struct Journal
         {
@@ -34,7 +35,143 @@ namespace FC
                 contentType, contentTypeName;
             public DateTime updateDT, createDT;
         }
+        public struct Address 
+        {
+            public string name, id,parentId;
+            public string province, city, cityzone;
+            public string provinceId, cityId, cityzoneId;
+        }
 
+        public static Address getFullAddress(string cityzoneId)
+        {
+            Address addr = new Address();
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql;
+                sql = "select tb_province.id_i as ProvinceId,tb_province.name_c as ProvinceName,"+
+                    " tb_city.id_i as CityId, tb_city.name_c as CityName,"+
+                    " tb_cityzone.id_i as CityzoneId,tb_cityzone.name_c as CityzoneName"+
+                    " from tb_city,tb_cityzone,tb_province"+
+                    " where tb_city.provinceId_i = tb_province.id_i"+
+                    " and tb_city.id_i = tb_cityzone.cityId_i" +
+                    " and tb_cityzone.id_i=" + cityzoneId;
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                if (rs.Rows.Count == 1)
+                {
+                    addr.province = rs.Rows[0]["ProvinceName"].ToString();
+                    addr.provinceId = rs.Rows[0]["ProvinceId"].ToString();
+                    addr.cityId = rs.Rows[0]["CityId"].ToString();
+                    addr.city = rs.Rows[0]["CityName"].ToString();
+                    addr.cityzone = rs.Rows[0]["CityzoneName"].ToString();
+                    addr.cityzoneId = rs.Rows[0]["CityzoneId"].ToString();
+                }
+            }
+            catch
+            {
+                ;
+            }
+            return addr;
+        }
+        public static List<Address> getCityzones(string cityId)
+        {
+            List<Address> cityzones = new List<Address>();
+
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql;
+                sql = "select * from tb_cityzone where cityId_i = " + cityId;
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                for (int i = 0; i < rs.Rows.Count; i++)
+                {
+                    Address addr = new Address();
+                    addr.name = rs.Rows[i]["name_c"].ToString();
+                    addr.id = rs.Rows[i]["id_i"].ToString();
+                    cityzones.Add(addr);
+                }
+            }
+            catch
+            {
+                ;
+            }
+            return cityzones;
+        }
+        public static List<Address> getCitys(string provinceId)
+        {
+            List<Address> citys = new List<Address>();
+
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql;
+                sql = "select * from tb_city where provinceId_i = " + provinceId;
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                for (int i = 0; i < rs.Rows.Count; i++)
+                {
+                    Address addr = new Address();
+                    addr.name = rs.Rows[i]["name_c"].ToString();
+                    addr.id = rs.Rows[i]["id_i"].ToString();
+                    citys.Add(addr);
+                }
+            }
+            catch
+            {
+                ;
+            }
+            return citys;
+        }
+        public static List<Address> getProvinces()
+        {
+            List<Address> provinces = new List<Address>();
+            
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql;
+                sql = "select * from tb_province";
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                for (int i = 0; i < rs.Rows.Count; i++) 
+                {
+                    Address addr = new Address();
+                    addr.name = rs.Rows[i]["name_c"].ToString();
+                    addr.id = rs.Rows[i]["id_i"].ToString();
+                    provinces.Add(addr);
+                }
+            }
+            catch {
+                ;
+            }
+            return provinces;
+        }
         public static List<Article> getArticleByTypeName(string typeName)
         {
             List<Article> articles = new List<Article>();
@@ -428,7 +565,9 @@ namespace FC
                     "',sex_c='"+user.sex+
                     "',homeAddress_c='"+user.homeAddress+
                     "',livingPlace_c='" + user.livingAddress +
-                    "' where id_i = " + user.id;
+                    "',homeAddress_i= " + user.homeAddressId +
+                    " ,livingAddress_i= " + user.livingAddressId +
+                    " where id_i = " + user.id;
                 cmd = new SqlCommand(sql, conn);
                 int status = cmd.ExecuteNonQuery();
                 if (status == 1)

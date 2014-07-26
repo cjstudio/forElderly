@@ -15,12 +15,14 @@ namespace FC.Account
     {
         public bool isIdenUser = false,isDataOver = false;
         public FC.cjstudio.User user;
+        public List<FC.cjstudio.Address> provinces,citys,cityzones;
         protected void Page_Load(object sender, EventArgs e)
         {
             initPage();
             if (isIdenUser)
             {
                 getDataFromDB();
+                provinces = FC.cjstudio.getProvinces();
             }
         }
         public void checkBirthday()
@@ -101,6 +103,14 @@ namespace FC.Account
                     user.homeAddress = rs.Rows[0]["homeAddress_c"].ToString();
                     user.homeAddressId = rs.Rows[0]["homeAddress_i"].ToString();
                     user.phone = rs.Rows[0]["phone_c"].ToString();
+                    if (user.homeAddressId != "")
+                    {
+                        user.fullHomeAddress = cjstudio.getFullAddress(user.homeAddressId);
+                    }
+                    if (user.livingAddressId != "")
+                    {
+                        user.fullLivingAddress = cjstudio.getFullAddress(user.livingAddressId);
+                    }
                     checkPicSrc();
                     checkBirthday();
                     isDataOver = true;

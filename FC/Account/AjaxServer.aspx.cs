@@ -42,10 +42,54 @@ namespace FC.Account
                 case "commit_article":
                     commitArticleByAdmin();
                     break;
+                case "get_citys_by_province":
+                    getCitysByProvince();
+                    break;
+                case "get_cityzones_by_city":
+                    getCityzonesByCity();
+                    break;
                 default:
                     checkError("没有处理相关数据的方法");
                     break;
             }
+        }
+        public void getCityzonesByCity()
+        {
+            try
+            {
+                string cityid = HttpContext.Current.Request["cityid"].ToString();
+                List<cjstudio.Address> citys = cjstudio.getCityzones(cityid);
+                string res = "";
+                foreach (cjstudio.Address addr in citys)
+                {
+                    res += "<option value=\"" + addr.id + "\">" + addr.name + "</option>";
+                }
+                returnValue(Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(res)));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            };
+        }
+        public void getCitysByProvince()
+        {
+            try
+            {
+                string provinceId = HttpContext.Current.Request["provinceid"].ToString();
+                List<cjstudio.Address> citys = cjstudio.getCitys(provinceId);
+                string res = "";
+                foreach (cjstudio.Address  addr in citys)
+                {
+                   res += "<option value=\"" + addr.id + "\">" + addr.name + "</option>";
+                }
+                returnValue(Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(res)));
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            };
         }
         public void commitArticleByAdmin()
         {
@@ -147,6 +191,8 @@ namespace FC.Account
                 DateTime tmpdt = new DateTime(year, month, day);
                 user.birDT = tmpdt;
                 user.birthday = year + "-" + month + "-" + day;
+                user.homeAddressId = HttpContext.Current.Request["homeaddressid"].ToString();
+                user.livingAddressId = HttpContext.Current.Request["livingaddressid"].ToString();
                 if (cjstudio.updateUserInformation(user))
                 {
                     returnValue("用户信息修改成功");

@@ -58,7 +58,7 @@
 								        <div class="accordion-group">
 									        <div class="accordion-heading">
 										         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-000" href="#accordion-element-002">
-                                                 网站管理</a>
+                                                 平台管理</a>
 									        </div>
 									        <div id="accordion-element-002" class="accordion-body collapse">
 										        
@@ -74,22 +74,22 @@
                                                 
                                                 <div class="accordion-inner">
                                                 <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
-                                                 &nbsp;&nbsp;社区管理</a>
+                                                 &nbsp;&nbsp;身份审核</a>
 										        </div>
                                                 
                                                 <div class="accordion-inner">
                                                 <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
-                                                 &nbsp;&nbsp;志愿者</a>
+                                                 &nbsp;&nbsp;文章审核</a>
 										        </div>
                                                 
                                                 <div class="accordion-inner">
                                                 <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
-                                                 &nbsp;&nbsp;政策新闻</a>
+                                                 &nbsp;&nbsp;</a>
 										        </div>
                                                 
                                                 <div class="accordion-inner">
                                                 <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
-                                                 &nbsp;&nbsp;站内公告</a>
+                                                 &nbsp;&nbsp;站长信箱</a>
 										        </div>
 									        </div>
 								        </div>

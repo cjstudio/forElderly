@@ -159,7 +159,7 @@
  <!-- ================================================== -->
 
   <!-- Docs nav ================================================== -->
-    <div id="main_content_div" class="row" style="width:970px;margin-left:0px;min-height:600px;">
+    <div id="main_content_div" class="row" style="width:970px;margin-left:0px;min-height:800px;">
 	    
   <!--########### Main Content Start ================================================== -->
 <!--########### Main Content Start ================================================== -->

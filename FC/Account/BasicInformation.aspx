@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BasicInformation.aspx.cs" Inherits="FC.Account.BasicInformation" %>
-
+    
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -15,7 +15,7 @@
       <link type="text/css" href="../JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>
 </head>
 
-<body algin="center"  style="width:600px; height:1000px;">
+<body algin="center"  style="width:600px; min-height:800px;">
 <script type="text/javascript">
     var is_changed = false;
 </script>
@@ -125,10 +125,139 @@
                                     
                                 <p ><label>联系电话：</label><input type="text"  id="telphone" type="text" value="<%=user.phone %>" /></p>
                                 
-                                <p><label>籍贯：</label>
-                                <textarea id="home_address" class="form-control" rows="3" style="width:450px;"><%=user.homeAddress %></textarea></p>
+                                <h4><label>籍贯：</label>
+                                <select style="width:auto;" id="home_address_province" onchange="chageProvince('home_address_province','home_address_city','home_address_cityzone');">
+                                    <% 
+                                        foreach (FC.cjstudio.Address province in provinces)
+                                        {
+                                            if (province.id == user.fullHomeAddress.provinceId)
+                                            {
+                                                Response.Write("<option selected=\"selected\"  value=\"" + province.id +
+                                                    "\">" + province.name + "</option>");
+                                            }
+                                            else
+                                            {
+                                                Response.Write("<option value=\"" + province.id + "\">" + province.name + "</option>");
+                                            }
+                                        }
+                                            %>
+                                </select>
+                                <select style="width:auto;" id="home_address_city" onchange="chageCity('home_address_city','home_address_cityzone');">
+                                    <% 
+                                        try
+                                        {
+                                            citys = FC.cjstudio.getCitys(user.fullHomeAddress.provinceId);
+                                        }
+                                        catch (Exception)
+                                        {
+                                            citys = FC.cjstudio.getCitys("1");
+                                        }
+                                        try
+                                        {
+                                            cityzones = FC.cjstudio.getCityzones(user.fullHomeAddress.cityId);
+                                        }
+                                        catch (Exception)
+                                        {
+                                            cityzones = FC.cjstudio.getCityzones("1");
+                                        }
+                                        foreach (FC.cjstudio.Address city in citys)
+                                       {
+                                           if (city.id == user.fullHomeAddress.cityId)
+                                           {
+                                               Response.Write("<option selected=\"selected\"  value=\"" + city.id +
+                                                   "\">" + city.name + "</option>");
+                                           }
+                                           else
+                                           {
+                                               Response.Write("<option value=\"" + city.id + "\">" + city.name + "</option>");
+                                           }
+                                       }
+                                            %>
+                                </select>
+                                <select style="width:auto;" id="home_address_cityzone">
+                                    <% foreach (FC.cjstudio.Address cityzone in cityzones)
+                                       {
+                                           if (cityzone.id == user.fullHomeAddress.cityzoneId)
+                                           {
+                                               Response.Write("<option selected=\"selected\"  value=\"" + cityzone.id +
+                                                   "\">" + cityzone.name + "</option>");
+                                           }
+                                           else
+                                           {
+                                               Response.Write("<option value=\"" + cityzone.id + "\">" + cityzone.name + "</option>");
+                                           }
+                                       }
+                                            %>
+                                </select>
+                                </h4>
+                                <textarea id="home_address" class="form-control" rows="3" style="width:450px;"><%=user.homeAddress %></textarea>
                                 
-                                <p><label>联系地址：</label>
+
+                                <h4><label>联系地址：</label>
+                                <select style="width:auto;" id="living_address_province" onchange="chageProvince('living_address_province','living_address_city','living_address_cityzone');">
+                                    <% 
+                                        foreach (FC.cjstudio.Address province in provinces)
+                                        {
+                                            if (province.id == user.fullHomeAddress.provinceId)
+                                            {
+                                                Response.Write("<option selected=\"selected\"  value=\"" + province.id +
+                                                    "\">" + province.name + "</option>");
+                                            }
+                                            else
+                                            {
+                                                Response.Write("<option value=\"" + province.id + "\">" + province.name + "</option>");
+                                            }
+                                        }
+                                            %>
+                                </select>
+                                <select style="width:auto;" id="living_address_city" onchange="chageCity('living_address_city','living_address_cityzone');">
+                                    <% 
+                                        try
+                                        {
+                                            citys = FC.cjstudio.getCitys(user.fullLivingAddress.provinceId);
+                                        }
+                                        catch (Exception)
+                                        {
+                                            citys = FC.cjstudio.getCitys("1");
+                                        }
+                                        try
+                                        {
+                                            cityzones = FC.cjstudio.getCityzones(user.fullLivingAddress.cityId);
+                                        }
+                                        catch (Exception)
+                                        {
+                                            cityzones = FC.cjstudio.getCityzones("1");
+                                        }
+                                        foreach (FC.cjstudio.Address city in citys)
+                                       {
+                                           if (city.id == user.fullLivingAddress.cityId)
+                                           {
+                                               Response.Write("<option selected=\"selected\"  value=\"" + city.id +
+                                                   "\">" + city.name + "</option>");
+                                           }
+                                           else
+                                           {
+                                               Response.Write("<option value=\"" + city.id + "\">" + city.name + "</option>");
+                                           }
+                                       }
+                                            %>
+                                </select>
+                                <select style="width:auto;" id="living_address_cityzone">
+                                    <% foreach (FC.cjstudio.Address cityzone in cityzones)
+                                       {
+                                           if (cityzone.id == user.fullLivingAddress.cityzoneId)
+                                           {
+                                               Response.Write("<option selected=\"selected\"  value=\"" + cityzone.id +
+                                                   "\">" + cityzone.name + "</option>");
+                                           }
+                                           else
+                                           {
+                                               Response.Write("<option value=\"" + cityzone.id + "\">" + cityzone.name + "</option>");
+                                           }
+                                       }
+                                            %>
+                                </select>
+                                </h4>
                                 <textarea id="living_address" class="form-control" rows="3" style="width:450px;"><%=user.livingAddress %></textarea></p>
 
                             </div>
@@ -154,6 +283,38 @@
     <script src="../JqueryUi/assets/js/demo.js" type="text/javascript"></script>
 
     <script type="text/javascript">
+
+        function chageProvince(provinceID, cityID, cityzoneID) {
+            var provinceid = document.getElementById(provinceID).value;
+            htmlobj = $.ajax({ url: "../Account/AjaxServer.aspx",
+                async: false,
+                data: { "code": "get_citys_by_province",
+                    "provinceid": provinceid
+                    }
+            });
+            var dataRes = $.parseJSON(htmlobj.responseText);
+            //alert(dataRes.msg);
+            oDiv = document.getElementById("commit_status");
+            if (dataRes.status == 'success') {
+                document.getElementById(cityID).innerHTML = decode64(dataRes.msg);
+                chageCity(cityID, cityzoneID);
+            } 
+        }
+        function chageCity(cityID,cityzoneID) {
+            var cityid = document.getElementById(cityID).value; 
+            htmlobj = $.ajax({ url: "../Account/AjaxServer.aspx",
+                async: false,
+                data: { "code": "get_cityzones_by_city",
+                    "cityid": cityid
+                }
+            }); 
+            var dataRes = $.parseJSON(htmlobj.responseText);
+            //alert(dataRes.msg);
+            oDiv = document.getElementById("commit_status");
+            if (dataRes.status == 'success') {
+                document.getElementById(cityzoneID).innerHTML = decode64(dataRes.msg);
+            } 
+        }
         function commit_save() {
             var name = document.getElementById("username").value;
             var sex = document.getElementById("user_sex").value;
@@ -163,6 +324,8 @@
             var phone = document.getElementById("telphone").value;
             var homeaddress = document.getElementById("home_address").value;
             var livingaddress = document.getElementById("living_address").value;
+            var homeaddressid = document.getElementById("home_address_cityzone").value;
+            var livingaddressid = document.getElementById("living_address_cityzone").value;
             htmlobj = $.ajax({ url: "../Account/AjaxServer.aspx",
                 async: false,
                 data: { "code": "just_user_information",
@@ -173,7 +336,9 @@
                     "day": day,
                     "phone": phone,
                     "homeaddress": homeaddress,
-                    "livingaddress": livingaddress
+                    "livingaddress": livingaddress,
+                    "homeaddressid": homeaddressid,
+                    "livingaddressid": livingaddressid
                 }
             });
             //alert(htmlobj.responseText);
