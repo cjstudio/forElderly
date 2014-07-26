@@ -4,25 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
 
 namespace FC.Admin
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class ContentConfig : System.Web.UI.Page
     {
         public bool isIdenUser = false;
         public FC.cjstudio.User user;
-        public string page;
+        public Dictionary<int, string> superContentType =
+            new System.Collections.Generic.Dictionary<int, string>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
-                page = Request.QueryString["page"].ToString();
-            }
-            catch (Exception)
-            {
-                page = "";
-            }
             initPage();
+            superContentType = FC.cjstudio.getContentType(0);
         }
         public void initPage()
         {
@@ -32,7 +28,6 @@ namespace FC.Admin
                 user.password32 = Session["upasswd"].ToString();
                 user.name = Session["uname"].ToString();
                 user.type = int.Parse(Session["utype"].ToString());
-
                 isIdenUser = true;
                 string member = Session["member"].ToString();
                 Session["uname"] = user.name;
@@ -44,7 +39,7 @@ namespace FC.Admin
             catch (Exception)
             {
                 isIdenUser = false;
-            }       
+            }
         }
     }
 }

@@ -57,6 +57,12 @@ namespace FC.Account
                 user.name = Session["uname"].ToString();
                 user.type = int.Parse(Session["utype"].ToString());
                 isIdenUser = true;
+                string member = Session["member"].ToString();
+                Session["uname"] = user.name;
+                Session["utype"] = user.type;
+                Session["uid"] = user.id;
+                Session["upasswd"] = user.password32;
+                Session["member"] = member;
             }
             catch (Exception)
             {

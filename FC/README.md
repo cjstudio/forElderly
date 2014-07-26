@@ -22,6 +22,10 @@
 
 121----个人信息
 
+122----重置密码
+
+123----更多设置
+
 
 ##本项目开源，详情请参考[Github项目主页](https://github.com/cjstudio/forElderly).##
 

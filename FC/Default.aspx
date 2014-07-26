@@ -143,8 +143,10 @@
                                 <li  id="li_btn121">
                                 <a href="" id="btn121" onclick="chageContentPage(121);return false;" >
                                     个人信息</a></li>
-					            <li><a href="#">设置栏目</a></li>
-					            <li><a href="#">更多设置</a></li>
+					            <li><a href=""  onclick="chageContentPage(122);return false;">
+                                    安全设置</a></li>
+					            <li><a href="" onclick="chageContentPage(123);return false;">
+                                    更多设置</a></li>
 					            <li class="divider"></li>
 					            <li><a onclick="exitLogin();">安全退出</a></li>
 					            </ul></div>	
@@ -173,7 +175,7 @@ id="home_content_iframe" width="100%" onload="autoIframeSize('home_content_ifram
 ================================================== -->
   <div class="navbar navbar-inverse navbar-fixed-botton" >
   
-      <footer class="footer"  style="background-image:linear-gradient(to bottom, Orange,#D66123 ">
+      <footer class="footer"  style="margin-top:0px;background-image:linear-gradient(to bottom, Orange,#D66123 ">
         <div class="container"  style="width:970px;">
           <div class="span2" align="center">
       	    <div class=" pull-right" style="margin-top:8px;">

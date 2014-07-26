@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FC.Admin.Default" %>
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -19,7 +18,7 @@
     
 </head>
 
-<body  style="padding-top:0px;min-height:800px;">
+<body  style="padding-top:0px;min-height:600px;">
                     
         <div class="container-fluid">
             <% if (isIdenUser && (user.type&8)!=0 )
@@ -64,13 +63,13 @@
 									        <div id="accordion-element-002" class="accordion-body collapse">
 										        
                                                 <div class="accordion-inner">
-                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Admin/ContentConfig.aspx');">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Admin/ContentConfigAdd.aspx');">
                                                  &nbsp;&nbsp;添加文章</a>
 										        </div>
 
                                                 <div class="accordion-inner">
-                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
-                                                 &nbsp;&nbsp;爸妈频道</a>
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Admin/ContentConfig.aspx');">
+                                                 &nbsp;&nbsp;发布管理</a>
 										        </div>
                                                 
                                                 <div class="accordion-inner">
@@ -102,7 +101,12 @@
                         
 				        <div class="span8">
                             <div  id="main_content">
-                             '<iframe src="../Account/BasicInformation.aspx"  scrolling="no" frameborder="0" height="100%" id="content_iframe" width="100%" onload="IFrameReSize('content_iframe');IFrameReSizeWidth('content_iframe');"></iframe>
+                                
+                                <iframe src="<%
+                                    if (page == "122") { Response.Write("../Account/Repassword.aspx"); }
+                                    else if (page == "123") { Response.Write("../Admin/ContentConfig.aspx"); }
+                                    else { Response.Write("../Account/BasicInformation.aspx"); }
+                                 %>"  scrolling="no" frameborder="0" height="100%" id="content_iframe" width="100%" onload="IFrameReSize('content_iframe');IFrameReSizeWidth('content_iframe');"></iframe>
                             </div>
                         </div>
 		        </div>
@@ -121,20 +125,30 @@
 								 <button type="button" class="close" data-dismiss="alert">×</button>
 								<h4>
 									提示!
-								</h4> <strong>警告!</strong> 访问此页需要先登录.
+								</h4> <strong>警告!</strong> 访问此页请先登录或者刷新页面.
 							</div>
                         <% } %>
 						</div>
         
-  <!-- Placed at the end of the document so the pages load faster
-  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
-  <script src="../Scripts/jquery-1.11.1.min.js" type="text/javascript"></script>
-  <script src="../Scripts/md5.js" type="text/javascript"></script>
-  <script src="../Scripts/cjstudio.js" type="text/javascript"></script>
-  <script src="../JqueryUi/assets/js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="../JqueryUi/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
-  <script src="../JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
-  <script src="../JqueryUi/assets/js/docs.js" type="text/javascript"></script>
-  <script src="../JqueryUi/assets/js/demo.js" type="text/javascript"></script>
+    <!-- Placed at the end of the document so the pages load faster
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+    <script type = "text/javascript">
+        window.onload = function () {
+            var page = getQueryString('page');
+            if (page == '123') {
+                document.getElementById("accordion-element-002").className += ' in ';
+                document.getElementById("accordion-element-001").className =  "accordion-body collapse"
+            }
+        }
+    </script>
+    <script src="../Scripts/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/md5.js" type="text/javascript"></script>
+    <script src="../Scripts/cjstudio.js" type="text/javascript"></script>
+    <script src="../JqueryUi/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../JqueryUi/assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+    <script src="../JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
+    <script src="../JqueryUi/assets/js/docs.js" type="text/javascript"></script>
+    <script src="../JqueryUi/assets/js/demo.js" type="text/javascript"></script>
+    
 </body>
 </html>

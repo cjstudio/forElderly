@@ -10,6 +10,6 @@
 namespace FC.Admin {
     
     
-    public partial class ContentConfig1 {
+    public partial class ContentConfig {
     }
 }
