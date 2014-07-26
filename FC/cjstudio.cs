@@ -35,6 +35,66 @@ namespace FC
             public DateTime updateDT, createDT;
         }
 
+        public static List<Article> getArticleByTypeName(string typeName)
+        {
+            List<Article> articles = new List<Article>();
+            Article article;
+
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql;
+                sql = "select tb_article.id_i as articleID, tb_user.name_c as AutherName, " +
+                     "tb_article.id_i as AuthorID, tb_article.title_c as Title, " +
+                     "tb_article.contentMd5_c as Md5,tb_article.content_t as Content, " +
+                     "tb_article.type_i as ContentTypeID, t1.name_c as ContentTypeName, " +
+                     "tb_article.createTime_dt as CreateTime,tb_article.updateTime_dt as UpdateTime " +
+                     "from tb_article, tb_user, tb_contentType as t1 " +
+                     "where tb_article.authorId_i = tb_user.id_i " +
+                     "and tb_article.type_i = t1.id_i " +
+                     "and (t1.name_c = '"+typeName+
+                     "' or tb_article.type_i in ( select t2.id_i from tb_contentType as t2,tb_contentType as t3 "+
+                     "where t3.id_i =t2.parentType_i and t3.name_c = '"+typeName+"'))";
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                for (int i = 0; i < rs.Rows.Count; i++)
+                {
+                    article = new Article();
+                    article.authorId = rs.Rows[i]["articleID"].ToString();
+                    article.authorName = rs.Rows[i]["AutherName"].ToString();
+                    article.authorId = rs.Rows[i]["AuthorID"].ToString();
+                    article.title = rs.Rows[i]["Title"].ToString();
+                    article.contentMd5 = rs.Rows[i]["Md5"].ToString();
+                    article.content = rs.Rows[i]["Content"].ToString();
+                    article.contentType = rs.Rows[i]["ContentTypeID"].ToString();
+                    article.contentTypeName = rs.Rows[i]["ContentTypeName"].ToString();
+                    
+                    try
+                    {
+                        article.createDT = DateTime.Parse(rs.Rows[i]["CreateTime"].ToString());
+                        article.updateDT = DateTime.Parse(rs.Rows[i]["UpdateTime"].ToString());
+                    }
+                    catch (Exception)
+                    {
+                        article.createDT = DateTime.Now;
+                        article.updateDT = DateTime.Now;
+                    } 
+
+                    articles.Add(article);
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return articles;
+        }
         public static List<Article> getArticleByTypeId(int type) 
         {
             List<Article> articles = new List<Article>();
@@ -46,15 +106,18 @@ namespace FC
             {
                 conn = new SqlConnection(connStr);
                 conn.Open();
-                String sql = "select tb_article.id_i as articleID, tb_user.name_c as AutherName, "+
-                    "tb_article.id_i as AuthorID, tb_article.title_c as Title, "+
-                    "tb_article.contentMd5_c as Md5,tb_article.content_t as Content, "+
-                    "tb_article.type_i as ContentTypeID, tb_contentType.name_c as ContentTypeName, "+
-                    "tb_article.createTime_dt as CreateTime,tb_article.updateTime_dt as UpdateTime "+
-                    "from tb_article, tb_user, tb_contentType "+
-                    "where tb_article.authorId_i = tb_user.id_i "+
-                    "and tb_article.type_i = tb_contentType.id_i "+
-                    "and tb_article.type_i = "+ type;
+                String sql;
+                sql = "select tb_article.id_i as articleID, tb_user.name_c as AutherName, " +
+                     "tb_article.id_i as AuthorID, tb_article.title_c as Title, " +
+                     "tb_article.contentMd5_c as Md5,tb_article.content_t as Content, " +
+                     "tb_article.type_i as ContentTypeID, t1.name_c as ContentTypeName, " +
+                     "tb_article.createTime_dt as CreateTime,tb_article.updateTime_dt as UpdateTime " +
+                     "from tb_article, tb_user, tb_contentType as t1 " +
+                     "where tb_article.authorId_i = tb_user.id_i " +
+                     "and tb_article.type_i = t1.id_i " +
+                     "and ( tb_article.type_i = " + type+
+                     " or tb_article.type_i in (select id_i from tb_contentType as t2"+
+                     "where t2.parentType_i = "+type +" ))";
                 cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter adr = new SqlDataAdapter(cmd);
                 DataSet dataset = new DataSet();
@@ -71,9 +134,17 @@ namespace FC
                     article.content = rs.Rows[i]["Content"].ToString();
                     article.contentType = rs.Rows[i]["ContentTypeID"].ToString();
                     article.contentTypeName = rs.Rows[i]["ContentTypeName"].ToString();
-                    article.createDT = DateTime.Parse( rs.Rows[i]["CreateTime"].ToString());
-                    article.updateDT = DateTime.Parse(rs.Rows[i]["UpdateTime"].ToString());
 
+                    try
+                    {
+                        article.createDT = DateTime.Parse(rs.Rows[i]["CreateTime"].ToString());
+                        article.updateDT = DateTime.Parse(rs.Rows[i]["UpdateTime"].ToString());
+                    }
+                    catch (Exception)
+                    {
+                        article.createDT = DateTime.Now;
+                        article.updateDT = DateTime.Now;
+                    } 
                     articles.Add(article);
                 }
             }

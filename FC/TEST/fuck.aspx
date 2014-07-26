@@ -11,12 +11,13 @@
     <div>
     
 asdlfk;alsdkn
-<input id='input' type ="text" />
 <%
-    Response.Write(System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("你好")));
-    ;
-    string s = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String("5L2g5aW9"));
-    Response.Write(s); %>
+    //List<FC.cjstudio.Article> articles = FC.cjstudio.getArticleByTypeName("关于我们");
+    DateTime date =  DateTime.Parse("2014-07-16 16:34:23.940");
+    Response.Write(date.Year + "##" + date.Millisecond + "##" + date.DayOfWeek);
+     %>
+<input id='input' type ="text" />
+
 <button onclick="click123();return false;">Hero</button>
 <input id='output' type ="text" />
     </div>
