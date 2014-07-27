@@ -189,3 +189,10 @@ function utf8to16(str) {
 function cjstudioTest() {
     alert("Test OK");
 }
+
+// 获取URL参数
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}

@@ -106,9 +106,10 @@ function chageContentPage(idNum) {
             chageDivIframe('main_content_div','./Account/SignUp.aspx');
             break;
         case 121:
+        case 122: 
+        case 123:
             document.getElementById('li_btn' + activeId).className = '';
-            ;
-            chageDivIframe('main_content_div', getUserHomePagePath());
+            chageDivIframe('main_content_div', getUserHomePagePath()+'?page='+idNum);
             break;
         default:
             document.getElementById('li_btn' + activeId).className = '';

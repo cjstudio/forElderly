@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title><%=FC.cjstudio.getValue("MainTitle")%></title>
+  <title><%=FC.cjstudio.getConfigValue("MainTitle")%></title>
   <meta name="author" content="CJ_Studio"/>
   <!-- Le styles -->
   <link href="./JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet"/>
@@ -80,8 +80,8 @@
         </div >
         <div class="span7">
             <br>
-            <h1><%=FC.cjstudio.getValue("MainTitle")%></h1>
-            <p class="lead"><%=FC.cjstudio.getValue("MainSlogan")%></p>
+            <h1><%=FC.cjstudio.getConfigValue("MainTitle")%></h1>
+            <p class="lead"><%=FC.cjstudio.getConfigValue("MainSlogan")%></p>
         </div>
     </div>
   </header>
@@ -95,7 +95,7 @@
         <div class="navbar-inner" style="background-image:linear-gradient(to bottom, #111111, #D66123 ">
           <div class="container">
 
-            <a class="brand" href="" id="btn100" onclick="chageContentPage(100);return false;"><%=this.getValue("MainTitle")%></a>
+            <a class="brand" href="" id="btn100" onclick="chageContentPage(100);return false;"><%=FC.cjstudio.getConfigValue("MainTitle")%></a>
               <ul class="nav">
                 <li class="active" id="li_btn101">
                     <a href="" id="btn101" onclick="chageContentPage(101);return false;" >首页</a>
@@ -143,8 +143,10 @@
                                 <li  id="li_btn121">
                                 <a href="" id="btn121" onclick="chageContentPage(121);return false;" >
                                     个人信息</a></li>
-					            <li><a href="#">设置栏目</a></li>
-					            <li><a href="#">更多设置</a></li>
+					            <li><a href=""  onclick="chageContentPage(122);return false;">
+                                    安全设置</a></li>
+					            <li><a href="" onclick="chageContentPage(123);return false;">
+                                    更多设置</a></li>
 					            <li class="divider"></li>
 					            <li><a onclick="exitLogin();">安全退出</a></li>
 					            </ul></div>	
@@ -157,7 +159,7 @@
  <!-- ================================================== -->
 
   <!-- Docs nav ================================================== -->
-    <div id="main_content_div" class="row" style="width:970px;margin-left:0px;min-height:600px;">
+    <div id="main_content_div" class="row" style="width:970px;margin-left:0px;min-height:800px;">
 	    
   <!--########### Main Content Start ================================================== -->
 <!--########### Main Content Start ================================================== -->
@@ -173,7 +175,7 @@ id="home_content_iframe" width="100%" onload="autoIframeSize('home_content_ifram
 ================================================== -->
   <div class="navbar navbar-inverse navbar-fixed-botton" >
   
-      <footer class="footer"  style="background-image:linear-gradient(to bottom, Orange,#D66123 ">
+      <footer class="footer"  style="margin-top:0px;background-image:linear-gradient(to bottom, Orange,#D66123 ">
         <div class="container"  style="width:970px;">
           <div class="span2" align="center">
       	    <div class=" pull-right" style="margin-top:8px;">
@@ -189,9 +191,9 @@ id="home_content_iframe" width="100%" onload="autoIframeSize('home_content_ifram
       		    <img src="../JqueryUi/img/line1.gif" height="20" width="5"/>
             </div>
       	    <div align="left" style="padding-left:30px;font-color:red;">
-                <p contenteditable="true">联系电话:<strong> <%=FC.cjstudio.getValue("ContactNumber")%></strong></p>
-                <p contenteditable="true">联系邮箱:<strong> <%=FC.cjstudio.getValue("ContactEmail")%></strong></p>
-                <p contenteditable="true">联系地址:<strong> <%=FC.cjstudio.getValue("ContactAddress")%></strong></p>
+                <p contenteditable="true">联系电话:<strong> <%=FC.cjstudio.getConfigValue("ContactNumber")%></strong></p>
+                <p contenteditable="true">联系邮箱:<strong> <%=FC.cjstudio.getConfigValue("ContactEmail")%></strong></p>
+                <p contenteditable="true">联系地址:<strong> <%=FC.cjstudio.getConfigValue("ContactAddress")%></strong></p>
                 <a href="./Others/GiveAdvice.aspx">点击此处</a>给我们提出您的建议或意见
             </div>
 	        </div>

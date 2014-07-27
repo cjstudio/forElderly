@@ -37,7 +37,12 @@
             var username = document.getElementById("username").value.toString();
             var password = document.getElementById("password").value.toString();
             var member = document.getElementById("member").checked.toString();
-            $("#result").load("TestAjax.aspx", { "param": "LoadPost", "username": username, "password": password, "member": member });
+            $("#result").load("TestAjax.aspx",
+            { "param": "LoadPost",
+                "username": username,
+                "password": password,
+                "member": member 
+            });
         }
 
 //        //测试load，使用回调函数
