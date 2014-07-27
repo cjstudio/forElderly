@@ -194,7 +194,7 @@ namespace FC
                      "and tb_article.type_i = t1.id_i " +
                      "and (t1.name_c = '"+typeName+
                      "' or tb_article.type_i in ( select t2.id_i from tb_contentType as t2,tb_contentType as t3 "+
-                     "where t3.id_i =t2.parentType_i and t3.name_c = '"+typeName+"'))";
+                     "where t3.id_i =t2.parentType_i and t3.name_c = '" + typeName + "')) order by tb_article.createTime_dt desc ";
                 cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter adr = new SqlDataAdapter(cmd);
                 DataSet dataset = new DataSet();
@@ -256,7 +256,7 @@ namespace FC
                          "and tb_article.type_i = t1.id_i " +
                          "and ( tb_article.type_i = " + type +
                          " or tb_article.type_i in (select id_i from tb_contentType as t2" +
-                         "where t2.parentType_i = " + type + " ))";
+                         "where t2.parentType_i = " + type + " )) order by tb_article.createTime_dt desc ";
                 }
                 else {
                     sql = "select tb_article.id_i as articleID, tb_user.name_c as AutherName, " +
@@ -266,7 +266,7 @@ namespace FC
                          "tb_article.createTime_dt as CreateTime,tb_article.updateTime_dt as UpdateTime " +
                          "from tb_article, tb_user, tb_contentType as t1 " +
                          "where tb_article.authorId_i = tb_user.id_i " +
-                         "and tb_article.type_i = t1.id_i ";
+                         "and tb_article.type_i = t1.id_i order by tb_article.createTime_dt desc ";
                 }
                 cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter adr = new SqlDataAdapter(cmd);
@@ -331,7 +331,7 @@ namespace FC
                 "')";
                 cmd.CommandText = sql;
                 status = cmd.ExecuteNonQuery();
-                if (status == 1)
+                if (status > 0)
                 {
                     
                     sql = "declare @p varbinary(16) ;"+

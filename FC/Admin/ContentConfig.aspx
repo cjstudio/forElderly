@@ -48,10 +48,10 @@
                             { Response.Write("<tr>"); }
                             else { Response.Write("<tr class=\"success\">"); }
                             Response.Write("<td>"+(i+1)+"</td>");
-                            Response.Write("<td>"+articles[i].title+"</td>");
+                            Response.Write("<td>" + System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(articles[i].title)) + "</td>");
                             Response.Write("<td>"+articles[i].authorName+"</td>");
-                            Response.Write("<td>"+articles[i].createDT.ToShortDateString()+"</td>");
-                            Response.Write("<td>"+articles[i].updateDT.ToShortDateString()+"</td>");
+                            Response.Write("<td>"+articles[i].createDT.ToString()+"</td>");
+                            Response.Write("<td>"+articles[i].updateDT.ToString()+"</td>");
                             Response.Write("<td><a href=\"#\">编辑</a>,<a href=\"#\">删除</a></td>");
                             Response.Write("</tr>");
                         }
@@ -76,7 +76,8 @@
                     <li><a href="?page=<%=page+1 %>">下一页</a></li>
                     <li><a href="?page=<%=(articles.Count+9) / PAGESIZE  %>">尾页</a></li>
                   <% }%>
-                    <li><input type="text" style="width:30px; text-align:center;"value="<%=page %>" />页<a href="#">GO</a></li>
+                    <li><input type="text" id="input_goto_page" style="width:30px; text-align:center;"value="<%=page %>" />页
+                    <a id="btn_goto_page" onclick="goToPage();" href="?<%=page %>">GO</a></li>
                     <li>共 <%=articles.Count  %> 条/<%=(articles.Count+9) / PAGESIZE  %> 页</li>
                   </ul>
                 </div>
@@ -117,7 +118,9 @@
     <script type="text/javascript" src="../Scripts/parallel/core.js"></script>
     <script type="text/javascript" src="../Scripts/parallel/editor.js"></script>
     <script type="text/javascript">
-        
+        function goToPage() {
+            document.getElementById("btn_goto_page").href = '?page=' + document.getElementById("input_goto_page").value;
+        }
     </script>
 
 </body>
