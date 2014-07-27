@@ -11,10 +11,25 @@ namespace FC.Admin
     {
         public bool isIdenUser = false;
         public FC.cjstudio.User user;
+        public int page,PAGESIZE=10;
+        public List<FC.cjstudio.Article> articles;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             initPage();
+
+            if (isIdenUser)
+            {
+                try
+                {
+                    page = int.Parse(Request.QueryString["page"].ToString());
+                }
+                catch (Exception)
+                {
+                    page = 1;
+                }
+                articles = FC.cjstudio.getArticleByTypeId(0);
+            }
         }
         public void initPage()
         {

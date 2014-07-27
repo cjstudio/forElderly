@@ -55,7 +55,7 @@
                                             <td style="width:auto">
                                             </td>
                                             <td>
-                                                <label class="checkbox" contenteditable="true"> 
+                                                <label class="checkbox" > 
                                                 <input id="member" type="checkbox" />近30天内自动登陆 </label>
                                                 <%--<input id="member" type="checkbox" >近30天内自动登陆</input>--%>
                                             </td>
@@ -191,9 +191,9 @@ id="home_content_iframe" width="100%" onload="autoIframeSize('home_content_ifram
       		    <img src="../JqueryUi/img/line1.gif" height="20" width="5"/>
             </div>
       	    <div align="left" style="padding-left:30px;font-color:red;">
-                <p contenteditable="true">联系电话:<strong> <%=FC.cjstudio.getConfigValue("ContactNumber")%></strong></p>
-                <p contenteditable="true">联系邮箱:<strong> <%=FC.cjstudio.getConfigValue("ContactEmail")%></strong></p>
-                <p contenteditable="true">联系地址:<strong> <%=FC.cjstudio.getConfigValue("ContactAddress")%></strong></p>
+                <p >联系电话:<strong> <%=FC.cjstudio.getConfigValue("ContactNumber")%></strong></p>
+                <p >联系邮箱:<strong> <%=FC.cjstudio.getConfigValue("ContactEmail")%></strong></p>
+                <p >联系地址:<strong> <%=FC.cjstudio.getConfigValue("ContactAddress")%></strong></p>
                 <a href="./Others/GiveAdvice.aspx">点击此处</a>给我们提出您的建议或意见
             </div>
 	        </div>

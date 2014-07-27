@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ContentConfig.aspx.cs" Inherits="FC.Admin.ContentConfig1" %>
 
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ContentConfigAdd.aspx.cs" Inherits="FC.Admin.ContentConfig" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +23,63 @@
     <div class="container" id="page_main_content" style=" margin-left:0px;">
 
         <div class="container-fluid">
-            <% if (isIdenUser && (user.type&8)!=0 ) { %>
+            <% if (isIdenUser && (user.type&8)!=0 ) 
+               { %>
             <h2>发布管理</h2>
+
+            
+                <table class="table table-hover " align="center" style=" text-align:center;">
+                  <thead>
+                    <tr >
+                      <th>编号</th>
+                      <th>标题</th>
+                      <th >作者</th>
+                      <th >创建时间</th>
+                      <th >最后更改时间</th>
+                      <th >选项</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <%
+                        for (int i = (page -1 )*PAGESIZE; i < (page)*PAGESIZE&&i<articles.Count; i++)
+                        {
+                            if (i % 2 == 0)
+                            { Response.Write("<tr>"); }
+                            else { Response.Write("<tr class=\"success\">"); }
+                            Response.Write("<td>"+(i+1)+"</td>");
+                            Response.Write("<td>"+articles[i].title+"</td>");
+                            Response.Write("<td>"+articles[i].authorName+"</td>");
+                            Response.Write("<td>"+articles[i].createDT.ToShortDateString()+"</td>");
+                            Response.Write("<td>"+articles[i].updateDT.ToShortDateString()+"</td>");
+                            Response.Write("<td><a href=\"#\">编辑</a>,<a href=\"#\">删除</a></td>");
+                            Response.Write("</tr>");
+                        }
+                     %>
+                      
+                  </tbody>
+                </table>
+              
+                <div class="pagination pagination-centered">
+                  <ul >
+                  <% if (page == 1){ %>
+                    <li><a href="?page=<%=page+1 %>">下一页</a></li>
+                    <li><a href="?page=<%=(articles.Count+9) / PAGESIZE  %>">尾页</a></li>
+                    
+                  <% } else if(page >= ((articles.Count+9) / PAGESIZE) ){%>
+                    <li><a href="?page=1">首页</a></li>
+                    <li><a href="?page=<%=page-1 %>">上一页</a></li>
+                    
+                  <% } else {%>
+                    <li><a href="?page=1">首页</a></li>
+                    <li><a href="?page=<%=page-1 %>">上一页</a></li>
+                    <li><a href="?page=<%=page+1 %>">下一页</a></li>
+                    <li><a href="?page=<%=(articles.Count+9) / PAGESIZE  %>">尾页</a></li>
+                  <% }%>
+                    <li><input type="text" style="width:30px; text-align:center;"value="<%=page %>" />页<a href="#">GO</a></li>
+                    <li>共 <%=articles.Count  %> 条/<%=(articles.Count+9) / PAGESIZE  %> 页</li>
+                  </ul>
+                </div>
 
             <% } else if(isIdenUser) { %>
 							<div class="alert alert-error">
