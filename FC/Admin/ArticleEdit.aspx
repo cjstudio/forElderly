@@ -221,6 +221,10 @@
                 /> 是否允许在首页上显示</label>
                 
                 <button onclick="commitContent();return false;">提交</button>
+                <% 
+                   Response.Write("<input type=\"hidden\" id=\"articleId\" value=\""+article.id+"\" /> "); 
+                   %>
+                
             </div>
                 <% }
                else if (!isIdenUser)
@@ -300,12 +304,13 @@
             var article_title = encode64(titletmp);
             var article_type = document.getElementById('content_type').value;
             var showAtHome = document.getElementById('show_at_home').checked.toString();
-
+            var articleId = document.getElementById('articleId').value;
             htmlobj = $.ajax({ url: "../Account/AjaxServer.aspx",
                 type: "POST",
                 async: false,
-                data: { "code": "commit_article",
+                data: { "code": "commit_update_article",
                     "title": article_title,
+                    "article_id":articleId,
                     "content_type": article_type,
                     "show_at_home": showAtHome,
                     //"content": '"'+content+'"'

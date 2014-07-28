@@ -39,8 +39,14 @@ namespace FC.Account
                 case "get_content_type":
                     getContentType();
                     break;
+                case "commit_update_article":
+                    updateArticle();
+                    break;
                 case "commit_article":
                     commitArticleByAdmin();
+                    break;
+                case "commit_delete_article":
+                    deleteArticle();
                     break;
                 case "get_citys_by_province":
                     getCitysByProvince();
@@ -51,6 +57,51 @@ namespace FC.Account
                 default:
                     checkError("没有处理相关数据的方法");
                     break;
+            }
+        }
+        public void deleteArticle()
+        {
+            string articleId = HttpContext.Current.Request["article_id"].ToString();
+            if (cjstudio.deleteArticle(articleId))
+            {
+                returnValue("删除成功");
+            }
+            else
+            {
+                checkError("删除时出现异常");
+            }
+        }
+        public void updateArticle() 
+        {
+            cjstudio.Article article = new cjstudio.Article();
+            try
+            {
+                article.id = HttpContext.Current.Request["article_id"].ToString();
+                article.title = HttpContext.Current.Request["title"].ToString();
+                article.content = HttpContext.Current.Request["content"].ToString();
+                article.contentType = HttpContext.Current.Request["content_type"].ToString();
+                string showAtHome = HttpContext.Current.Request["show_at_home"].ToString();
+                if (showAtHome == "true")
+                {
+                    article.status = 15;
+                }
+                else
+                {
+                    article.status = 7;
+                }
+                article.contentMd5 = cjstudio.EncryptMd5(article.content);
+                if (cjstudio.updateArticle(article))
+                {
+                    returnValue("文章已修改成功");
+                }
+                else
+                {
+                    checkError("文章修改加失败");
+                }
+            }
+            catch (Exception)
+            {
+                ;
             }
         }
         public void getCityzonesByCity()
@@ -114,7 +165,7 @@ namespace FC.Account
                     returnValue("文章已添加成功");
                 }
                 else {
-                    checkError("文章已添加失败");
+                    checkError("文章添加失败");
                 }
             }
             catch (Exception)

@@ -267,7 +267,7 @@ namespace FC
                 if(rs.Rows.Count == 1)
                 {
                     article = new Article();
-                    article.authorId = rs.Rows[0]["articleID"].ToString();
+                    article.id = articleId;
                     article.authorName = rs.Rows[0]["AutherName"].ToString();
                     article.authorId = rs.Rows[0]["AuthorID"].ToString();
                     article.title = rs.Rows[0]["Title"].ToString();
@@ -425,6 +425,67 @@ namespace FC
                         conn.Close();
                         return true;
                     }
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return false;
+        }
+        public static bool updateArticle(Article article)
+        {
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = "update tb_article set title_c='"+article.title+
+                    "', status_i |= "+article.status+
+                    ", type_i |= "+article.contentType+
+                    ", contentMd5_c='"+article.contentMd5+
+                    "' where id_i = "+article.id;
+                int status;
+                cmd = new SqlCommand(sql, conn);
+
+                status = cmd.ExecuteNonQuery();
+                if (status > 0)
+                {
+                    sql = "declare @p varbinary(16) ;" +
+                        "select @p=textptr(content_t) from tb_article where id_i = " + article.id +
+                        " ;writetext tb_article.content_t @p '" + article.content + "'";
+                    cmd.CommandText = sql;
+                    status = cmd.ExecuteNonQuery();
+                    if (status == -1)
+                    {
+                        cmd.Dispose();
+                        conn.Close();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return false;
+        }
+        public static bool deleteArticle(string articleId)
+        {
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = "delete tb_article where id_i = "+articleId;
+                int status;
+                cmd = new SqlCommand(sql, conn);
+                status = cmd.ExecuteNonQuery();
+                if (status > 0)
+                {
+                    return true;
                 }
             }
             catch (Exception)

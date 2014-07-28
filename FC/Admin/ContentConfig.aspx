@@ -131,7 +131,20 @@
         }
         
         function delArticle(articleId) {
-            ;
+
+            htmlobj = $.ajax({ url: "../Account/AjaxServer.aspx",
+                type: "POST",
+                async: false,
+                data: { "code": "commit_delete_article",
+                    "article_id": articleId
+                }
+            });
+            var dataRes = $.parseJSON(htmlobj.responseText);
+            if (dataRes.status == 'success') {
+                showSuccessMsg('page_main_content', dataRes.msg);
+            } else {
+                showErrorMsg('page_main_content', dataRes.msg);
+            };
         }
     </script>
 
