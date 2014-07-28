@@ -59,6 +59,7 @@
     <Content Include="Account\SignUp.aspx" />
     <Content Include="Account\SignUpScript.aspx" />
     <Content Include="Account\userPic\Default.jpg" />
+    <Content Include="Admin\ArticleEdit.aspx" />
     <Content Include="Admin\ContentConfig.aspx" />
     <Content Include="Admin\ContentConfigAdd.aspx" />
     <Content Include="Admin\Default.aspx" />
@@ -167,6 +168,13 @@
     </Compile>
     <Compile Include="Account\SignUpScript.aspx.designer.cs">
       <DependentUpon>SignUpScript.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ArticleEdit.aspx.cs">
+      <DependentUpon>ArticleEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ArticleEdit.aspx.designer.cs">
+      <DependentUpon>ArticleEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ContentConfig.aspx.cs">
       <DependentUpon>ContentConfig.aspx</DependentUpon>

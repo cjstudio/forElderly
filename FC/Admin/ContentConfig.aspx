@@ -48,11 +48,19 @@
                             { Response.Write("<tr>"); }
                             else { Response.Write("<tr class=\"success\">"); }
                             Response.Write("<td>"+(i+1)+"</td>");
-                            Response.Write("<td>" + System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(articles[i].title)) + "</td>");
+
+                            string tmp = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(articles[i].title));
+                            if(tmp.Length >5)
+                            {
+                                tmp = tmp.Substring(0, 4);
+                                tmp += "...";
+                            }
+                            Response.Write("<td>" + tmp + "</td>");
                             Response.Write("<td>"+articles[i].authorName+"</td>");
                             Response.Write("<td>"+articles[i].createDT.ToString()+"</td>");
                             Response.Write("<td>"+articles[i].updateDT.ToString()+"</td>");
-                            Response.Write("<td><a href=\"#\">编辑</a>,<a href=\"#\">删除</a></td>");
+                            Response.Write("<td><a href=\"ArticleEdit.aspx?article=" + articles[i].id + "\">编辑</a>," +
+                                "<a href=\"#\" onclick=\"delArticle(" + articles[i].id + ");return false;\">删除</a></td>");
                             Response.Write("</tr>");
                         }
                      %>
@@ -120,6 +128,10 @@
     <script type="text/javascript">
         function goToPage() {
             document.getElementById("btn_goto_page").href = '?page=' + document.getElementById("input_goto_page").value;
+        }
+        
+        function delArticle(articleId) {
+            ;
         }
     </script>
 

@@ -31,8 +31,8 @@ namespace FC
         public struct Article 
         {
             public int status;
-            public string id, authorId, authorName, title, contentMd5, content, 
-                contentType, contentTypeName;
+            public string id, authorId, authorName, title, contentMd5, content,
+                contentType, contentTypeName, contentTypeParent;
             public DateTime updateDT, createDT;
         }
         public struct Address 
@@ -185,8 +185,8 @@ namespace FC
                 conn.Open();
                 String sql;
                 sql = "select tb_article.id_i as articleID, tb_user.name_c as AutherName, " +
-                     "tb_article.id_i as AuthorID, tb_article.title_c as Title, " +
-                     "tb_article.contentMd5_c as Md5,tb_article.content_t as Content, " +
+                     "tb_user.id_i as AuthorID, tb_article.title_c as Title, t1.parentType_i as ContentTypeParent, " +
+                     "tb_article.contentMd5_c as Md5,tb_article.content_t as Content, tb_article.status_i as Status, " +
                      "tb_article.type_i as ContentTypeID, t1.name_c as ContentTypeName, " +
                      "tb_article.createTime_dt as CreateTime,tb_article.updateTime_dt as UpdateTime " +
                      "from tb_article, tb_user, tb_contentType as t1 " +
@@ -211,7 +211,15 @@ namespace FC
                     article.content = rs.Rows[i]["Content"].ToString();
                     article.contentType = rs.Rows[i]["ContentTypeID"].ToString();
                     article.contentTypeName = rs.Rows[i]["ContentTypeName"].ToString();
-                    
+                    article.contentTypeParent = rs.Rows[i]["ContentTypeParent"].ToString();
+                    try
+                    {
+                        article.status = int.Parse(rs.Rows[i]["Status"].ToString());
+                    }
+                    catch (Exception)
+                    {
+                        article.status = 0;
+                    } 
                     try
                     {
                         article.createDT = DateTime.Parse(rs.Rows[i]["CreateTime"].ToString());
@@ -232,6 +240,69 @@ namespace FC
             }
             return articles;
         }
+        public static Article getArticleById(string articleId)
+        {
+            Article article = new Article();
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql;
+                    sql = "select tb_article.id_i as articleID, tb_user.name_c as AutherName, " +
+                         "tb_user.id_i as AuthorID, tb_article.title_c as Title,  t1.parentType_i as ContentTypeParent," +
+                         "tb_article.contentMd5_c as Md5,tb_article.content_t as Content, tb_article.status_i as Status," +
+                         "tb_article.type_i as ContentTypeID, t1.name_c as ContentTypeName, " +
+                         "tb_article.createTime_dt as CreateTime,tb_article.updateTime_dt as UpdateTime " +
+                         "from tb_article, tb_user, tb_contentType as t1 " +
+                         "where tb_article.authorId_i = tb_user.id_i " +
+                         "and tb_article.type_i = t1.id_i " +
+                         "and tb_article.id_i = "+articleId;
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                if(rs.Rows.Count == 1)
+                {
+                    article = new Article();
+                    article.authorId = rs.Rows[0]["articleID"].ToString();
+                    article.authorName = rs.Rows[0]["AutherName"].ToString();
+                    article.authorId = rs.Rows[0]["AuthorID"].ToString();
+                    article.title = rs.Rows[0]["Title"].ToString();
+                    article.contentMd5 = rs.Rows[0]["Md5"].ToString();
+                    article.content = rs.Rows[0]["Content"].ToString();
+                    article.contentType = rs.Rows[0]["ContentTypeID"].ToString();
+                    article.contentTypeName = rs.Rows[0]["ContentTypeName"].ToString();
+                    article.contentTypeParent = rs.Rows[0]["ContentTypeParent"].ToString();
+
+                    try
+                    {
+                        article.status = int.Parse(rs.Rows[0]["Status"].ToString());
+                    }
+                    catch (Exception)
+                    {
+                        article.status = 0;
+                    } 
+                    try
+                    {
+                        article.createDT = DateTime.Parse(rs.Rows[0]["CreateTime"].ToString());
+                        article.updateDT = DateTime.Parse(rs.Rows[0]["UpdateTime"].ToString());
+                    }
+                    catch (Exception)
+                    {
+                        article.createDT = DateTime.Now;
+                        article.updateDT = DateTime.Now;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return article;
+        }
         public static List<Article> getArticleByTypeId(int type) 
         {
             List<Article> articles = new List<Article>();
@@ -247,8 +318,8 @@ namespace FC
                 if (type != 0)
                 {
                     sql = "select tb_article.id_i as articleID, tb_user.name_c as AutherName, " +
-                         "tb_article.id_i as AuthorID, tb_article.title_c as Title, " +
-                         "tb_article.contentMd5_c as Md5,tb_article.content_t as Content, " +
+                         "tb_user.id_i as AuthorID, tb_article.title_c as Title, t1.parentType_i as ContentTypeParent, " +
+                         "tb_article.contentMd5_c as Md5,tb_article.content_t as Content, tb_article.status_i as Status, " +
                          "tb_article.type_i as ContentTypeID, t1.name_c as ContentTypeName, " +
                          "tb_article.createTime_dt as CreateTime,tb_article.updateTime_dt as UpdateTime " +
                          "from tb_article, tb_user, tb_contentType as t1 " +
@@ -260,8 +331,8 @@ namespace FC
                 }
                 else {
                     sql = "select tb_article.id_i as articleID, tb_user.name_c as AutherName, " +
-                         "tb_article.id_i as AuthorID, tb_article.title_c as Title, " +
-                         "tb_article.contentMd5_c as Md5,tb_article.content_t as Content, " +
+                         "tb_user.id_i as AuthorID, tb_article.title_c as Title, t1.parentType_i as ContentTypeParent, " +
+                         "tb_article.contentMd5_c as Md5,tb_article.content_t as Content,  tb_article.status_i as Status," +
                          "tb_article.type_i as ContentTypeID, t1.name_c as ContentTypeName, " +
                          "tb_article.createTime_dt as CreateTime,tb_article.updateTime_dt as UpdateTime " +
                          "from tb_article, tb_user, tb_contentType as t1 " +
@@ -276,7 +347,7 @@ namespace FC
                 for (int i = 0; i < rs.Rows.Count; i++) 
                 {
                     article = new Article();
-                    article.authorId = rs.Rows[i]["articleID"].ToString();
+                    article.id = rs.Rows[i]["articleID"].ToString();
                     article.authorName = rs.Rows[i]["AutherName"].ToString();
                     article.authorId = rs.Rows[i]["AuthorID"].ToString();
                     article.title = rs.Rows[i]["Title"].ToString();
@@ -284,7 +355,15 @@ namespace FC
                     article.content = rs.Rows[i]["Content"].ToString();
                     article.contentType = rs.Rows[i]["ContentTypeID"].ToString();
                     article.contentTypeName = rs.Rows[i]["ContentTypeName"].ToString();
-
+                    article.contentTypeParent = rs.Rows[i]["ContentTypeParent"].ToString();
+                    try
+                    {
+                        article.status = int.Parse(rs.Rows[i]["Status"].ToString());
+                    }
+                    catch (Exception)
+                    {
+                        article.status = 0;
+                    } 
                     try
                     {
                         article.createDT = DateTime.Parse(rs.Rows[i]["CreateTime"].ToString());
