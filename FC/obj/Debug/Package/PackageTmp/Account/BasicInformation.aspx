@@ -382,19 +382,7 @@ function commit_upload() {
         ajaxFileUpload();
     }
 }
-function checkUploderFileType(fileName) {
-    var fileType = /\.[^\.]+/.exec(fileName);
-    var allowType = new Array();
-    allowType[0] = '.jpg';
-    allowType[1] = '.gif';
-    allowType[2] = '.png';
-    allowType[3] = '.bmp';
-    allowType[4] = '.ico';
-    for (var i = 0; i < allowType.length; i++) {
-        if (fileType == allowType[i]) return true;
-    }
-    return false;
-}
+
 function ajaxFileUpload() {
     var oodiv = document.getElementById("fileToUpload");
     //alert(oodiv.value);

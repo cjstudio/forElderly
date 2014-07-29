@@ -63,6 +63,11 @@
 									        <div id="accordion-element-002" class="accordion-body collapse">
 										        
                                                 <div class="accordion-inner">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Admin/HomePicChageConfig.aspx');">
+                                                 &nbsp;&nbsp;首页滚图</a>
+										        </div>
+
+                                                <div class="accordion-inner">
                                                 <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Admin/ContentConfigAdd.aspx');">
                                                  &nbsp;&nbsp;添加文章</a>
 										        </div>
@@ -80,11 +85,6 @@
                                                 <div class="accordion-inner">
                                                 <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
                                                  &nbsp;&nbsp;文章审核</a>
-										        </div>
-                                                
-                                                <div class="accordion-inner">
-                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Account/Repassword.aspx');">
-                                                 &nbsp;&nbsp;</a>
 										        </div>
                                                 
                                                 <div class="accordion-inner">

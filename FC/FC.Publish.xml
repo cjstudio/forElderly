@@ -2,19 +2,20 @@
 <publishData>
   <publishProfile publishUrl="E:\fc\web" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
     <file relUrl="TEST/Test_db.aspx" publishTime="07/20/2014 11:56:35" />
-    <file relUrl="Default.aspx" publishTime="07/26/2014 21:13:37" />
-    <file relUrl="Admin/ContentConfig.aspx" publishTime="07/26/2014 11:48:28" />
+    <file relUrl="Default.aspx" publishTime="07/27/2014 21:51:55" />
+    <file relUrl="Admin/ContentConfig.aspx" publishTime="07/28/2014 20:45:10" />
     <file relUrl="img/logo (3).png" publishTime="07/20/2014 11:56:35" />
-    <file relUrl="Others/HomeContent.aspx" publishTime="07/21/2014 22:46:01" />
+    <file relUrl="Others/HomeContent.aspx" publishTime="07/28/2014 22:59:39" />
     <file relUrl="Journal/MoreConfig.aspx" publishTime="07/26/2014 00:13:08" />
     <file relUrl="img/Default.jpg" publishTime="07/21/2014 19:24:00" />
     <file relUrl="Community/Community.aspx" publishTime="07/20/2014 11:56:35" />
+    <file relUrl="TEST/TestAjax.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Admin/ContentConfigAdd.aspx" publishTime="07/26/2014 11:52:38" />
     <file relUrl="Styles/Site.css" publishTime="07/20/2014 11:56:35" />
     <file relUrl="TEST/JqueryAjaxLoad.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Web.config" publishTime="07/20/2014 11:56:35" />
     <file relUrl="TEST/OldAjax.aspx" publishTime="07/20/2014 11:56:35" />
-    <file relUrl="Config/WebSite.config" publishTime="07/26/2014 00:06:04" />
+    <file relUrl="Config/WebSite.config" publishTime="07/28/2014 22:59:12" />
     <file relUrl="img/logo (6).png" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Others/GiveAdvice.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="img/test2.jpg" publishTime="07/20/2014 11:56:35" />
@@ -25,7 +26,7 @@
     <file relUrl="Account/AjaxServer.aspx" publishTime="07/20/2014 19:21:36" />
     <file relUrl="Elderly/Elderly.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Account/AboutErrorCode.txt" publishTime="07/20/2014 11:56:35" />
-    <file relUrl="Account/BasicInformation.aspx" publishTime="07/26/2014 22:59:43" />
+    <file relUrl="Account/BasicInformation.aspx" publishTime="07/28/2014 23:11:59" />
     <file relUrl="Others/SupportUs.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Account/SignUpScript.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="07/20/2014 11:56:35" />
@@ -38,34 +39,35 @@
     <file relUrl="img/homepagecontent3.jpg" publishTime="07/21/2014 22:45:16" />
     <file relUrl="Others/provision.html" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Scripts/Login.js" publishTime="07/20/2014 11:56:35" />
-    <file relUrl="TEST/TestAjax.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Scripts/jquery-1.4.1.js" publishTime="07/20/2014 11:56:35" />
+    <file relUrl="Styles/parallel/edit_icons.css" publishTime="07/24/2014 11:07:35" />
     <file relUrl="img/parallel/tbk.jpg" publishTime="07/24/2014 10:42:10" />
     <file relUrl="Account/Repassword.aspx" publishTime="07/26/2014 00:13:08" />
     <file relUrl="TEST/fuck.aspx" publishTime="07/26/2014 10:00:28" />
-    <file relUrl="Scripts/cjstudio.js" publishTime="07/26/2014 15:34:22" />
+    <file relUrl="Scripts/cjstudio.js" publishTime="07/28/2014 23:11:27" />
+    <file relUrl="Admin/HomePicChageConfig.aspx" publishTime="07/28/2014 23:19:39" />
     <file relUrl="Scripts/md5.js" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="07/20/2014 11:56:35" />
     <file relUrl="img/homepagecontent1.jpg" publishTime="07/21/2014 22:45:16" />
     <file relUrl="img/logo (1).png" publishTime="07/20/2014 11:56:35" />
     <file relUrl="TEST/AjaxUploadClient.aspx" publishTime="07/21/2014 10:14:58" />
-    <file relUrl="Account/Login.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Site.Master" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Scripts/Home.js" publishTime="07/26/2014 15:29:46" />
     <file relUrl="img/homepagecontent2.jpg" publishTime="07/21/2014 22:45:16" />
     <file relUrl="Journal/Journal.aspx" publishTime="07/26/2014 00:14:44" />
     <file relUrl="Scripts/parallel/core.js" publishTime="07/24/2014 10:41:52" />
-    <file relUrl="bin/FC.dll" publishTime="07/26/2014 22:56:15" />
+    <file relUrl="bin/FC.dll" publishTime="07/28/2014 22:52:35" />
     <file relUrl="Others/taiji.js" publishTime="07/21/2014 22:24:32" />
     <file relUrl="TEST/AjaxUploadServer.aspx" publishTime="07/20/2014 11:56:35" />
-    <file relUrl="bin/FC.pdb" publishTime="07/26/2014 22:56:15" />
+    <file relUrl="bin/FC.pdb" publishTime="07/28/2014 22:52:35" />
     <file relUrl="TEST/TestForm.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="Scripts/parallel/jquery.js" publishTime="07/24/2014 10:41:52" />
     <file relUrl="Styles/parallel/parallel.css" publishTime="07/24/2014 20:35:41" />
     <file relUrl="img/logo (4).png" publishTime="07/20/2014 11:56:35" />
-    <file relUrl="Admin/Default.aspx" publishTime="07/26/2014 16:12:38" />
+    <file relUrl="Admin/ArticleEdit.aspx" publishTime="07/28/2014 20:35:04" />
+    <file relUrl="Admin/Default.aspx" publishTime="07/28/2014 22:29:34" />
     <file relUrl="TEST/TestBigJson.aspx" publishTime="07/25/2014 23:58:44" />
-    <file relUrl="Styles/parallel/edit_icons.css" publishTime="07/24/2014 11:07:35" />
+    <file relUrl="Account/Login.aspx" publishTime="07/20/2014 11:56:35" />
     <file relUrl="img/logo.gif" publishTime="07/23/2014 15:53:05" />
     <file relUrl="Scripts/parallel/editor.js" publishTime="07/24/2014 10:41:52" />
     <file relUrl="Others/Loading.html" publishTime="07/21/2014 22:31:03" />

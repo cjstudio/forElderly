@@ -15,24 +15,24 @@
                 <div class="carousel slide" id="carousel-861163">
                   <div class="carousel-inner" >
                     <div class="item  active"> 
-                        <img alt="" src="../img/homepagecontent1.jpg" style=" height:300px; margin-right: auto; margin-left: auto;  ">
-                      <div class="carousel-caption" contenteditable="true">
-                        <h4>常常电话沟通沟通</h4>
-                        <p>常常给家里的老人打打电话，要常常关心家里老人的近况，这也会降低他们的孤独感，其实一个短短的电话就会让老人觉得心里暖暖的，觉得被牵挂！</p>
+                        <img alt="" src="../img/<%=FC.cjstudio.getConfigValue("HomeMainRollPic1_Pic")%>" style=" height:300px; margin-right: auto; margin-left: auto;  ">
+                      <div class="carousel-caption" >
+                        <h4><%=FC.cjstudio.getConfigValue("HomeMainRollPic1_Title")%></h4>
+                        <p><%=FC.cjstudio.getConfigValue("HomeMainRollPic1_Content")%></p>
                       </div>
                     </div>
                     <div class="item" > 
-                    <img alt="" src="../img/homepagecontent2.jpg" style=" height:300px; margin-right: auto; margin-left: auto;">
-                      <div class="carousel-caption" contenteditable="true">
-                        <h4>偶尔给老人买点东西</h4>
-                        <p>偶尔给家里的老人买点东西，可以是衣服，可以是其他，依据个人的能力量力而行即可，这些都会让老人家觉得心里暖暖的！</p>
+                    <img alt="" src="../img/<%=FC.cjstudio.getConfigValue("HomeMainRollPic2_Pic")%>" style=" height:300px; margin-right: auto; margin-left: auto;">
+                      <div class="carousel-caption" >
+                        <h4><%=FC.cjstudio.getConfigValue("HomeMainRollPic2_Title")%></h4>
+                        <p><%=FC.cjstudio.getConfigValue("HomeMainRollPic2_Content")%></p>
                       </div>
                     </div>
                     <div class="item "> 
-                    <img alt="" src="../img/homepagecontent3.jpg" style=" height:300px; margin-right: auto; margin-left: auto;">
-                      <div class="carousel-caption" contenteditable="true">
-                        <h4>学会关心尊重身边的老人</h4>
-                        <p>其实尊重是相互的，谁都希望被尊重，不管老人和你是否有关系，都应该抱以一份尊敬之心、关爱之心，请记住尊重，关心是相互的，不是说说而已！</p>
+                    <img alt="" src="../img/<%=FC.cjstudio.getConfigValue("HomeMainRollPic3_Pic")%>" style=" height:300px; margin-right: auto; margin-left: auto;">
+                      <div class="carousel-caption" >
+                        <h4><%=FC.cjstudio.getConfigValue("HomeMainRollPic3_Title")%></h4>
+                        <p><%=FC.cjstudio.getConfigValue("HomeMainRollPic3_Content")%></p>
                       </div>
                     </div>
                   </div>

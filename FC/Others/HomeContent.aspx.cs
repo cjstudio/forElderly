@@ -11,9 +11,42 @@ namespace FC.Others
     {
         public bool isIdenUser = false;
         public FC.cjstudio.User user;
+        public List<FC.cjstudio.Article> articleAboutParent, articleAnnouncement, articleJournal, articleCommunity;
         protected void Page_Load(object sender, EventArgs e)
         {
             initPage();
+            try
+            {                
+                articleAboutParent = cjstudio.getArticleByTypeName("爸妈频道");
+            }
+            catch (Exception)
+            {
+                ;
+            } 
+            try
+            {
+                articleAnnouncement = cjstudio.getArticleByTypeName("站内公告");
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            try
+            {
+                articleJournal = cjstudio.getArticleByTypeName("志愿者脚步");
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            try
+            {
+                articleCommunity = cjstudio.getArticleByTypeName("社区管理");
+            }
+            catch (Exception)
+            {
+                ;
+            }
         }
         public void initPage()
         {

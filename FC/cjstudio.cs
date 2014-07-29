@@ -203,7 +203,7 @@ namespace FC
                 for (int i = 0; i < rs.Rows.Count; i++)
                 {
                     article = new Article();
-                    article.authorId = rs.Rows[i]["articleID"].ToString();
+                    article.id = rs.Rows[i]["articleID"].ToString();
                     article.authorName = rs.Rows[i]["AutherName"].ToString();
                     article.authorId = rs.Rows[i]["AuthorID"].ToString();
                     article.title = rs.Rows[i]["Title"].ToString();
