@@ -80,8 +80,8 @@
     <script type="text/javascript" src="../Scripts/cjstudio.js"></script>
     <script type="text/javascript" src="../Scripts/ajaxfileupload.js"></script>
     <script type="text/javascript">
-        function commit_upload() {
-            if (document.getElementById("roll_pic1_pic").value == "") {
+        function commit_upload(picIdNum) {
+            if (document.getElementById("roll_pic" + picIdNum + "_pic").value == "") {
                 document.getElementById("commit_status").innerHTML = '<div class="alert alert-error">' +
 								 '<button type="button" class="close" data-dismiss="alert">×</button>' +
 								 '<h4>' +
@@ -100,12 +100,12 @@
             else {
                 document.getElementById("commit_status").innerHTML = '<img id="loading" src="../JqueryUi/img/loading2.gif" style="display:none;width:100px;"/>';
 
-                ajaxFileUpload();
+                ajaxFileUpload(picIdNum);
             }
         }
 
-        function ajaxFileUpload() {
-            var oodiv = document.getElementById("roll_pic1_pic");
+        function ajaxFileUpload(picIdNum) {
+            var oodiv = document.getElementById("roll_pic" + picIdNum + "_pic");
             //alert(oodiv.value);
             //starting setting some animation when the ajax starts and completes
             $("#loading")
@@ -120,9 +120,9 @@
 	{
 	    url: "../Account/AjaxServer.aspx",
 	    secureuri: false,
-	    fileElementId: 'roll_pic1_pic',
+	    fileElementId: "roll_pic" + picIdNum + "_pic",
 	    dataType: 'json',
-	    data: { code: "roll_pic1_pic" },
+	    data: { code: "home_roll_pic_file",picNum:picIdNum },
 	    success: function (data, status) {
 	        if (typeof (data.status) != 'undefined') {
 	            if (data.status != '') {

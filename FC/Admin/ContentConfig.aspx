@@ -34,6 +34,7 @@
                       <th>编号</th>
                       <th>标题</th>
                       <th >作者</th>
+                      <th >栏目</th>
                       <th >创建时间</th>
                       <th >最后更改时间</th>
                       <th >选项</th>
@@ -56,7 +57,8 @@
                                 tmp += "...";
                             }
                             Response.Write("<td>" + tmp + "</td>");
-                            Response.Write("<td>"+articles[i].authorName+"</td>");
+                            Response.Write("<td>" + articles[i].authorName + "</td>");
+                            Response.Write("<td>" + articles[i].contentTypeName + "</td>");
                             Response.Write("<td>"+articles[i].createDT.ToString()+"</td>");
                             Response.Write("<td>"+articles[i].updateDT.ToString()+"</td>");
                             Response.Write("<td><a href=\"ArticleEdit.aspx?article=" + articles[i].id + "\">编辑</a>," +

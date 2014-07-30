@@ -19,7 +19,7 @@
 <link href="../Styles/parallel/edit_icons.css" rel="stylesheet"/>
 </head>
 
-<body  style="padding-top:0px;min-height:800px;min-width:800px;">
+<body  style="padding-top:0px;min-height:800px;min-width:820px;">
     <div class="container" id="page_main_content" style=" margin-left:0px;">
 
         <div class="container-fluid">

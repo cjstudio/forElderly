@@ -41,7 +41,7 @@
                 </div>
               
         </div>
-        <div class="span9 bs-docs-sidebar pull-left" >
+        <div class="span9 bs-docs-sidebar pull-left">
       	    <div style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
@@ -49,23 +49,33 @@
                 <a  class="pull-right" href="../Elderly/Elderly.aspx">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
         	<div><!-- 栏目内容 -->
-                <div align="center" >
-                  <p>Test Main</p>
-                  <p>Test Main</p>
-                  <p>Test Main</p>
-                  <p><%=user.name %></p>
-                  <p><%=
-                         Session["uname"] == "" ? "Error" : Session["uname"] 
-                          %></p>
-                  <p>Test Main</p>
-                  <p>Test Main</p>
-                  <p>Test Main</p>
+                <div >
+                <br />
+                
+                  <%
+                      for (int i = 0; i < articleAboutParent.Count  && i<8; i++)
+                      {
+                          try
+                          {
+                              string tmp = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(articleAboutParent[i].title)); ;
+                              tmp = tmp.Length > 12 ? tmp.Substring(0, 10) + "..." : tmp;
+
+                              Response.Write("<ul><a href=\"../Others/ShowArticlePage.aspx?article=" +
+                                  articleAboutParent[i].id + "\">" + tmp + "</a>&nbsp;" +
+                                  articleAboutParent[i].createDT.ToShortDateString()+"</ul>");   
+                          }
+                          catch (Exception)
+                          {
+                              throw;
+                          }
+                      }                      
+                       %>
                 </div>
             </div>
         </div>
      </div>
 
-       <div class="span3 pull-right" >
+       <div class="span5 pull-right"  style="min-height:350px;">
         <div  style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
@@ -73,13 +83,27 @@
                 <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
         	<div><!-- 栏目内容 -->
-                <div align="center" >
-                  <p>Test Right</p>
-                  <p>Test Right</p>
-                  <p>Test Right</p>
-                  <p>Test Right</p>
-                  <p>Test Right</p>
-                  <p>Test Right</p>
+                <div >
+                <br />
+                  
+                  <%
+                      for (int i = 0; i < articleAnnouncement.Count && i < 8; i++)
+                      {
+                          try
+                          {
+                              string tmp = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(articleAnnouncement[i].title)); ;
+                              tmp = tmp.Length > 12 ? tmp.Substring(0, 10) + "..." : tmp;
+
+                              Response.Write("<ul><a href=\"../Others/ShowArticlePage.aspx?article=" +
+                                  articleAnnouncement[i].id + "\">" + tmp + "</a>&nbsp;" +
+                                  articleAnnouncement[i].createDT.ToShortDateString() + "</ul>");   
+                          }
+                          catch (Exception)
+                          {
+                              throw;
+                          }
+                      }                      
+                       %>
                 </div>
             </div>
         </div>
@@ -94,13 +118,26 @@
                 <a  class="pull-right" href="../Journal/Journal.aspx">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
         	<div><!-- 栏目内容 -->
-                <div align="center" >
-                  <p>Test Right</p>
-                  <p>Test Right</p>
-                  <p>Test Right</p>
-                  <p>Test Right</p>
-                  <p>Test Right</p>
-                  <p>Test Right</p>
+                <div >
+                <br />
+                  <%
+                      for (int i = 0; i < articleJournal.Count && i < 8; i++)
+                      {
+                          try
+                          {
+                              string tmp = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(articleJournal[i].title)); ;
+                              tmp = tmp.Length > 12 ? tmp.Substring(0, 10) + "..." : tmp;
+
+                              Response.Write("<ul><a href=\"../Others/ShowArticlePage.aspx?article=" +
+                                  articleJournal[i].id + "\">" + tmp + "</a>&nbsp;" +
+                                  articleJournal[i].createDT.ToShortDateString() + "</ul>");   
+                          }
+                          catch (Exception)
+                          {
+                              throw;
+                          }
+                      }                      
+                       %>
                 </div>
             </div>
         </div>
@@ -114,39 +151,26 @@
                 <a  class="pull-right" href="../Community/Community.aspx">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
         	<div><!-- 栏目内容 -->
-               <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                  </ol>
+                <div  >
+                <br />
+                  <%
+                      for (int i = 0; i < articleCommunity.Count && i < 8; i++)
+                      {
+                          try
+                          {
+                              string tmp = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(articleCommunity[i].title)); ;
+                              tmp = tmp.Length > 12 ? tmp.Substring(0, 10)+"..." : tmp;
 
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                      <img src="../img/test1.jpg" alt="321"/>
-                      <div class="carousel-caption">
-                        
-                      </div>
-                    </div>
-                    <div class="item">
-                      <img src="../img/test2.jpg" alt="123"/>
-                      <div class="carousel-caption">
-                      </div>
-                    </div>
-                    ...
-                  </div>
-
-                  <!-- Controls -->
-                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only"><</span>
-                  </a>
-                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="sr-only">></span>
-                  </a>
+                              Response.Write("<ul><a href=\"../Others/ShowArticlePage.aspx?article=" +
+                                  articleCommunity[i].id + "\">" + tmp + "</a>&nbsp;" +
+                                  articleCommunity[i].createDT.ToShortDateString() + "</ul>");   
+                          }
+                          catch (Exception)
+                          {
+                              throw;
+                          }
+                      }                      
+                       %>
                 </div>
             </div>
         </div>
