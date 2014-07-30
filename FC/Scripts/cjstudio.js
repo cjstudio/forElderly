@@ -31,7 +31,7 @@ function chageIframeContent(IframeDivId,IframeSrc) {
     var mainContentDiv = document.getElementById(IframeDivId);
     var divWidth = document.all.main_content.offsetWidth;
 
-    mainContentDiv.innerHTML = '<iframe src="' + IframeSrc + '"  scrolling="no" frameborder="0" height="100%" id="content_iframe" width="100%" onload="IFrameReSize(\'content_iframe\');IFrameReSizeWidth(\'content_iframe\');"></iframe>';
+    mainContentDiv.innerHTML = '<iframe src="' + IframeSrc + '"  scrolling="no" frameborder="0" height="100%" id="' + IframeDivId + '" width="100%" onload="IFrameReSize(\'' + IframeDivId + '\');IFrameReSizeWidth(\'' + IframeDivId + '\');"></iframe>';
     var divIframe = document.getElementById("content_iframe");
     divIframe.offsetWidth;
 }

@@ -11,8 +11,7 @@ namespace FC.Admin
     {
         public bool isIdenUser = false;
         public FC.cjstudio.User user;
-        public int page, PAGESIZE = 10;
-        public List<FC.cjstudio.Article> articles;
+        public string pic1Path, pic2Path, pic3Path;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,7 +19,9 @@ namespace FC.Admin
 
             if (isIdenUser)
             {
-                ;
+                pic1Path = cjstudio.getConfigValue("HomeMainRollPic1_Pic_tmp");
+                pic2Path = cjstudio.getConfigValue("HomeMainRollPic2_Pic_tmp");
+                pic3Path = cjstudio.getConfigValue("HomeMainRollPic3_Pic_tmp");
             }
         }
         public void initPage()

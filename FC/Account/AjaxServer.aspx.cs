@@ -54,10 +54,100 @@ namespace FC.Account
                 case "get_cityzones_by_city":
                     getCityzonesByCity();
                     break;
+                case "home_roll_pic_file":
+                    chageHomeRollPic();
+                    break;
+                case "chage_home_roll_pic":
+                    chageHomeRollContent();
+                    break;
                 default:
                     checkError("没有处理相关数据的方法");
                     break;
             }
+        }
+        public void chageHomeRollContent()
+        {
+            string picSrcPath = Server.MapPath("~/Others/tmp/HomeRollPic/");
+            string picDstPath = Server.MapPath("~/img/");
+            try
+            {
+                string title1 = HttpContext.Current.Request["title1"].ToString();
+                string content1 = HttpContext.Current.Request["content1"].ToString();
+
+                string title2 = HttpContext.Current.Request["title2"].ToString();
+                string content2 = HttpContext.Current.Request["content2"].ToString();
+
+                string title3 = HttpContext.Current.Request["title3"].ToString();
+                string content3 = HttpContext.Current.Request["content3"].ToString();
+
+                cjstudio.setConfitKeyValue("HomeMainRollPic1_Title", title1);
+                cjstudio.setConfitKeyValue("HomeMainRollPic1_Content", content1);
+                cjstudio.setConfitKeyValue("HomeMainRollPic2_Title", title2);
+                cjstudio.setConfitKeyValue("HomeMainRollPic2_Content", content2);
+                cjstudio.setConfitKeyValue("HomeMainRollPic3_Title", title3);
+                cjstudio.setConfitKeyValue("HomeMainRollPic3_Content", content3);
+
+                cjstudio.setConfitKeyValue("HomeMainRollPic1_Pic", cjstudio.getConfigValue("HomeMainRollPic1_Pic_tmp"));
+                cjstudio.setConfitKeyValue("HomeMainRollPic2_Pic", cjstudio.getConfigValue("HomeMainRollPic2_Pic_tmp"));
+                cjstudio.setConfitKeyValue("HomeMainRollPic3_Pic", cjstudio.getConfigValue("HomeMainRollPic3_Pic_tmp"));
+                try
+                {
+                    File.Move(picSrcPath + cjstudio.getConfigValue("HomeMainRollPic1_Pic_tmp"),
+                        picDstPath + cjstudio.getConfigValue("HomeMainRollPic1_Pic_tmp"));
+                }
+                catch (Exception)
+                {
+                    ;
+                } 
+                try
+                {
+                    File.Move(picSrcPath + cjstudio.getConfigValue("HomeMainRollPic2_Pic_tmp"),
+                        picDstPath + cjstudio.getConfigValue("HomeMainRollPic2_Pic_tmp"));
+                }
+                catch (Exception)
+                {
+                    ;
+                } 
+                try
+                {
+                    File.Move(picSrcPath + cjstudio.getConfigValue("HomeMainRollPic3_Pic_tmp"),
+                        picDstPath + cjstudio.getConfigValue("HomeMainRollPic3_Pic_tmp"));
+                }
+                catch (Exception)
+                {
+                    ;
+                }
+                returnValue("修改成功");
+            }
+            catch (Exception)
+            {
+                ;
+            }
+        }
+        public void chageHomeRollPic()
+        {
+            string picPath = Server.MapPath("~/Others/tmp/HomeRollPic/");
+            if (Request.Files.Count == 1)
+            {
+                try
+                {
+                    string picNum = HttpContext.Current.Request["picNum"].ToString();
+                    string picType = Path.GetExtension(Request.Files[0].FileName);
+                    
+                    Request.Files[0].SaveAs(picPath + "homepagecontent"+picNum + picType);
+                    cjstudio.setConfitKeyValue("HomeMainRollPic" + picNum +"_Pic_tmp", "homepagecontent" + picNum + picType);
+                    returnValue("homepagecontent" + picNum + picType);
+                }
+                catch (Exception)
+                {
+                    Response.Write("{\"error\" :\"error\",\"status\" :\"error\", msg:\"文件上传出现异常\"}"); ;
+                }
+            }
+            else
+            {
+                Response.Write("{\"error\":\"=========\", \"filetype\":\"Error\"}");
+            }
+            Response.End();
         }
         public void deleteArticle()
         {

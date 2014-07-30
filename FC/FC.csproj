@@ -356,6 +356,7 @@
     <Folder Include="Account\userImg\" />
     <Folder Include="App_Data\" />
     <Folder Include="Journal\DangyuanPics\" />
+    <Folder Include="Others\tmp\HomeRollPic\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
