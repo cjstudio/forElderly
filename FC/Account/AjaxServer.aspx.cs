@@ -408,7 +408,7 @@ namespace FC.Account
             }
             catch (Exception)
             {
-                Response.Flush(); ;
+                Response.Flush();
             }
         }
         public void initPage()
