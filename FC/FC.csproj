@@ -64,6 +64,7 @@
     <Content Include="Admin\ContentConfigAdd.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\HomePicChageConfig.aspx" />
+    <Content Include="Community\AddElderly.aspx" />
     <Content Include="Community\Community.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Elderly\Elderly.aspx" />
@@ -207,6 +208,13 @@
       <DependentUpon>HomePicChageConfig.aspx</DependentUpon>
     </Compile>
     <Compile Include="cjstudio.cs" />
+    <Compile Include="Community\AddElderly.aspx.cs">
+      <DependentUpon>AddElderly.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Community\AddElderly.aspx.designer.cs">
+      <DependentUpon>AddElderly.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Community\Community.aspx.cs">
       <DependentUpon>Community.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -362,7 +370,9 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\WebSite.config" />
+    <Content Include="Config\WebSite.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
