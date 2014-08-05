@@ -7,19 +7,18 @@ using System.Web.UI.WebControls;
 
 namespace FC.Community
 {
-    public partial class Community : System.Web.UI.Page
+    public partial class EditElderly : System.Web.UI.Page
     {
         public bool isIdenUser = false;
         public FC.cjstudio.User user;
+        public List<cjstudio.Elderly> elderlys = new List<cjstudio.Elderly>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             initPage();
-
-            if (isIdenUser)
-            {
-            }
+            
         }
+
         public void initPage()
         {
             try

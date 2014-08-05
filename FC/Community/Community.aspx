@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Community.aspx.cs" Inherits="FC.Community" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Community.aspx.cs" Inherits="FC.Community.Community" %>
 
 <html lang="en">
 <head>
@@ -102,11 +102,7 @@
 				        <div class="span8">
                             <div  id="main_content">
                                 
-                                <iframe src="<%
-                                    if (page == "122") { Response.Write("../Account/Repassword.aspx"); }
-                                    else if (page == "123") { Response.Write("../Admin/ContentConfig.aspx"); }
-                                    else { Response.Write("../Account/BasicInformation.aspx"); }
-                                 %>"  scrolling="no" frameborder="0" height="100%" id="content_iframe" width="100%" onload="IFrameReSize('content_iframe');IFrameReSizeWidth('content_iframe');"></iframe>
+                                <iframe src=""  scrolling="no" frameborder="0" height="100%" id="content_iframe" width="100%" onload="IFrameReSize('content_iframe');IFrameReSizeWidth('content_iframe');"></iframe>
                             </div>
                         </div>
 		        </div>

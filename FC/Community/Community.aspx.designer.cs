@@ -7,7 +7,8 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace FC {
+namespace FC.Community
+{
     
     
     public partial class Community {

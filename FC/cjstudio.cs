@@ -23,6 +23,17 @@ namespace FC
             public DateTime birDT; 
             public Address fullHomeAddress, fullLivingAddress;
         }
+        public struct Community
+        {
+            public string id, name,adminId,description;
+            public Address address;
+        }
+        public struct Elderly
+        {
+            public string id, name, idCard, password32, sex, birthday, phoneNum, description,
+                healthyType, livingAddress, guardianName, guardianPhone,community;
+            public DateTime birDT, CraDT;
+        }
         public struct Journal
         {
             public string id, description, dangyuanPic, politicalStatus,idCarcPic1,idCardPic2;
@@ -40,8 +51,117 @@ namespace FC
             public string name, id,parentId;
             public string province, city, cityzone;
             public string provinceId, cityId, cityzoneId;
+            public string description;
         }
 
+        public static Community getCommunityByAdmin(string adminId)
+        {
+            Community community = new Community();
+            community.adminId = adminId;
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = "select id_i,name_c,address_c from tb_community where adminId_i = " + adminId ;
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                if (rs.Rows.Count == 1)
+                {
+                    community.id = rs.Rows[0]["id_i"].ToString();
+                    community.name = rs.Rows[0]["name_c"].ToString();
+                    community.address.description = rs.Rows[0]["address_c"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return community;
+        }
+        public static string addElderly(Elderly elderly)
+        {
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter adr ;
+            string sql;
+            int status;
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                sql = "insert tb_user(name_c,sex_c,birthday_d,idCard_c,livingPlace_c,phone_c "+
+                    "values('"+elderly.name+"','"+
+                    elderly.sex+"','"+
+                    elderly.birthday+"','"+
+                    elderly.idCard +"','"+
+                    elderly.livingAddress + "','" +
+                    elderly.phoneNum + "')";
+                cmd = new SqlCommand(sql, conn);
+                status = cmd.ExecuteNonQuery();
+                if (status < 1)
+                {
+                    return "创建用户 " + elderly.name + " 失败";
+                }
+                sql = "select id_i from tb_user where idCard_c = '" + elderly.idCard + "'";
+                cmd.CommandText = sql;
+                adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                if (rs.Rows.Count != 1)
+                {
+                    return "创建用户 " + elderly.name + " 出现异常";
+                }
+                elderly.id = rs.Rows[0][0].ToString();
+                int tmpHealthy = getHealthyIdByName(elderly.healthyType);
+                sql = "insert into tb_elderly(id_i,status_i,healthyType_i,guardianName_c,"+
+                    "guardianPhone_c,description_c,community_i) " +
+                    "values("+elderly.id+",1,"+tmpHealthy+",'"+elderly.guardianName+"','"+
+                    elderly.guardianPhone+"','"+elderly.description+"',"+
+                    elderly.community+")";
+                cmd.CommandText = sql;
+                status = cmd.ExecuteNonQuery();
+                if (status < 1)
+                {
+                    return "创建用户 " + elderly.name + " 成功";
+                }
+            }
+            catch (Exception)
+            {
+                return "创建用户 " + elderly.name + " 失败";
+            }
+            return "";
+        }
+        public static int getHealthyIdByName(string name)
+        {
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql = "select id_i from tb_healthyType where name_c = '" + name+"'";
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                if (rs.Rows.Count == 1)
+                {
+                    return int.Parse(rs.Rows[0][0].ToString());
+                }
+            }
+            catch (Exception)
+            {
+                ;
+            }
+            return 0;
+        }
         public static Address getFullAddress(string cityzoneId)
         {
             Address addr = new Address();

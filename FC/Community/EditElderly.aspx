@@ -1,9 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddElderly.aspx.cs" Inherits="FC.Community.AddElderly" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditElderly.aspx.cs" Inherits="FC.Community.EditElderly" %>
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddElderly.aspx.cs" Inherits="FC.Community.AddElderly" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
   <meta charset="utf-8"/>
   <title><%=FC.cjstudio.getConfigValue("MainTitle")%></title>
   <meta name="author" content="CJ_Studio"/>
@@ -27,28 +29,66 @@
         <div class="row-fluid">
 	        <div class="span12">
                 <h2>
-                    添加社区老人
+                    编辑社区老人
                 </h2>
 	        </div>
         </div>
-        <%
-            if (!fileUploadState)
-            {
-                %>
         <div>
-            <h4><p><a href="XlsModel/model.xls">下载.xls格式模板</a></p>
-            <a href="XlsModel/excemple.xls">下载上传文件示例</a></h4>
-            <form id="form" name="form" method="post" action="#" runat="server">
-                <label>选择要上传的.xls文件</label><input id="File1" type="file" runat="server" name="file_uploder"/><br />
-                <input name="submit" type="submit" value="上传" />
-            </form>
+
+            <table class="table table-bordered table-hover" contenteditable="true">
+	            <thead>
+		            <tr>
+			            <th>账号</th>
+			            <th>姓名</th>
+			            <th>性别</th>
+			            <th>生日</th>
+			            <th>身份证号</th>
+			            <th>联系电话</th>
+			            <th>住址</th>
+			            <th>健康状况</th>
+			            <th>监护人姓名</th>
+			            <th>监护人电话</th>
+			            <th>备注</th>
+		            </tr>
+	            </thead>
+	            <tbody>
+		            <tr>
+			            <td>1</td>
+			            <td>TB - Monthly</td>
+			            <td>01/04/2012</td>
+			            <td>Default</td>
+		            </tr>
+		            <tr class="success">
+			            <td>1</td>
+			            <td>TB - Monthly</td>
+			            <td>01/04/2012</td>
+			            <td>Approved</td>
+		            </tr>
+		            <tr class="error">
+			            <td>2</td>
+			            <td>TB - Monthly</td>
+			            <td>02/04/2012</td>
+			            <td>Declined</td>
+		            </tr>
+		            <tr class="warning">
+			            <td>3</td>
+			            <td>TB - Monthly</td>
+			            <td>03/04/2012</td>
+			            <td>Pending</td>
+		            </tr>
+		            <tr class="info">
+			            <td>4</td>
+			            <td>TB - Monthly</td>
+			            <td>04/04/2012</td>
+			            <td>Call in to confirm</td>
+		            </tr>
+	            </tbody>
+            </table>
+
+
+
         </div>
         <% 
-            }
-            else
-            {
-                Response.Write(statusStr); 
-            }
         }
         else if(isIdenUser)
         { %>

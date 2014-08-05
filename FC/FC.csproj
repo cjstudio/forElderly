@@ -66,6 +66,7 @@
     <Content Include="Admin\HomePicChageConfig.aspx" />
     <Content Include="Community\AddElderly.aspx" />
     <Content Include="Community\Community.aspx" />
+    <Content Include="Community\EditElderly.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Elderly\Elderly.aspx" />
     <Content Include="img\Default.jpg" />
@@ -222,6 +223,13 @@
     <Compile Include="Community\Community.aspx.designer.cs">
       <DependentUpon>Community.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Community\EditElderly.aspx.cs">
+      <DependentUpon>EditElderly.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Community\EditElderly.aspx.designer.cs">
+      <DependentUpon>EditElderly.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -363,6 +371,7 @@
   <ItemGroup>
     <Folder Include="Account\userImg\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Community\xlsTmp\" />
     <Folder Include="Journal\DangyuanPics\" />
     <Folder Include="Others\tmp\HomeRollPic\" />
   </ItemGroup>
@@ -375,6 +384,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Community\XlsModel\model.xls" />
     <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
