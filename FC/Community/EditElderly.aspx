@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditElderly.aspx.cs" Inherits="FC.Community.EditElderly" %>
 
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddElderly.aspx.cs" Inherits="FC.Community.AddElderly" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,43 +47,38 @@
 			            <th>监护人姓名</th>
 			            <th>监护人电话</th>
 			            <th>备注</th>
+                        <tb>操作</tb>
 		            </tr>
 	            </thead>
 	            <tbody>
-		            <tr>
-			            <td>1</td>
-			            <td>TB - Monthly</td>
-			            <td>01/04/2012</td>
-			            <td>Default</td>
-		            </tr>
-		            <tr class="success">
-			            <td>1</td>
-			            <td>TB - Monthly</td>
-			            <td>01/04/2012</td>
-			            <td>Approved</td>
-		            </tr>
-		            <tr class="error">
-			            <td>2</td>
-			            <td>TB - Monthly</td>
-			            <td>02/04/2012</td>
-			            <td>Declined</td>
-		            </tr>
-		            <tr class="warning">
-			            <td>3</td>
-			            <td>TB - Monthly</td>
-			            <td>03/04/2012</td>
-			            <td>Pending</td>
-		            </tr>
-		            <tr class="info">
-			            <td>4</td>
-			            <td>TB - Monthly</td>
-			            <td>04/04/2012</td>
-			            <td>Call in to confirm</td>
-		            </tr>
+                <%
+                    for (int i = 0; i < elderlys.Count;i++ )
+                    {
+                        FC.cjstudio.Elderly tmp = elderlys[i];
+                        if (i % 2 == 0)
+                        {
+                            Response.Write("<tr class=\"info\">");
+                        }
+                        else { Response.Write("<tr>"); }
+
+                        Response.Write("<td>" + tmp.id + "</td>");
+                        Response.Write("<td>" + tmp.name + "</td>");
+                        Response.Write("<td>" + tmp.sex + "</td>");
+                        Response.Write("<td>" + tmp.birthday + "</td>");
+                        Response.Write("<td>" + tmp.idCard + "</td>");
+                        Response.Write("<td>" + tmp.phoneNum + "</td>");
+                        Response.Write("<td>" + tmp.livingAddress + "</td>");
+                        Response.Write("<td>" + tmp.healthyType + "</td>");
+                        Response.Write("<td>" + tmp.guardianName + "</td>");
+                        Response.Write("<td>" + tmp.guardianPhone + "</td>");
+                        Response.Write("<td>" + tmp.description + "</td>");
+                        Response.Write("<td><a href=\"\">编辑</a>，<a href=\"\">删除</a></td>");
+                        
+                        Response.Write("</tr>");
+                    }
+             %>
 	            </tbody>
             </table>
-
-
 
         </div>
         <% 

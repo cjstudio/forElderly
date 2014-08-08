@@ -81,13 +81,13 @@ function chageContentPage(idNum) {
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
-            chageDivIframe('main_content_div', LoadingHtmlPath);
+            chageDivIframe('main_content_div', './Others/Home/爸妈频道.aspx');
             break;
         case 103:
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
-            chageDivIframe('main_content_div', LoadingHtmlPath);
+            chageDivIframe('main_content_div', './Others/Home/志愿者脚步.aspx');
             break;
         case 104:
             document.getElementById('li_btn' + activeId).className = '';

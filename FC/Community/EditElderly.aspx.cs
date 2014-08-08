@@ -16,7 +16,8 @@ namespace FC.Community
         protected void Page_Load(object sender, EventArgs e)
         {
             initPage();
-            
+            cjstudio.Community community = cjstudio.getCommunityByAdmin(user.id);
+            elderlys = cjstudio.getElderlysByCommunityId(community.id);
         }
 
         public void initPage()

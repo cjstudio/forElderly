@@ -10,7 +10,7 @@
 namespace FC.Community {
     
     
-    public partial class AddElderly {
+    public partial class EditElderly {
         
         /// <summary>
         /// Head1 控件。

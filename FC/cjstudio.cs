@@ -54,6 +54,52 @@ namespace FC
             public string description;
         }
 
+        public static List<Elderly> getElderlysByCommunityId(string communityId)
+        {
+            List<Elderly> elderly = new List<Elderly>();
+
+            SqlConnection conn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                String sql;
+                sql = "select tb_user.id_i as userId, tb_user.name_c as userName,tb_user.sex_c as userSex,"+
+                    " tb_user.birthday_d as userBirth,tb_user.idCard_c as userIdCard,"+
+                    " tb_user.livingPlace_c as userAddr,tb_user.phone_c as userPhone,"+
+                    " tb_elderly.healthyType_i as userHealthy,tb_elderly.guardianName_c as userGuardianName,"+
+                    " tb_elderly.guardianPhone_c as userGuardianPhone,tb_elderly."+
+                    " description_c as userDes from tb_user,tb_elderly" +
+                    " where tb_user.id_i = tb_elderly.id_i"+
+                    " and tb_elderly.community_i = " + communityId;
+                cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adr = new SqlDataAdapter(cmd);
+                DataSet dataset = new DataSet();
+                adr.Fill(dataset);
+                DataTable rs = dataset.Tables[0];
+                for (int i = 0; i < rs.Rows.Count; i++)
+                {
+                    Elderly tmp = new Elderly();
+                    tmp.id = rs.Rows[i]["userId"].ToString();
+                    tmp.name = rs.Rows[i]["userName"].ToString();
+                    tmp.sex = rs.Rows[i]["userSex"].ToString();
+                    tmp.idCard = rs.Rows[i]["userIdCard"].ToString();
+                    tmp.birthday = rs.Rows[i]["userBirth"].ToString();
+                    tmp.guardianName = rs.Rows[i]["userGuardianName"].ToString();
+                    tmp.guardianPhone = rs.Rows[i]["userGuardianPhone"].ToString();
+                    tmp.healthyType = rs.Rows[i]["healthyType_i"].ToString();
+                    tmp.phoneNum = rs.Rows[i]["userPhone"].ToString();
+                    tmp.description = rs.Rows[i]["userDes"].ToString();
+                    elderly.Add(tmp);
+                }
+            }
+            catch
+            {
+                ;
+            }
+            return elderly;
+        }
         public static Community getCommunityByAdmin(string adminId)
         {
             Community community = new Community();
