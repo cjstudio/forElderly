@@ -20,8 +20,7 @@
 <body>
     <div class="container-fluid">
     <% 
-        //if (isIdenUser && (user.type&2)!=0 )
-        if (true)
+        if (isIdenUser && (user.type&2)!=0 )
         {
             %>
 

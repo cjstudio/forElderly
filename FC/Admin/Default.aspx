@@ -30,7 +30,7 @@
 	        </div>
 	        <div class="row-fluid">
 		        <div class="span12">
-				        <div class="span2">
+				        <div class="span2" style="width:150px;">
 					        <div class="row-fluid">
 							        <div class="accordion" id="accordion-000">
 								        <div class="accordion-group">
@@ -99,7 +99,7 @@
 
 
                         
-				        <div class="span8">
+				        <div class="span8" style="width:750px;">
                             <div  id="main_content">
                                 
                                 <iframe src="<%

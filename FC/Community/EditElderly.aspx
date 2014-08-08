@@ -17,7 +17,7 @@
   <link href="../JqueryUi/assets/css/docs.css" rel="stylesheet">
   <link href="../JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 </head>
-<body>
+<body >
     <div class="container-fluid">
     <% 
         if (isIdenUser && (user.type&2)!=0 )
@@ -31,23 +31,23 @@
                 </h2>
 	        </div>
         </div>
-        <div>
+        <div style=" overflow:auto; border-width:2px; border-style:outset;" >
 
-            <table class="table table-bordered table-hover" contenteditable="true">
+            <table class="table table-bordered table-hover">
 	            <thead>
 		            <tr>
-			            <th>账号</th>
-			            <th>姓名</th>
-			            <th>性别</th>
-			            <th>生日</th>
-			            <th>身份证号</th>
-			            <th>联系电话</th>
-			            <th>住址</th>
-			            <th>健康状况</th>
-			            <th>监护人姓名</th>
-			            <th>监护人电话</th>
-			            <th>备注</th>
-                        <tb>操作</tb>
+			            <th style="width:60px;"  nowrap="nowrap">账号</th>
+			            <th style="width:60px;"  nowrap="nowrap">姓名</th>
+			            <th style="width:30px;"  nowrap="nowrap">性别</th>
+			            <th style="width:90px;"  nowrap="nowrap">生日</th>
+			            <th style="width:160px;"  nowrap="nowrap">身份证号</th>
+			            <th style="width:105px;"  nowrap="nowrap">联系电话</th>
+			            <th style="width:200px;"  nowrap="nowrap">住址</th>
+			            <th style="width:80px;"  nowrap="nowrap">健康状况</th>
+			            <th style="width:60px;"  nowrap="nowrap">监护人姓名</th>
+			            <th style="width:105px;"  nowrap="nowrap">监护人电话</th>
+			            <th style="width:200px;" nowrap="nowrap">备注</th>
+                        <th style="width:90px;" nowrap="nowrap">操作</th>
 		            </tr>
 	            </thead>
 	            <tbody>
@@ -62,16 +62,25 @@
                         else { Response.Write("<tr>"); }
 
                         Response.Write("<td>" + tmp.id + "</td>");
-                        Response.Write("<td>" + tmp.name + "</td>");
+                        Response.Write("<td contenteditable=\"true\">" + tmp.name + "</td>");
                         Response.Write("<td>" + tmp.sex + "</td>");
-                        Response.Write("<td>" + tmp.birthday + "</td>");
+                        try
+                        {
+                            DateTime dt = DateTime.Parse(tmp.birthday);
+                        Response.Write("<td>" + dt.ToShortDateString() + "</td>");
+                        }
+                        catch (Exception)
+                        {
+                            
+                            throw;
+                        }
                         Response.Write("<td>" + tmp.idCard + "</td>");
-                        Response.Write("<td>" + tmp.phoneNum + "</td>");
-                        Response.Write("<td>" + tmp.livingAddress + "</td>");
-                        Response.Write("<td>" + tmp.healthyType + "</td>");
-                        Response.Write("<td>" + tmp.guardianName + "</td>");
-                        Response.Write("<td>" + tmp.guardianPhone + "</td>");
-                        Response.Write("<td>" + tmp.description + "</td>");
+                        Response.Write("<td contenteditable=\"true\">" + tmp.phoneNum + "</td>");
+                        Response.Write("<td contenteditable=\"true\">" + tmp.livingAddress + "</td>");
+                        Response.Write("<td contenteditable=\"true\">" + tmp.healthyType + "</td>");
+                        Response.Write("<td contenteditable=\"true\">" + tmp.guardianName + "</td>");
+                        Response.Write("<td contenteditable=\"true\">" + tmp.guardianPhone + "</td>");
+                        Response.Write("<td contenteditable=\"true\">" + tmp.description + "</td>");
                         Response.Write("<td><a href=\"\">编辑</a>，<a href=\"\">删除</a></td>");
                         
                         Response.Write("</tr>");

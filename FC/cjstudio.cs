@@ -88,7 +88,7 @@ namespace FC
                     tmp.birthday = rs.Rows[i]["userBirth"].ToString();
                     tmp.guardianName = rs.Rows[i]["userGuardianName"].ToString();
                     tmp.guardianPhone = rs.Rows[i]["userGuardianPhone"].ToString();
-                    tmp.healthyType = rs.Rows[i]["healthyType_i"].ToString();
+                    tmp.healthyType = rs.Rows[i]["userHealthy"].ToString();
                     tmp.phoneNum = rs.Rows[i]["userPhone"].ToString();
                     tmp.description = rs.Rows[i]["userDes"].ToString();
                     elderly.Add(tmp);
@@ -172,7 +172,7 @@ namespace FC
                     elderly.community+")";
                 cmd.CommandText = sql;
                 status = cmd.ExecuteNonQuery();
-                if (status < 1)
+                if (status !=0)
                 {
                     return "创建用户 " + elderly.name + " 成功";
                 }

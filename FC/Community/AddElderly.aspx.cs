@@ -29,7 +29,7 @@ namespace FC.Community
                 }
                 if (Request.Files[0].FileName.IndexOf(".xls") > 0)
                 {
-                    Response.Write("文件上传成功");
+                    Response.Write("文件上传成功<br/>");
                     Request.Files[0].SaveAs(filePath);
                     string strCon = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath + ";Extended Properties='Excel 8.0;IMEX=1'";
                     try

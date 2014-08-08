@@ -10,8 +10,8 @@
   <link href="../JqueryUi/assets/css/docs.css" rel="stylesheet"/>
   <link href="../JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>
 </head>
-<body style=" height:900px;width:970px" >
-	    <div style=" height:300px;width:970px">
+<body style=" min-height:900px;width:970px" >
+	    <div style=" height:300px;width:970px;">
                 <div class="carousel slide" id="carousel-861163">
                   <div class="carousel-inner" >
                     <div class="item  active"> 
@@ -41,7 +41,7 @@
                 </div>
               
         </div>
-        <div class="span9 bs-docs-sidebar pull-left">
+        <div class="span9 bs-docs-sidebar pull-left"  style="width:630px ">
       	    <div style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
@@ -75,7 +75,7 @@
         </div>
      </div>
 
-       <div class="span5 pull-right"  style="min-height:350px;">
+       <div class="span5 pull-right"  style="min-height:350px;width:300px;">
         <div  style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
@@ -110,7 +110,7 @@
       </div>
 
 
-      <div class="span9 pull-left" >
+      <div class="span9 pull-left"  style="width:630px;margin-top:10px;">
         <div  style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
@@ -143,7 +143,7 @@
         </div>
       </div>
 
-      <div class="span9 pull-left" >
+      <div class="span9 pull-left"  style="width:630px;margin-top:10px;">
         <div  style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
