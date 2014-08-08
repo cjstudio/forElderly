@@ -68,6 +68,10 @@ namespace FC.Community
                         Response.Write("文件内容错误");
                     }
                 }
+                else {
+
+                    Response.Write("文件类型错误");
+                }
             }
         }
 

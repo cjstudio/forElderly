@@ -140,7 +140,7 @@ namespace FC
             {
                 conn = new SqlConnection(connStr);
                 conn.Open();
-                sql = "insert tb_user(name_c,sex_c,birthday_d,idCard_c,livingPlace_c,phone_c "+
+                sql = "insert tb_user(name_c,sex_c,birthday_d,idCard_c,livingPlace_c,phone_c) "+
                     "values('"+elderly.name+"','"+
                     elderly.sex+"','"+
                     elderly.birthday+"','"+
