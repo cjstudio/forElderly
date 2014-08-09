@@ -67,6 +67,7 @@
     <Content Include="Community\AddElderly.aspx" />
     <Content Include="Community\Community.aspx" />
     <Content Include="Community\EditElderly.aspx" />
+    <Content Include="Community\IssueNeed.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Elderly\Elderly.aspx" />
     <Content Include="img\Default.jpg" />
@@ -96,6 +97,8 @@
     <Content Include="Others\Loading.html" />
     <Content Include="Others\taiji.js" />
     <Content Include="Scripts\ajaxfileupload.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Scripts\cjstudio.js" />
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
@@ -105,6 +108,7 @@
     <Content Include="Scripts\parallel\core.js" />
     <Content Include="Scripts\parallel\editor.js" />
     <Content Include="Scripts\parallel\jquery.js" />
+    <Content Include="Styles\bootstrap-datetimepicker.min.css" />
     <Content Include="Styles\parallel\edit_icons.css" />
     <Content Include="Styles\parallel\parallel.css" />
     <Content Include="Styles\Site.css" />
@@ -231,6 +235,13 @@
     </Compile>
     <Compile Include="Community\EditElderly.aspx.designer.cs">
       <DependentUpon>EditElderly.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Community\IssueNeed.aspx.cs">
+      <DependentUpon>IssueNeed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Community\IssueNeed.aspx.designer.cs">
+      <DependentUpon>IssueNeed.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

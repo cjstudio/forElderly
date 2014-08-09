@@ -9,7 +9,7 @@
   <meta name="author" content="CJ_Studio"/>
 
   <!-- Le styles -->
-  <link href="../JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet"/>
   <link type="text/css" href="../JqueryUi/css/custom-theme/jquery-ui-1.10.0.custom.css" 
         rel="stylesheet" />
   <link type="text/css" href="../JqueryUi/assets/css/font-awesome.min.css" rel="stylesheet" />
@@ -20,8 +20,7 @@
 <body>
     <div class="container-fluid">
     <% 
-        //if (isIdenUser && (user.type&2)!=0 )
-        if (true)
+        if (isIdenUser && (user.type&2)!=0 )
         {
             %>
 
@@ -80,63 +79,6 @@
     <script src="../JqueryUi/assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
     <script src="../JqueryUi/assets/js/docs.js" type="text/javascript"></script>
     <script src="../JqueryUi/assets/js/demo.js" type="text/javascript"></script>
-    <script type = "text/javascript">
-        function commit_upload() {
-            if (document.getElementById("fileToUpload").value == "") {
-                document.getElementById("commit_status").innerHTML = '<div class="alert alert-error">' +
-								 '<button type="button" class="close" data-dismiss="alert">×</button>' +
-								 '<h4>' +
-								 '提示!' +
-								 '</h4> <strong>警告!</strong> 清先选择上传文件.' +
-								 '</div>';
-            }
-
-            var fileType = /\.[^\.]+/.exec(document.getElementById("fileToUpload").value);
-            if (fileType != '.xls' && fileType != '.XLS') {
-                document.getElementById("commit_status").innerHTML = '<div class="alert alert-error">' +
-								 '<button type="button" class="close" data-dismiss="alert">×</button>' +
-								 '<h4>' +
-								 '提示!' +
-								 '</h4> <strong>警告!</strong> 选择上传的文件类型不安全.' +
-								 '</div>';
-            }
-            else {
-                document.getElementById("commit_status").innerHTML = '<img id="loading" src="../JqueryUi/img/loading2.gif" style="display:none;width:100px;"/>';
-
-                ajaxFileUpload();
-            }
-        }
-
-        function ajaxFileUpload() {
-            var oodiv = document.getElementById("fileToUpload");
-            //alert(oodiv.value);
-            //starting setting some animation when the ajax starts and completes
-            
-            $.ajaxFileUpload
-(
-	{
-	    url: "../Account/AjaxServer.aspx",
-	    secureuri: false,
-	    fileElementId: 'fileToUpload',
-	    dataType: 'json',
-	    data: { code: "just_user_pic" },
-	    success: function (data, status) {
-	        if (typeof (data.error) != 'undefined') {
-	            if (data.error != '') {
-	                alert(data.error);
-	            } else {
-	                document.getElementById("user_pic").src = 'userPic/' + data.msg;
-	                //location.replace(location.href);
-	            }
-	        }
-	    },
-	    error: function (data, status, e) {
-	        alert(e);
-	    }
-	}
-)
-            return false;
-        }  
-    </script>
+   
 </body>
 </html>

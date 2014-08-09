@@ -30,7 +30,7 @@
 	        </div>
 	        <div class="row-fluid">
 		        <div class="span12">
-				        <div class="span2">
+				        <div class="span2" style="width:150px;">
 					        <div class="row-fluid">
 							        <div class="accordion" id="accordion-000">
 								        <div class="accordion-group">
@@ -63,12 +63,12 @@
 									        <div id="accordion-element-002" class="accordion-body collapse">
 										        
                                                 <div class="accordion-inner">
-                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Others/Loding.html');">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','./AddElderly.aspx');">
                                                  &nbsp;&nbsp;添加老人</a>
 										        </div>
 
                                                 <div class="accordion-inner">
-                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','../Others/Loding.html');">
+                                                <a class="accordion-toggle" data-toggle="collapse" onclick="chageIframeContent('main_content','./EditElderly.aspx');">
                                                  &nbsp;&nbsp;老人管理</a>
 										        </div>
 
@@ -99,7 +99,7 @@
 
 
                         
-				        <div class="span8">
+				        <div class="span8" style="width:750px;">
                             <div  id="main_content">
                                 
                                 <iframe src=""  scrolling="no" frameborder="0" height="100%" id="content_iframe" width="100%" onload="IFrameReSize('content_iframe');IFrameReSizeWidth('content_iframe');"></iframe>
