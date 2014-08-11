@@ -12,7 +12,7 @@ namespace FC.Community
         public bool isIdenUser = false;
         public FC.cjstudio.User user;
         public List<cjstudio.Elderly> elderlys = new List<cjstudio.Elderly>();
-
+        public List<string> serverType;
         protected void Page_Load(object sender, EventArgs e)
         {
             initPage();

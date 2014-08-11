@@ -19,7 +19,7 @@
 <link href="../Styles/parallel/edit_icons.css" rel="stylesheet"/>
 </head>
 
-<body  style="padding-top:0px;min-height:800px;min-width:800px;">
+<body  style="padding-top:0px;min-height:800px;width:850px;">
     <div class="container" id="page_main_content" style=" margin-left:0px;">
 
         <div class="container-fluid">
@@ -28,10 +28,10 @@
             <h2>发布管理</h2>
 
             
-                <table class="table table-hover " align="center" style=" text-align:center;">
+                <table class="table table-hover " align="center" style="width:850px; overflow:auto;">
                   <thead>
                     <tr >
-                      <th>编号</th>
+                      <th >编号</th>
                       <th>标题</th>
                       <th >作者</th>
                       <th >栏目</th>

@@ -10,43 +10,43 @@
   <link href="../JqueryUi/assets/css/docs.css" rel="stylesheet"/>
   <link href="../JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>
 </head>
-<body style=" min-height:900px;width:970px" >
+    <body style=" min-height:900px;width:970px" >
 	    <div style=" height:300px;width:970px;">
-                <div class="carousel slide" id="carousel-861163">
-                  <div class="carousel-inner" >
-                    <div class="item  active"> 
-                        <img alt="" src="../img/<%=FC.cjstudio.getConfigValue("HomeMainRollPic1_Pic")%>" style=" height:300px; margin-right: auto; margin-left: auto;  ">
-                      <div class="carousel-caption" >
-                        <h4><%=FC.cjstudio.getConfigValue("HomeMainRollPic1_Title")%></h4>
-                        <p><%=FC.cjstudio.getConfigValue("HomeMainRollPic1_Content")%></p>
-                      </div>
+            <div class="carousel slide" id="carousel-861163">
+                <div class="carousel-inner" >
+                <div class="item  active"> 
+                    <img alt="" src="../img/<%=FC.cjstudio.getConfigValue("HomeMainRollPic1_Pic")%>" style=" height:300px; margin-right: auto; margin-left: auto;  "/>
+                    <div class="carousel-caption" >
+                    <h4><%=FC.cjstudio.getConfigValue("HomeMainRollPic1_Title")%></h4>
+                    <p><%=FC.cjstudio.getConfigValue("HomeMainRollPic1_Content")%></p>
                     </div>
-                    <div class="item" > 
-                    <img alt="" src="../img/<%=FC.cjstudio.getConfigValue("HomeMainRollPic2_Pic")%>" style=" height:300px; margin-right: auto; margin-left: auto;">
-                      <div class="carousel-caption" >
-                        <h4><%=FC.cjstudio.getConfigValue("HomeMainRollPic2_Title")%></h4>
-                        <p><%=FC.cjstudio.getConfigValue("HomeMainRollPic2_Content")%></p>
-                      </div>
-                    </div>
-                    <div class="item "> 
-                    <img alt="" src="../img/<%=FC.cjstudio.getConfigValue("HomeMainRollPic3_Pic")%>" style=" height:300px; margin-right: auto; margin-left: auto;">
-                      <div class="carousel-caption" >
-                        <h4><%=FC.cjstudio.getConfigValue("HomeMainRollPic3_Title")%></h4>
-                        <p><%=FC.cjstudio.getConfigValue("HomeMainRollPic3_Content")%></p>
-                      </div>
-                    </div>
-                  </div>
-                  <a data-slide="prev" href="#carousel-861163" class="left carousel-control">‹</a> 
-                  <a data-slide="next" href="#carousel-861163" class="right carousel-control">›</a> 
                 </div>
-              
+                <div class="item" > 
+                <img alt="" src="../img/<%=FC.cjstudio.getConfigValue("HomeMainRollPic2_Pic")%>" style=" height:300px; margin-right: auto; margin-left: auto;"/>
+                    <div class="carousel-caption" >
+                    <h4><%=FC.cjstudio.getConfigValue("HomeMainRollPic2_Title")%></h4>
+                    <p><%=FC.cjstudio.getConfigValue("HomeMainRollPic2_Content")%></p>
+                    </div>
+                </div>
+                <div class="item "> 
+                <img alt="" src="../img/<%=FC.cjstudio.getConfigValue("HomeMainRollPic3_Pic")%>" style=" height:300px; margin-right: auto; margin-left: auto;">
+                    <div class="carousel-caption" >
+                    <h4><%=FC.cjstudio.getConfigValue("HomeMainRollPic3_Title")%></h4>
+                    <p><%=FC.cjstudio.getConfigValue("HomeMainRollPic3_Content")%></p>
+                    </div>
+                </div>
+                </div>
+                <a data-slide="prev" href="#carousel-861163" class="left carousel-control">‹</a> 
+                <a data-slide="next" href="#carousel-861163" class="right carousel-control">›</a> 
+            </div>
         </div>
+
         <div class="span9 bs-docs-sidebar pull-left"  style="width:630px ">
       	    <div style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
           	    <strong>&nbsp;&nbsp;爸妈频道</strong>
-                <a  class="pull-right" href="../Elderly/Elderly.aspx">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
+                <a class="pull-right" href="../Elderly/Elderly.aspx">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
             </div>
         	<div><!-- 栏目内容 -->
                 <div >
@@ -75,39 +75,82 @@
         </div>
      </div>
 
-       <div class="span5 pull-right"  style="min-height:350px;width:300px;">
-        <div  style="border:1px solid #999;padding:3px;">
-        	<div class="navbar-static-top" 
-                style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
-          	    <strong>&nbsp;&nbsp;站内公告</strong>
-                <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
-            </div>
-        	<div><!-- 栏目内容 -->
-                <div >
-                <br />
-                  
-                  <%
-                      for (int i = 0; i < articleAnnouncement.Count && i < 8; i++)
-                      {
-                          try
-                          {
-                              string tmp = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(articleAnnouncement[i].title)); ;
-                              tmp = tmp.Length > 12 ? tmp.Substring(0, 10) + "..." : tmp;
+       <div class="span5 pull-right"  style="width:300px;">
 
-                              Response.Write("<ul><a href=\"../Others/ShowArticlePage.aspx?article=" +
-                                  articleAnnouncement[i].id + "\">" + tmp + "</a>&nbsp;" +
-                                  articleAnnouncement[i].createDT.ToShortDateString() + "</ul>");   
-                          }
-                          catch (Exception)
+         <div class="span12"  style="width:280px;">
+            <div  style="border:1px solid #999;padding:3px;">
+        	    <div class="navbar-static-top" 
+                    style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
+          	        <strong>&nbsp;&nbsp;站内公告</strong>
+                    <a  class="pull-right">&nbsp;&nbsp;More...&nbsp;&nbsp;</a>
+                </div>
+        	    <div><!-- 栏目内容 -->
+                    <div >
+                    <br />
+                  
+                      <%
+                          for (int i = 0; i < articleAnnouncement.Count && i < 8; i++)
                           {
-                              throw;
-                          }
-                      }                      
-                       %>
+                              try
+                              {
+                                  string tmp = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(articleAnnouncement[i].title)); ;
+                                  tmp = tmp.Length > 12 ? tmp.Substring(0, 10) + "..." : tmp;
+
+                                  Response.Write("<ul><a href=\"../Others/ShowArticlePage.aspx?article=" +
+                                      articleAnnouncement[i].id + "\">" + tmp + "</a>&nbsp;" +
+                                      articleAnnouncement[i].createDT.ToShortDateString() + "</ul>");   
+                              }
+                              catch (Exception)
+                              {
+                                  throw;
+                              }
+                          }                      
+                           %>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+        
+         <div class="span12"  style="width:280px;margin-top:10px;">
+            <div  style="border:1px solid #999;padding:3px;">
+        	    <div class="navbar-static-top" 
+                    style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
+          	        <strong>&nbsp;&nbsp;友情链接</strong>
+                </div>
+        	    <div><!-- 栏目内容 -->
+                    <div >
+                        <table width="270px">
+                        <thead>
+		                    <tr>
+			                    <th style="width:270px;" align="center" nowrap="nowrap"></th>
+		                    </tr>
+	                    </thead>
+                        <tbody>
+                            <tr  align="center">
+                                <td>
+                                <a href="http://www.zgzyz.org.cn" target="_blank"><img src="http://www.zgzyz.org.cn/ZYZ_logo.gif" style="height:50px;"></a>
+                                </td>
+                            </tr>
+                            <tr><td></td></tr>
+                            <tr  align="center">
+                                <td><a href="http://www.onefoundation.cn/" target="_blank"><img src="http://www.onefoundation.cn/menu/topnav_logo.gif" alt="壹基金"  style="height:50px;"/></a></td>
+                            </tr>
+                            <tr><td></td></tr>
+                            <tr  align="center">
+                                <td>
+                                <a href="http://www.galr.cn/" target="_blank"><img src="http://www.galr.cn/template/wmff_miui_z/img/logo.png" style="height:50px;"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+
       </div>
+
 
 
       <div class="span9 pull-left"  style="width:630px;margin-top:10px;">
