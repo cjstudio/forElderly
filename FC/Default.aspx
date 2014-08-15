@@ -7,6 +7,7 @@
   <meta charset="utf-8"/>
   <title><%=FC.cjstudio.getConfigValue("MainTitle")%></title>
   <meta name="author" content="CJ_Studio"/>
+  <link   rel="Shortcut Icon"   href="img/logo.gif">
   <!-- Le styles -->
   <link href="./JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet"/>
   <link type="text/css" href="./JqueryUi/css/custom-theme/jquery-ui-1.10.0.custom.css" 
@@ -14,6 +15,8 @@
   <link type="text/css" href="./JqueryUi/assets/css/font-awesome.min.css" rel="stylesheet" />
   <link href="./JqueryUi/assets/css/docs.css" rel="stylesheet"/>
   <link href="./JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>    
+
+  <link href="Styles/HomeFrame.css" rel="Stylesheet" />
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" style="padding-top:0px;">
@@ -73,15 +76,18 @@
   
   <!-- Subhead
   ================================================== -->
-  <header class="subhead" id="overview"  style="background-image:linear-gradient(to bottom,#D66123, Orange ">
-    <div class="container" style="width:970px;">
+  <header id="overview" >
+    <div class="container" style="width:970px; height:150px;">
         <div class="span2">
-            <img src="./img/logo.gif">
+            <img src="./img/logo.gif" style="height:150px; width:167px;">
         </div >
         <div class="span7">
-            <br>
-            <h1><%=FC.cjstudio.getConfigValue("MainTitle")%></h1>
-            <p class="lead"><%=FC.cjstudio.getConfigValue("MainSlogan")%></p>
+        
+            <img src="./img/logo_text.png" style="margin-top:20px;">
+          <%--  <br />
+            <font id="HomeMainTitle"> <%=FC.cjstudio.getConfigValue("MainTitle")%></font>
+            <br />
+            <p class="lead"><%=FC.cjstudio.getConfigValue("MainSlogan")%></p>--%>
         </div>
     </div>
   </header>
@@ -95,7 +101,7 @@
         <div class="navbar-inner" style="background-image:linear-gradient(to bottom, #111111, #D66123 ">
           <div class="container">
 
-            <a class="brand" href="" id="btn100" onclick="chageContentPage(100);return false;"><%=FC.cjstudio.getConfigValue("MainTitle")%></a>
+            <%--<a class="brand" href="" id="btn100" onclick="chageContentPage(100);return false;"><%=FC.cjstudio.getConfigValue("MainTitle")%></a>--%>
               <ul class="nav">
                 <li class="active" id="li_btn101">
                     <a href="" id="btn101" onclick="chageContentPage(101);return false;" >首页</a>
@@ -119,13 +125,14 @@
                   { 
                       %>
                     <table>
-                    
-                        <td>
-                        <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">
-                        登陆</a></td>
-                        <td>
-                        <a class="btn"  href="" id="btn111" onclick="chageContentPage(111);return false;">
-                        注册</a></td>
+                        <tr>
+                            <td>
+                            <a id="bt_loginIn" href="#wd_loginIn" role="button" class="btn" data-toggle="modal">
+                            登陆</a></td>
+                            <td>
+                            <a class="btn"  href="" id="btn111" onclick="chageContentPage(111);return false;">
+                            注册</a></td>
+                        </tr>
                    </table>
                    <%
                   }
@@ -173,33 +180,38 @@ id="home_content_iframe" width="100%" onload="autoIframeSize('home_content_ifram
 
 <!-- Footer
 ================================================== -->
-  <div class="navbar navbar-inverse navbar-fixed-botton" >
   
-      <footer class="footer"  style="margin-top:0px;background-image:linear-gradient(to bottom, Orange,#D66123 ">
+      <footer id="WebPageTail" >
         <div class="container"  style="width:970px;">
-          <div class="span2" align="center">
+          <div class="span1" align="center">
       	    <div class=" pull-right" style="margin-top:8px;">
         	    <a type="button" 
                     class=".btn-large brand ui-button btn btn-primary ui-widget ui-state-default ui-corner-all  ui-button-text-only" 
                     align="center" role="button" aria-disabled="false" href="../Others/SupportUs.aspx">
-                    支持我们
+                    支持<br>我们
                 </a>
       	    </div>
-	        </div>
-          <div class="span7">
+	     </div>
+        <div class="span3">
       	    <div class="pull-left ui-corner-top">
       		    <img src="../JqueryUi/img/line1.gif" height="20" width="5"/>
             </div>
       	    <div align="left" style="padding-left:30px;font-color:red;">
                 <p >联系电话:<strong> <%=FC.cjstudio.getConfigValue("ContactNumber")%></strong></p>
                 <p >联系邮箱:<strong> <%=FC.cjstudio.getConfigValue("ContactEmail")%></strong></p>
+            </div>
+        </div>
+        <div class="span4">
+      	    <div class="pull-left ui-corner-top">
+      		    <img src="../JqueryUi/img/line1.gif" height="20" width="5"/>
+            </div>
+      	    <div align="left" style="padding-left:30px;font-color:red;">
                 <p >联系地址:<strong> <%=FC.cjstudio.getConfigValue("ContactAddress")%></strong></p>
                 <a href="./Others/GiveAdvice.aspx">点击此处</a>给我们提出您的建议或意见
             </div>
-	        </div>
         </div>
-      </footer>
-      </div>
+        </div>
+      </footer> 
   <!-- Placed at the end of the document so the pages load faster
   <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
     <script src="./Scripts/cjstudio.js" type = "text/javascript"></script>

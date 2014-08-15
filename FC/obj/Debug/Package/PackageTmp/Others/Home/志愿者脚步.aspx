@@ -15,6 +15,7 @@ body,a
 }
 a{
 text-decoration:none;
+font-family:"Microsoft Yahei";
 }
 div {
 display: block;
@@ -105,6 +106,7 @@ h1 a
 	<div class="news">
 		<div class="news_1">
         	<div class="news_tu">
+                <img style="width:135px; height:85px;" src="../<%=FC.cjstudio.getConfigValue("志愿者脚步Pic4")%>" />
             </div>
             <div class="news_list">
             	<h1>&nbsp;优秀志愿者风采<a href="">More...&nbsp;&nbsp;</a></h1>
@@ -134,6 +136,7 @@ h1 a
         </div>
         <div class="news_2">
         	<div class="news_tu">
+                <img style="width:135px; height:85px;" src="../<%=FC.cjstudio.getConfigValue("志愿者脚步Pic3")%>" />
             </div>
             <div class="news_list">
             	<h1>&nbsp;志愿者认证<a href="">More...&nbsp;&nbsp;</a></h1>

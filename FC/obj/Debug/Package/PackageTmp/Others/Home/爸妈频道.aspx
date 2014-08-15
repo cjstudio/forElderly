@@ -15,6 +15,7 @@ body,a
 }
 a{
 text-decoration:none;
+font-family:"Microsoft Yahei";
 }
 div {
 display: block;
@@ -106,6 +107,7 @@ h1 a
 	<div class="news">
 		<div class="news_1">
         	<div class="news_tu">
+                <img style="width:135px; height:85px;" src="http://www.ctps.cn/PhotoNet/Profiles/gzg/201056162348199943287.jpg" />
             </div>
             <div class="news_list">
             	<h1>&nbsp;幸福召唤<a href="">More...&nbsp;&nbsp;</a></h1>
@@ -135,6 +137,7 @@ h1 a
         </div>
         <div class="news_2">
         	<div class="news_tu">
+                <img style="width:135px; height:85px;" src="http://www.zg-sj.com/sjphoto/photo/%CF%D0%D4%C6%D2%B0%BA%D7/20125105791079.jpg" />
             </div>
             <div class="news_list">
             	<h1>&nbsp;爸妈风采<a href="">More...&nbsp;&nbsp;</a></h1>
@@ -166,6 +169,7 @@ h1 a
     <div class="news">
 		<div class="news_1">
         	<div class="news_tu">
+                <img style="width:135px; height:85px;" src="http://img4.imgtn.bdimg.com/it/u=485802153,2046508291&fm=23&gp=0.jpg" />
             </div>
             <div class="news_list">
             	<h1>&nbsp;爸妈满意度<a href="">More...&nbsp;&nbsp;</a></h1>
@@ -194,6 +198,9 @@ h1 a
             </div>
         </div>
         <div class="news_2">
+        	<div class="news_tu">
+                <img style="width:130px; height:85px;" src="http://www.wenming.cn/zyfw/2009-12/01/xin_393110630174737512631.jpg" />
+            </div>
         	<!--<div class="news_tu"></div>-->
             <div class="news_list" style="margin-left:148px">
             	<h1>&nbsp;爸妈幸福指数<a href="">More...&nbsp;&nbsp;</a></h1>

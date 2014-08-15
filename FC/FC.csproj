@@ -74,6 +74,7 @@
     <Content Include="img\homepagecontent1.jpg" />
     <Content Include="img\homepagecontent2.jpg" />
     <Content Include="img\homepagecontent3.jpg" />
+    <Content Include="img\HomeTitleBG1.png" />
     <Content Include="img\logo %281%29.png" />
     <Content Include="img\logo %282%29.png" />
     <Content Include="img\logo %283%29.png" />
@@ -109,6 +110,7 @@
     <Content Include="Scripts\parallel\editor.js" />
     <Content Include="Scripts\parallel\jquery.js" />
     <Content Include="Styles\bootstrap-datetimepicker.min.css" />
+    <Content Include="Styles\HomeFrame.css" />
     <Content Include="Styles\parallel\edit_icons.css" />
     <Content Include="Styles\parallel\parallel.css" />
     <Content Include="Styles\Site.css" />
@@ -400,6 +402,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Community\xlsTmp\" />
     <Folder Include="Journal\DangyuanPics\" />
+    <Folder Include="Others\Home\img\" />
     <Folder Include="Others\tmp\HomeRollPic\" />
   </ItemGroup>
   <ItemGroup>

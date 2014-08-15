@@ -27,8 +27,8 @@
                { %>
             <h2>发布管理</h2>
 
-            
-                <table class="table table-hover " align="center" style="width:850px; overflow:auto;">
+            <div style="width:680px; overflow:scroll;">
+                <table class="table table-hover " align="center" style="width:850px;">
                   <thead>
                     <tr >
                       <th >编号</th>
@@ -69,7 +69,7 @@
                       
                   </tbody>
                 </table>
-              
+              </div>
                 <div class="pagination pagination-centered">
                   <ul >
                   <% if (page == 1){ %>
