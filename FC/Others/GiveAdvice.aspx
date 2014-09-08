@@ -7,10 +7,19 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>
+<br />
+<br />
+    <h2 style="color:Red; text-align:center;">
+    感谢您对我们的关注，但此功能尚未上线，敬请原谅
+    <br />
+    <br />
+    请发邮件至
+    </h2>
+     <h1 style="color:Black; text-align:center;">cjstudio@yeah.net</h1>
+     <h2 style="color:Red; text-align:center;">
+     联系我们
+    </h2>
+</body>
+</html>
 </body>
 </html>

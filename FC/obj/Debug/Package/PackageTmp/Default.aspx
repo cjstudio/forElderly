@@ -7,6 +7,7 @@
   <meta charset="utf-8"/>
   <title><%=FC.cjstudio.getConfigValue("MainTitle")%></title>
   <meta name="author" content="CJ_Studio"/>
+  <link   rel="Shortcut Icon"   href="img/logo.gif">
   <!-- Le styles -->
   <link href="./JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet"/>
   <link type="text/css" href="./JqueryUi/css/custom-theme/jquery-ui-1.10.0.custom.css" 
@@ -165,7 +166,7 @@
  <!-- ================================================== -->
 
   <!-- Docs nav ================================================== -->
-    <div id="main_content_div" class="row" style="width:970px;margin-left:0px;min-height:800px;">
+    <div id="main_content_div" class="row" style="width:970px;margin-left:0px;min-height:600px;">
 	    
   <!--########### Main Content Start ================================================== -->
 <!--########### Main Content Start ================================================== -->
@@ -182,27 +183,26 @@ id="home_content_iframe" width="100%" onload="autoIframeSize('home_content_ifram
   
       <footer id="WebPageTail" >
         <div class="container"  style="width:970px;">
-          <div class="span1" align="center">
-      	    <div class=" pull-right" style="margin-top:8px;">
-        	    <a type="button" 
-                    class=".btn-large brand ui-button btn btn-primary ui-widget ui-state-default ui-corner-all  ui-button-text-only" 
-                    align="center" role="button" aria-disabled="false" href="../Others/SupportUs.aspx">
-                    支持<br>我们
+          <div class="span2" align="center" style="margin:0px;">
+      	    <div class=" pull-right" style="margin-top:0px;">
+        	    <a  href="../Others/SupportUs.aspx">
+                    <img src="img/支持我们.png" style="width:130px;height:65px;" />
                 </a>
       	    </div>
 	     </div>
         <div class="span3">
       	    <div class="pull-left ui-corner-top">
-      		    <img src="../JqueryUi/img/line1.gif" height="20" width="5"/>
+      		    <img src="../JqueryUi/img/line1.gif" style="width:2px;height:65px;"/>
             </div>
       	    <div align="left" style="padding-left:30px;font-color:red;">
                 <p >联系电话:<strong> <%=FC.cjstudio.getConfigValue("ContactNumber")%></strong></p>
                 <p >联系邮箱:<strong> <%=FC.cjstudio.getConfigValue("ContactEmail")%></strong></p>
+                <p >版权所有:<strong> <%=FC.cjstudio.getConfigValue("Copyright")%></strong></p>
             </div>
         </div>
         <div class="span4">
       	    <div class="pull-left ui-corner-top">
-      		    <img src="../JqueryUi/img/line1.gif" height="20" width="5"/>
+      		    <img src="../JqueryUi/img/line1.gif" style="width:2px;height:65px;"/>
             </div>
       	    <div align="left" style="padding-left:30px;font-color:red;">
                 <p >联系地址:<strong> <%=FC.cjstudio.getConfigValue("ContactAddress")%></strong></p>

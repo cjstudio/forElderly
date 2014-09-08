@@ -92,6 +92,7 @@
     <Content Include="Others\HomeContent.aspx" />
     <Content Include="Others\Home\志愿者脚步.aspx" />
     <Content Include="Others\Home\爸妈频道.aspx" />
+    <Content Include="Others\Home\社区管理.aspx" />
     <Content Include="Others\provision.html" />
     <Content Include="Others\ShowArticlePage.aspx" />
     <Content Include="Others\SupportUs.aspx" />
@@ -303,6 +304,13 @@
     </Compile>
     <Compile Include="Others\Home\爸妈频道.aspx.designer.cs">
       <DependentUpon>爸妈频道.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Others\Home\社区管理.aspx.cs">
+      <DependentUpon>社区管理.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Others\Home\社区管理.aspx.designer.cs">
+      <DependentUpon>社区管理.aspx</DependentUpon>
     </Compile>
     <Compile Include="Others\ShowArticlePage.aspx.cs">
       <DependentUpon>ShowArticlePage.aspx</DependentUpon>

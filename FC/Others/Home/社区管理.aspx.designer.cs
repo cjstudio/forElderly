@@ -7,9 +7,9 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace FC.Others {
+namespace FC.Others.Home {
     
     
-    public partial class SupportUs {
+    public partial class 社区管理 {
     }
 }

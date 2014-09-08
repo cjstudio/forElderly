@@ -13,20 +13,24 @@
   <style type="text/css">
       .article_feet_img
       {
-          width:120px; 
-          height:80px;
+          width:128px; 
+          height:77px;
           border:0px;
           }
         .manager_img
         {
-          width:130px; 
-          height:82px;
+          width:128px; 
+          height:77px;
           border:0px;
           margin-top:10px;
             }
             a{ 
              font-family:"Microsoft Yahei";
            } 
+           .carousel-caption
+           {
+               background: rgba(170, 109, 43, 0.58);
+               }
   </style>
 </head>
     <body style=" min-height:900px;width:970px" >
@@ -60,7 +64,7 @@
             </div>
         </div>
         <%--爸妈频道--%>
-        <div class="span5 bs-docs-sidebar pull-left"  style="width:310px;">
+        <div class="span5 bs-docs-sidebar pull-left"  style="width:310px; margin-left:10px; ">
       	    <div style="border:1px solid #999;padding:3px; height:294px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
@@ -95,7 +99,7 @@
         </div>
      </div>
 
-       <div class="span5 pull-right"  style="width:300px; margin-left:0px;">
+       <div class="span5 pull-right"  style="width:300px; margin-left:0px; margin-right:10px;">
        <%--站内公告--%>
          <div class="span12"  style="width:280px;">
             <div  style="border:1px solid #999;padding:3px; height:294px;">
@@ -103,7 +107,8 @@
                     style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->
                     <img src="../img/menu_ico.png"/>
           	        <strong>&nbsp;&nbsp;站内公告</strong>
-                    <strong class="pull-right" style="padding-top:8px;"><a >更多...&nbsp;&nbsp;</a></strong>
+                    <a class="pull-right" style="padding-top:8px;">&nbsp;&nbsp;更多...&nbsp;&nbsp;</a>
+                    
                 </div>
         	    <div><!-- 栏目内容 -->
                     <div >
@@ -293,7 +298,7 @@
       </div>
 
       <!-- 社区管理 -->
-      <div class="span9 pull-left"  style="width:640px;margin-top:10px;">
+      <div class="span9 pull-left"  style="width:640px;margin-top:10px; margin-left:10px;">
         <div  style="border:1px solid #999;padding:3px;">
         	<div class="navbar-static-top" 
                 style="background-image:linear-gradient(to bottom, #f6a123, #D66123 "><!-- 栏目头 -->

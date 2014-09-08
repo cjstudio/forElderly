@@ -5,13 +5,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link href="../../JqueryUi/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link type="text/css" href="../../JqueryUi/css/custom-theme/jquery-ui-1.10.0.custom.css" 
+        rel="stylesheet" />
+  <link type="text/css" href="../../JqueryUi/assets/css/font-awesome.min.css" rel="stylesheet" />
+
+  <link href="../../JqueryUi/assets/css/docs.css" rel="stylesheet">
+  <link href="../../JqueryUi/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
 <title>志愿者风采</title>
 </head>
 <style>
 body,a
 {
-	font-family: Microsoft YaHei;
-	font-size: 12px;
+font-family:"Microsoft Yahei";
 }
 a{
 text-decoration:none;
@@ -109,7 +117,7 @@ h1 a
                 <img style="width:135px; height:85px;" src="../<%=FC.cjstudio.getConfigValue("志愿者脚步Pic4")%>" />
             </div>
             <div class="news_list">
-            	<h1>&nbsp;优秀志愿者风采<a href="">More...&nbsp;&nbsp;</a></h1>
+            	<h1>&nbsp;优秀志愿者风采<a href="">更多...&nbsp;&nbsp;&nbsp;&nbsp;</a></h1>
                 <div class="news_ul">
                 	<%
                         List<FC.cjstudio.Article> article =
@@ -139,7 +147,7 @@ h1 a
                 <img style="width:135px; height:85px;" src="../<%=FC.cjstudio.getConfigValue("志愿者脚步Pic3")%>" />
             </div>
             <div class="news_list">
-            	<h1>&nbsp;志愿者认证<a href="">More...&nbsp;&nbsp;</a></h1>
+            	<h1>&nbsp;志愿者认证<a href="">更多...&nbsp;&nbsp;&nbsp;&nbsp;</a></h1>
                 <div class="news_ul">
                 	<%
                         article = FC.cjstudio.getArticleByTypeName("志愿者认证");
