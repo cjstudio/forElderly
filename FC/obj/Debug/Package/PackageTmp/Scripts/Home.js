@@ -93,7 +93,7 @@ function chageContentPage(idNum) {
             document.getElementById('li_btn' + activeId).className = '';
             document.getElementById('li_btn' + idNum).className = "active";
             activeId = idNum;
-            chageDivIframe('main_content_div', './Others/Home/社区管理.html');
+            chageDivIframe('main_content_div', './Others/Home/社区管理.aspx');
             break;
         case 105:
             document.getElementById('li_btn' + activeId).className = '';

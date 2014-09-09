@@ -25,21 +25,6 @@
 				    <div class="span12">
 					    <div class="row-fluid">
 						    <div class="span3">
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
-							    <p>Some thing...</p>
 
 						    </div>
 						    <div class="span9">

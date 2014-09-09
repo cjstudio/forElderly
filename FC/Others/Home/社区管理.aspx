@@ -48,9 +48,16 @@
         <div class="row-fluid">
             <div class="span3" id="textlist">
                 <div class="hero-unit" id="textlistIn">
-                <h3><sub>Hello, world!</sub></h3>
+                <h3><sub>梅南社区</sub></h3>
 
-                <h4>这是一个可视化布局模板, 你可以点击模板里的文字进行修改, 也可以通过点击弹出的编辑框进行富文本修改. 拖动区块能实现排序.</h4>
+                <h4>该社区暂无相关活动</h4>
+
+                <p><a class="btn btn-primary" href="#">参看更多 &raquo;</a></p>
+                </div>
+                <div class="hero-unit" id="Div1">
+                <h3><sub>庙山社区</sub></h3>
+
+                <h4>该社区暂无相关活动</h4>
 
                 <p><a class="btn btn-primary" href="#">参看更多 &raquo;</a></p>
                 </div>
@@ -75,7 +82,7 @@
 
 
 
-    var json_data = [[114.384, 30.405]];
+    var json_data = [[114.379, 30.4200], [114.381, 30.4306]];
     var pointArray = new Array();
     for (var i = 0; i < json_data.length; i++) {
         var marker = new BMap.Marker(new BMap.Point(json_data[i][0], json_data[i][1])); // 创建点
@@ -88,7 +95,7 @@
     //获取覆盖物位置
     function attribute(e) {
         var p = e.target;
-        alert("marker的位置是" + p.getPosition().lng + "," + p.getPosition().lat);
+        alert("社区活动：该社区暂无相关活动");
     }
   </script>
 
